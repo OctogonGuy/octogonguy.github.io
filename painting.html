@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Picasso Painting</title>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="stylesheets/styles.css">
+  <link rel="stylesheet" href="stylesheets/picasso.css">
+  
+  <script
+    src="https://code.jquery.com/jquery-latest.min.js">
+  </script>
+  <script>
+    $(function() {
+      $("header").load("header.html");
+      $("footer").load("footer.html");
+    });
+  </script>
+</head>
+<body>
+  <header></header>
+
+  <main>
+    <div id="canvas">
+      <div id="green-character">
+        <div class="head">
+          <div class="hat"></div>
+          <div class="left eye"></div>
+          <div class="right eye"></div>
+        </div>
+        <div class="body">
+          <div class="shirt"></div>
+          <div class="pants"></div>
+        </div>
+      </div>
+
+      <div id="orange-character">
+        <div class="head">
+          <div class="hat"></div>
+          <div class="left eye"></div>
+          <div class="right eye"></div>
+        </div>
+        <div class="body"></div>
+      </div>
+
+      <div id="shelf">
+        <div id="drawer-1" class="drawer">
+          <div class="handle top-handle"></div>
+          <div class="handle bottom-handle"></div>
+        </div>
+        <div id="drawer-2" class="drawer">
+          <div class="handle top-handle"></div>
+          <div class="handle bottom-handle"></div>
+        </div>
+        <div id="drawer-3" class="drawer">
+          <div class="handle top-handle"></div>
+          <div class="handle bottom-handle"></div>
+        </div>
+        <div id="drawer-4" class="drawer">
+          <div class="handle top-handle"></div>
+          <div class="handle bottom-handle"></div>
+        </div>
+        <div id="drawer-5" class="drawer">
+          <div class="handle top-handle"></div>
+          <div class="handle bottom-handle"></div>
+        </div>
+      </div>
+      
+      <div id="piano">
+        <div class="key"></div>
+        <div class="key black-key"></div>
+        <div class="key black-key"></div>
+        <div class="key"></div>
+        <div class="key black-key"></div>
+        <div class="key black-key"></div>
+        <div class="key black-key"></div>
+
+        <div class="key"></div>
+        <div class="key black-key"></div>
+        <div class="key black-key"></div>
+        <div class="key"></div>
+        <div class="key black-key"></div>
+        <div class="key black-key"></div>
+        <div class="key black-key"></div>
+      </div>
+
+      <div id="table"></div>
+    </div>
+  </main>
+
+  <footer></footer>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>OctopusDragon</title>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="stylesheets/styles.css">
+
+  <!--- Learn about this stuff later. For now, this should allow you to use the same header, nav, and footer for each page. You just have to make sure to add a blank one for each. -->
+  <script
+    src="https://code.jquery.com/jquery-latest.min.js">
+  </script>
+  <script>
+    $(function() {
+      $("header").load("header.html");
+      $("footer").load("footer.html");
+    });
+  </script>
+</head>
+
+<body>
+  <header></header>
+
+  <main>
+    <h1>Welcome to my website!</h1>
+    
+    <section>
+      <p>Your new supreme overlord is <em>very</em> pleased to see you. Feel free to take a look around. But do not disturb the cats, or there <strong>will</strong> be dire consequences...</p>
+      <figure>
+        <img class="octogon_image" src="images/octogon_face.png" alt="Portrait of Octogon">
+        <figcaption>Your new supreme overlord</figcaption>
+      </figure>
+    </section>
+
+    <hr>
+
+    <section>
+      <h2>Octogon Objectives</h2>
+
+      <h3>Steps to join the sect of the Octogon:</h3>
+      <ol>
+        <li>Grow a sacred lotus and transplant it to the holy sanctuary</li>
+        <li>Learn Octish</li>
+        <li>Write a program that prints "Hello, world!" to the console</li>
+      </ol>
+
+      <h3>Other things you can do to appease the Octogon:</h3>
+      <ul>
+        <li>Make sure the cats are entertained</li>
+        <li>Never wear the color purple</li>
+        <li>Feed It candied sweet potatoes</li>
+      </ul>
+    </section>
+
+    <hr>
+
+    <section>
+      <h2>Submit an offering to the Octogon</h2>
+      <p>Here is your chance to prove your devotion to the almighty Octogon. Write a poem or draw a portrait that displays your loyalty. If the Octogon is pleased, It may display it publicly for all visitors to see.</p>
+
+      <form action="/octogon_photo_submissions">
+        <fieldset>
+          <legend>Is your submission text or a photo?</legend>
+
+          <input id="text-radio-input" type="radio" name="type" value="text" required checked>
+          <label for="text-radio-input">Text</label>
+
+          <input id="photo-radio-input" type="radio" name="type" value="photo" required>
+          <label for="photo-radio-input">Photo</label>
+        </fieldset>
+        <fieldset>
+          <legend>How would you describe your submission?</legend>
+
+          <input id="honorable" type="checkbox" name="description" value="honorable">
+          <label for="honorable">Honorable</label>
+
+          <input id="modest" type="checkbox" name="description" value="modest">
+          <label for="modest">Modest</label>
+
+          <input id="noble" type="checkbox" name="description" value="noble">
+          <label for="noble">Noble</label>
+        </fieldset>
+
+        <input required type="text" name="octogoncomposition" placeholder="Octogon composition">
+        <input required type="file" name="octogonphotourl" placeholder="Octogon photo URL">
+        
+        <input type="submit" value="Submit">
+      </form>
+    </section>
+  </main>
+
+  <footer></footer>
+</body>
+</html>

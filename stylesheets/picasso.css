@@ -1,0 +1,255 @@
+#canvas {
+  position: relative;
+  background: linear-gradient(-235deg,beige 30%, bisque 30%, bisque 45%, antiquewhite 45%);
+  width: 75%;
+  aspect-ratio: 4 / 5;
+  margin: 0 auto;
+  border: 30px double darkgoldenrod;
+  border-radius: 15px 2.5px;
+}
+
+#canvas::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  border: 10px ridge goldenrod;
+}
+
+#canvas * {
+  position: absolute;
+}
+
+
+
+.eye {
+  width: 35%;
+  height: 15%;
+  border-radius: 50%;
+}
+
+
+
+#green-character {
+  width: 15%;
+  height: 40%;
+  top: 52%;
+  left: 35%;
+}
+
+#green-character .head {
+  width: 125%;
+  height: 30%;
+  right: -15%;
+  background-color: green;
+}
+
+#green-character .hat {
+  width: 100%;
+  height: 50%;
+  top: -50%;
+  background-color: green;
+  clip-path: polygon(0% 100%, 30% 0%, 100% 100%);
+}
+
+#green-character .eye {
+  background-color: red;
+}
+
+#green-character .eye.left {
+  top: 50%;
+  left: 10%;
+}
+
+#green-character .eye.right {
+  bottom: 50%;
+  right: 10%;
+}
+
+#green-character .body {
+  width: 100%;
+  height: 70%;
+  top: 30%;
+  background-color: green;
+}
+
+#green-character .shirt {
+  width: 100%;
+  height: 40%;
+  top: 10%;
+  background-color: white;
+}
+
+#green-character .pants {
+  width: 100%;
+  height: 40%;
+  top: 50%;
+  background-color: darkkhaki;
+}
+
+
+
+#orange-character {
+  width: 25%;
+  height: 40%;
+  top: 45%;
+  left: 55%;
+}
+
+#orange-character .head {
+  width: 75%;
+  height: 30%;
+  left: 10%;
+  background-color: orange;
+}
+
+#orange-character .hat {
+  width: 100%;
+  height: 20%;
+  top: -20%;
+  background-color: orange;
+  border-radius: 50% 50% 0 0;
+}
+
+#orange-character .eye {
+  background-color: blue;
+}
+
+#orange-character .eye.left {
+  top: 51%;
+  left: 8%;
+}
+
+#orange-character .eye.right {
+  top: 50%;
+  right: 12%;
+}
+
+#orange-character .body {
+  width: 100%;
+  height: 70%;
+  top: 30%;
+  background-color: orange;
+}
+
+
+
+#shelf {
+  top: 0;
+  right: 0;
+  width: 15%;
+  height: 60%;
+}
+
+#shelf .drawer {
+  position: relative;
+  height: 20%;
+  width: 100%;
+}
+
+.handle {
+  width: 80%;
+  height: 10%;
+}
+
+.top-handle {
+  top: 30%;
+  left: 10%;
+}
+
+.bottom-handle {
+  bottom: 30%;
+  left: 10%;
+}
+
+#drawer-1 {
+  background-color: lightblue;
+}
+
+#drawer-1 .handle {
+  background-color: lightpink;
+}
+
+#drawer-2 {
+  background-color: rebeccapurple;
+}
+
+#drawer-2 .handle {
+  background-color: slateblue;
+}
+
+#drawer-3 {
+  background-color: seashell;
+}
+
+#drawer-3 .handle {
+  background-color: coral;
+}
+
+#drawer-4 {
+  background-color: saddlebrown;
+}
+
+#drawer-4 .handle {
+  background-color: sandybrown;
+}
+
+#drawer-5 {
+  background-color: brown;
+}
+
+#drawer-5 .handle {
+  background-color: goldenrod;
+}
+
+
+
+#piano {
+  background-color: black;
+  display: flex;
+  flex-direction: row;
+  width: 50%;
+  height: 15%;
+  top: 5%;
+  left: 5%;
+  transform: rotate(2deg);
+  padding: 2px;
+}
+
+#piano * {
+  position: relative;
+}
+
+.key {
+  background-color: white;
+  width: 100%;
+  height: calc(100% - 2px);
+  margin-left: 2px;
+  border-radius: 0 0 2px 2px;
+}
+
+.key:last-of-type {
+  margin-right: 2px;
+}
+
+.key.black-key::after {
+  background-color: black;
+  content: "";
+  position: absolute;
+  left: calc(-37.5% - 1px);
+  width: 75%;
+  height: 60%;
+  border-radius: 0 0 2px 2px;
+}
+
+
+
+#table {
+  width: 90%;
+  height: 10%;
+  background-color: brown;
+  bottom: 2.5%;
+  right: 0;
+}

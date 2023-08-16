@@ -1,0 +1,391 @@
+@import url('https://fonts.googleapis.com/css2?family=Handjet:wght@300;700&family=Klee+One:wght@400;600&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+body {
+  font-family: Ubuntu, sans-serif;
+  background-image: url("../images/background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  max-width: 1000px;
+  border: 1px solid black;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+header {
+  border-bottom: 1px solid black;
+}
+
+nav, footer {
+  border-top: 1px solid black;
+}
+
+h1 {
+  font-size: 2.1em;
+}
+
+figure {
+  display: inline-block;
+  margin: 0;
+}
+
+figure figcaption {
+  text-align: center;
+  width: 100%;
+  padding-top: 0.4em;
+  padding-bottom: 0.4em;
+}
+
+li {
+  margin-top: 0.35em;
+  margin-bottom: 0.35em;
+}
+
+input[type="submit"] {
+  display: block;
+}
+
+
+
+/* --- Header --- */
+
+.banner {
+  background-image: url("../images/banner.jpg");
+  background-size: 1000px;
+  background-position: center;
+  text-align: center;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.banner a {
+  text-decoration: none;
+}
+
+.logo {
+  display: inline-block;
+  background-color: rgba(0, 0, 0, 0.65);
+  padding: 4px 28px 4px 28px;
+}
+
+header .title, header .subtitle {
+  display: block;
+  font-family: Handjet, fantasy;
+  text-shadow: 2px 2px 0 black;
+  margin: 0;
+}
+
+header .title {
+  color: #e6ecf1;
+  font-size: 52px;
+  letter-spacing: 0.75px;
+}
+
+header .subtitle {
+  color: #d1dde7;
+  font-size: 26px;
+  letter-spacing: 0.15px;
+}
+
+
+
+/* --- Navigation --- */
+
+nav {
+  font-size: 1em;
+  background-color: #3c3c3c;
+  padding: 8px 20px 8px 20px;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav li {
+  line-height: 1.2em;
+  display: inline;
+  margin: 0 1em;
+}
+
+nav a {
+  text-decoration: none;
+}
+
+nav a:link {
+  color: yellow;
+}
+
+nav a:visited {
+  color: yellow;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+
+
+/* --- Main --- */
+
+main {
+  background-color: rgb(255, 255, 255, 0.5);
+  padding: 5px 20px 30px 20px;
+}
+
+
+
+/* --- Footer --- */
+
+footer {
+  background-color: #646464;
+  padding: 12px 0 12px 0;
+}
+
+footer p {
+  color: #d7d7d7;
+  background-color: #3c3c3c;
+  padding: 4px 20px 4px 20px;
+  margin: 0;
+}
+
+footer a:link {
+  color: #d7d7d7;
+}
+
+footer a:visited {
+  color: #d7d7d7;
+}
+
+
+
+/* --- Index --- */
+
+.octogon_image {
+  width: 100%;
+  max-width: 400px;
+  display: block;
+}
+
+
+
+/* --- Gallery --- */
+
+.gallery {
+  display: grid;
+  column-gap: 10px;
+  row-gap: 25px;
+}
+
+.gallery img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 10px;
+}
+
+@media (max-width: 500px) {
+  .gallery {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 501px) and (max-width: 950px) {
+  .gallery {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 951px) {
+  .gallery {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+
+
+/* --- Colors gallery --- */
+
+.colors-gallery {
+  display: grid;
+  column-gap: 10px;
+  row-gap: 10px;
+}
+
+.color-tile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  font-family: 'Klee One', cursive;
+  font-size: 2em;
+  border: 2px solid black;
+}
+
+@media (max-width: 245px) {
+  .colors-gallery {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 246px) and (max-width: 440px) {
+  .colors-gallery {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 441px) and (max-width: 635px) {
+  .colors-gallery {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media (min-width: 636px) and (max-width: 840px) {
+  .colors-gallery {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+
+@media (min-width: 841px) {
+  .colors-gallery {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  }
+}
+
+
+
+/* Personal Portfolio */
+
+#hero {
+  margin: 7em 0;
+}
+
+#hero .name, #hero .subtitle {
+  text-align: center;
+  margin: 0;
+}
+
+#hero .name {
+  font-family: 'Handjet', cursive;
+  font-weight: bold;
+  font-size: 15em;
+}
+
+#hero .subtitle {
+  font-family: 'Handjet', cursive;
+  font-weight: bold;
+  font-size: 4.5em;
+  margin-top: -0.2em;
+}
+
+#skills {
+  display: grid;
+  align-items: start;
+  gap: 20px 10px;
+  margin: 3em 0;
+}
+
+@media (max-width: 333px) {
+  #skills {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 334px) and (max-width: 666px) {
+  #skills {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 667px) {
+  #skills {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.skill {
+  background-color: #9dacbee0;
+  padding: 10px 5px;
+  border: 2px solid black;
+  border-radius: 2px;
+}
+
+.skill .title, .skill .experience, .skill .certification {
+  text-align: center;
+}
+
+.skill .title {
+  font-size: 2em;
+  margin: 0 0 0.5rem 0;
+}
+
+.skill .experience {
+  font-size: 1.1em;
+  color:#292929;
+  margin: 0 0 0 0;
+}
+
+.skill .certification {
+  font-size: 1.1em;
+  margin: 1rem 0 0 0;
+}
+
+
+
+/* Games */
+
+#games {
+  display: grid;
+  align-items: start;
+  gap: 20px 10px;
+}
+
+@media (max-width: 333px) {
+  #games {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 334px) and (max-width: 666px) {
+  #games {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 667px) {
+  #games {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.game {
+  color: inherit;
+  text-decoration: inherit;
+  border: 2px solid black;
+  border-radius: 2px;
+}
+
+.game .screenshot {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-bottom: 1px solid black;
+}
+
+.game .title {
+  text-align: center;
+  background: gray;
+  padding: 5px;
+  margin: 0;
+  border-bottom: 1px solid black;
+}
+
+.game .description {
+  padding: 10px 5px;
+  margin: 0;
+  background: darkgray;
+}
