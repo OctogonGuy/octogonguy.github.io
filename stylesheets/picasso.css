@@ -3,7 +3,7 @@
   background: linear-gradient(-235deg,beige 30%, bisque 30%, bisque 45%, antiquewhite 45%);
   width: 75%;
   aspect-ratio: 4 / 5;
-  margin: 0 auto;
+  margin: 2em auto;
   border: 30px double darkgoldenrod;
   border-radius: 15px 2.5px;
 }
@@ -134,6 +134,27 @@
   background-color: orange;
 }
 
+#orange-character .shirt {
+  width: 100%;
+  height: 40%;
+  top: 0;
+  background-color: darkred;
+}
+
+#orange-character .pants {
+  width: 100%;
+  height: 50%;
+  top: 40%;
+  background-color: navy;
+}
+
+#orange-character .shoes {
+  width: 100%;
+  height: 10%;
+  top: 90%;
+  background-color: black;
+}
+
 
 
 #shelf {
@@ -252,4 +273,15 @@
   background-color: brown;
   bottom: 2.5%;
   right: 0;
+}
+
+
+
+#apple {
+  width: 5%;
+  aspect-ratio: 1 / 1;
+  top: 86.675%;
+  left: 47.5%;
+  background-color: red;
+  z-index: 1;
 }

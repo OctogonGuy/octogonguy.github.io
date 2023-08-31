@@ -12,6 +12,13 @@ body {
   margin-right: auto;
 }
 
+@media (max-width: 1000px) {
+  body {
+    border-left: none;
+    border-right: none;
+  }
+}
+
 header {
   border-bottom: 1px solid black;
 }
@@ -85,6 +92,15 @@ header .subtitle {
   color: #d1dde7;
   font-size: 26px;
   letter-spacing: 0.15px;
+}
+
+@media (max-width: 420px) {
+  header .title {
+    font-size: 30px;
+  }
+  header .subtitle {
+    font-size: 15px;
+  }
 }
 
 
@@ -212,6 +228,7 @@ footer a:visited {
   display: grid;
   column-gap: 10px;
   row-gap: 10px;
+  margin: 35px 0;
 }
 
 .color-tile {
@@ -335,40 +352,40 @@ footer a:visited {
 
 
 
-/* Games */
+/* Programs */
 
-#games {
+.programs {
   display: grid;
   align-items: start;
   gap: 20px 10px;
 }
 
 @media (max-width: 333px) {
-  #games {
+  .programs {
     grid-template-columns: 1fr;
   }
 }
 
 @media (min-width: 334px) and (max-width: 666px) {
-  #games {
+  .programs {
     grid-template-columns: 1fr 1fr;
   }
 }
 
 @media (min-width: 667px) {
-  #games {
+  .programs {
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
 
-.game {
+.program {
   color: inherit;
   text-decoration: inherit;
   border: 2px solid black;
   border-radius: 2px;
 }
 
-.game .screenshot {
+.program .screenshot {
   display: block;
   width: 100%;
   aspect-ratio: 3 / 2;
@@ -376,7 +393,7 @@ footer a:visited {
   border-bottom: 1px solid black;
 }
 
-.game .title {
+.program .title {
   text-align: center;
   background: gray;
   padding: 5px;
@@ -384,7 +401,7 @@ footer a:visited {
   border-bottom: 1px solid black;
 }
 
-.game .description {
+.program .description {
   padding: 10px 5px;
   margin: 0;
   background: darkgray;
