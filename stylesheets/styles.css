@@ -356,7 +356,6 @@ footer a:visited {
 
 .programs {
   display: grid;
-  align-items: start;
   gap: 20px 10px;
 }
 
@@ -379,6 +378,8 @@ footer a:visited {
 }
 
 .program {
+  display: flex;
+  flex-direction: column;
   color: inherit;
   text-decoration: inherit;
   border: 2px solid black;
@@ -386,7 +387,6 @@ footer a:visited {
 }
 
 .program .screenshot {
-  display: block;
   width: 100%;
   aspect-ratio: 3 / 2;
   object-fit: cover;
@@ -395,14 +395,15 @@ footer a:visited {
 
 .program .title {
   text-align: center;
-  background: gray;
+  background: rgb(170, 170, 170);
   padding: 5px;
   margin: 0;
   border-bottom: 1px solid black;
 }
 
 .program .description {
+  flex: 1;
   padding: 10px 5px;
   margin: 0;
-  background: darkgray;
+  background: rgb(194, 194, 194);
 }
