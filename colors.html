@@ -7,16 +7,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="stylesheet" href="stylesheets/styles.css">
-
-  <script
-    src="https://code.jquery.com/jquery-latest.min.js">
-  </script>
-  <script>
-    $(function() {
-      $("header").load("header.html");
-      $("footer").load("footer.html");
-    });
-  </script>
 </head>
 
 <body>
@@ -27,30 +17,58 @@
     <p>漢字で表す日本の伝統色</p>
 
     <div class="colors-gallery">
-      <div id="赤" class="color-tile" style="background-color: #BF1E33">赤</div>
-      <div id="青" class="color-tile" style="background-color: #0067C0">青</div>
-      <div id="黄" class="color-tile" style="background-color: #FFBE00">黄</div>
-      <div id="緑" class="color-tile" style="background-color: #4DB56A">緑</div>
-      <div id="紫" class="color-tile" style="background-color: #A260BF">紫</div>
-      <div id="白" class="color-tile" style="background-color: #F1F1F1">白</div>
-      <div id="黒" class="color-tile" style="background-color: #262626">黒</div>
-      <div id="水" class="color-tile" style="background-color: #A9CEEC">水</div>
-      <div id="茶" class="color-tile" style="background-color: #734E30">茶</div>
-      <div id="灰" class="color-tile" style="background-color: #797979">灰</div>
-      <div id="紅" class="color-tile" style="background-color: #BD1E48">紅</div>
-      <div id="朱" class="color-tile" style="background-color: #ED514E">朱</div>
-      <div id="茜" class="color-tile" style="background-color: #A0283A">茜</div>
-      <div id="紺" class="color-tile" style="background-color: #333C5E">紺</div>
-      <div id="藍" class="color-tile" style="background-color: #2E4B71">藍</div>
-      <div id="桜" class="color-tile" style="background-color: #FFDBED">桜</div>
-      <div id="桃" class="color-tile" style="background-color: #f09199">桃</div>
-      <div id="藤" class="color-tile" style="background-color: #A09BD8">藤</div>
-      <div id="杏" class="color-tile" style="background-color: #DDA273">杏</div>
-      <div id="栗" class="color-tile" style="background-color: #754C38">栗</div>
-      <div id="金" class="color-tile" style="background: linear-gradient(#C8861F, #fed653)">金</div>
-      <div id="銀" class="color-tile" style="background: linear-gradient(#A0A0A0, #d9d9d9)">銀</div>
-      <div id="瑠璃" class="color-tile" style="background-color: #1d50a2">瑠璃</div>
-      <div id="山吹" class="color-tile" style="background-color: #f8b500">山吹</div>
+      <div class="color-tile" style="background-color: #BF1E33" title="あか">赤</div>
+      <div class="color-tile" style="background-color: #0067C0" title="あお">青</div>
+      <div class="color-tile" style="background-color: #FFBE00" title="き">黄</div>
+      <div class="color-tile" style="background-color: #4DB56A" title="みどり">緑</div>
+      <div class="color-tile" style="background-color: #A260BF" title="むらさき">紫</div>
+      <div class="color-tile" style="background-color: #F1F1F1" title="しろ">白</div>
+      <div class="color-tile" style="background-color: #262626" title="くろ">黒</div>
+      <div class="color-tile" style="background-color: #734E30" title="ちゃ">茶</div>
+      <div class="color-tile" style="background-color: #797979" title="はい">灰</div>
+      <div class="color-tile" style="background-color: #A9CEEC" title="みず">水</div>
+      <div class="color-tile" style="background-color: #BD1E48" title="くれない">紅</div>
+      <div class="color-tile" style="background-color: #ED514E" title="しゅ">朱</div>
+      <div class="color-tile" style="background-color: #A0283A" title="あかね">茜</div>
+      <div class="color-tile" style="background-color: #333C5E" title="こん">紺</div>
+      <div class="color-tile" style="background-color: #2E4B71" title="あい">藍</div>
+      <div class="color-tile" style="background-color: #F1BB93" title="はだ">肌</div>
+      <div class="color-tile" style="background-color: #b8d200" title="きみどり">黄緑</div>
+      <div class="color-tile" style="background-color: #f08300" title="だいだい">橙</div>
+      <div class="color-tile" style="background-color: #754C38" title="くり">栗</div>
+      <div class="color-tile" style="background-color: #DDA273" title="あんず">杏</div>
+      <div class="color-tile" style="background-color: #A04940" title="あずき">小豆</div>
+      <div class="color-tile" style="background-color: #c39143" title="おうど">黄土</div>
+      <div class="color-tile" style="background-color: #FFDBED" title="さくら">桜</div>
+      <div class="color-tile" style="background-color: #f09199" title="もも">桃</div>
+      <div class="color-tile" style="background-color: #A09BD8" title="ふじ">藤</div>
+      <div class="color-tile" style="background-color: #E86B79" title="こうばい">紅梅</div>
+      <div class="color-tile" style="background-color: #f8b500" title="やまぶき">山吹</div>
+      <div class="color-tile" style="background: linear-gradient(#C8861F, #fed653)" title="きん">金</div>
+      <div class="color-tile" style="background: linear-gradient(#A0A0A0, #d9d9d9)" title="ぎん">銀</div>
+      <div class="color-tile" style="background-color: #1d50a2" title="るり">瑠璃</div>
+      <div class="color-tile" style="background-color: #007c45">常盤</div>
+      <div class="color-tile" style="background-color: #2980af">縹</div>
+      <div class="color-tile" style="background-color: #7054a0">菫</div>
+      <div class="color-tile" style="background-color: #e94e66">薔薇</div>
+      <div class="color-tile" style="background-color: #f4b3c2">鴇</div>
+      <div class="color-tile" style="background-color: #949495">鼠</div>
+      <div class="color-tile" style="background-color: #b55233">樺</div>
+      <div class="color-tile" style="background-color: #bf7834">琥珀</div>
+      <div class="color-tile" style="background-color: #763900">褐</div>
+      <div class="color-tile" style="background-color: #ed6d3d">柿</div>
+      <div class="color-tile" style="background-color: #e83828">紅緋</div>
+      <div class="color-tile" style="background-color: #ec6800">黄赤</div>
+      <div class="color-tile" style="background-color: #ee7948">黄丹</div>
+      <div class="color-tile" style="background-color: #ffea00">中黄</div>
+      <div class="color-tile" style="background-color: #00a48d">青緑</div>
+      <div class="color-tile" style="background-color: #133463">紺青</div>
+      <div class="color-tile" style="background-color: #460d43">紫紺</div>
+      <div class="color-tile" style="background-color: #6e4598">青紫</div>
+      <div class="color-tile" style="background-color: #ea609e">赤紫</div>
+      <div class="color-tile" style="background-color: #465DAA">群青</div>
+      <div class="color-tile" style="background-color: #B15C65">薄紅</div>
+      <div class="color-tile" style="background-color: #745399">江戸紫</div>
     </div>
     
     <p>Sources:<br>
@@ -58,10 +76,14 @@
         <li><a href="https://www.i-iro.com/dic/tag/jis">https://www.i-iro.com/dic/tag/jis</a></li>
         <li><a href="https://ja.wikipedia.org/wiki/JIS%E6%85%A3%E7%94%A8%E8%89%B2%E5%90%8D">https://ja.wikipedia.org/wiki/JIS%E6%85%A3%E7%94%A8%E8%89%B2%E5%90%8D</a></li>
         <li><a href="https://irocore.com/">https://irocore.com/</a></li>
+        <li><a href="https://i.pinimg.com/originals/ca/e7/38/cae738d07f3a439bfcc1160eaed15c66.jpg">https://i.pinimg.com/originals/ca/e7/38/cae738d07f3a439bfcc1160eaed15c66.jpg</a></li>
       </ul>
     </p>
   </main>
 
   <footer></footer>
+
+  <script src="header.js"></script>
+  <script src="footer.js"></script>
 </body>
 </html>
