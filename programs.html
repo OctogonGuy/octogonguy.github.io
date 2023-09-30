@@ -18,9 +18,15 @@
     <h2>Java</h2>
     <p>For these programs, you need <a href="https://www.java.com/download/" target="_blank">Java</a> installed on your computer. You should hopefully be able to open any of these .jar files by just double clicking them. However, if you are using a Windows computer, it may not work for some reason. If that is the case, you may need to open it through the command prompt. If you do not know how to do this, perform the following steps:</p>
     <ol>
-      <li>Open "Command Prompt"</li>
+      <li>Open <i>Command Prompt</i></li>
       <li>Type "cd [directory to the .jar file]" and press Enter</li>
       <li>Type "java -jar [filename]" and press Enter</li>
+    </ol>
+    <p>You may be able to fix it permanently it by performing the following steps:</p>
+    <ol>
+      <li>Locate <i>javaw.exe</i>. By default, this is located in the directory "C:\Program Files\Java\jre-[version number]\bin\".</li>
+      <li>Open <i>Command Prompt</i></li>
+      <li>Type "ftype jarfile=[path to javaw.exe] -jar "%1" %*" and press Enter</li>
     </ol>
     <section class="programs">
       <a class="program" href="applications/PokemonTypeGame.jar">
@@ -85,12 +91,22 @@
     </section>
 
     <h2>Android</h2>
-    <p>An App I've made for Android. You should just be able to download this and open it up on your Android device.</p>
+    <p>A couple apps I've made for Android. They're quite basic. You should just be able to download these and open them up on your Android device.</p>
     <section class="programs">
+      <a class="program" href="applications/IntervalTimer.apk">
+        <img class="screenshot" src="images/program_interval_timer_android.JPG">
+        <h3 class="title">Interval Timer (Android)</h3>
+        <p class="description">Andriod version of the interval timer</p>
+      </a>
+      <a class="program" href="applications/RandomSentenceGenerator.apk">
+        <img class="screenshot" src="images/program_random_sentence_generator_android.jpg">
+        <h3 class="title">Random Sentence Generator (Android)</h3>
+        <p class="description">Functions exactly the same as the Java version. What crazy sentences will you find?</p>
+      </a>
       <a class="program" href="applications/PokemonTypeGame.apk">
         <img class="screenshot" src="images/program_pokemon_type_game_android.JPG">
         <h3 class="title">Pokémon Type Game (Android)</h3>
-        <p class="description">Basically the same as the Java application. Guess which type is the most effective against an opposing type or Pokémon and go for a streak!</p>
+        <p class="description">This functions mostly same as the Java version except with slightly less features and only Pokémon from the Kanto region</p>
       </a>
     </section>
   
