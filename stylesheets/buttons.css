@@ -1,0 +1,404 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code&family=Fugaz+One&family=Monoton&family=Pixelify+Sans&family=Rubik+Moonrocks&family=Seaweed+Script&family=Tilt+Prism&display=swap');
+
+
+#music-player-button {
+  --bg-color-light: cyan;
+	--bg-color-dark: blue;
+	position: relative;
+	font-size: 1em;
+	padding: 0.75em;
+	border-style: none;
+	border-radius: 45%;
+	background: linear-gradient(to bottom, var(--bg-color-dark), var(--bg-color-light));
+	color: white;
+	text-shadow: 0 -1px rgb(0, 0, 0, 0.8);
+	box-shadow: 0px 0.05em 0.2em -0.1em rgb(0, 0, 0, 0.5);
+}
+#music-player-button::after {
+	position: absolute;
+	content: '';
+	
+	height: 60%;
+	width: calc(100% - 1em);
+	top: 0.04em;
+	left: 0.5em;
+	border-radius: 50%;
+	background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.2));
+}
+#music-player-button:hover {
+	filter: hue-rotate(30deg);
+}
+#music-player-button:active {
+	transform: translateY(0.1em);
+}
+#music-player-button:active::after {
+	transform: translateY(0.1em);
+}
+
+
+
+#interval-timer-button {
+	font-size: 1em;
+	font-family: 'Monoton', cursive;
+
+	padding: 0 0.5em;
+
+	background: linear-gradient(to right, #78cf78 0%, #4ca34c 50%, #78cf78 50%, #4ca34c 100%);
+	color: #d6e6f3;
+
+	border: 10px outset #4ca34c;
+
+	text-shadow: 0 0.2em 0.2em rgba(0, 0, 0, 0.5);
+
+	background-size: 200%;
+
+	transition: background-position 0.5s;
+}
+#interval-timer-button:hover {
+	background-position: right 100%;
+}
+#interval-timer-button:active {
+	filter: brightness(80%);
+}
+
+
+
+#random-sentence-generator-button {
+	font-family: 'Times New Roman', Times, serif;
+	font-size: 0.9em;
+	
+	padding: 0.5em 3.2em;
+	
+	background-color: white;
+	border-color: #505050;
+	color: #505050;
+	
+	border-style: solid;
+	border-width: 2px;
+	
+	transition: background-color 0.22s,
+		color 0.22s,
+		opacity 0.15s;
+}
+#random-sentence-generator-button:hover {
+	background-color: #505050;
+	color: white;
+}
+#random-sentence-generator-button:active {
+	opacity: 0.7;
+}
+
+
+
+#cursor-dodge-button {
+	font-size: 1.5em;
+}
+
+
+
+#checkers-button {
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	font-size: 1.5em;
+	
+	height: 1.8em;
+	padding: 0 1em;
+	
+	--check-color-1: #222222;
+	--check-color-2: #505050;
+	background-image:
+      linear-gradient(45deg, var(--check-color-1) 25%, transparent 25%), 
+      linear-gradient(135deg, var(--check-color-1) 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, var(--check-color-1) 75%), 
+      linear-gradient(135deg, transparent 75%, var(--check-color-1) 75%);
+    background-size: 1.8em 1.8em;
+    background-position:0 0, 0.9em 0, 0.9em -0.9em, 0 0.9em;
+	background-color: var(--check-color-2);
+	color: rgb(255, 56, 56);
+
+	text-shadow: 0 0.1em 0.1em rgba(0, 0, 0, 0.67);
+	
+	border-style: none;
+	border-radius: 1em;
+}
+#checkers-button:hover {
+	--check-color-1: #505050;
+	--check-color-2: #222222;
+}
+#checkers-button:active {
+	transform: translateY(0.2em);
+}
+
+
+
+#pokemon-type-game-button {
+	font-family: 'Agency FB', Tahoma, Verdana, Geneva, sans-serif;
+	font-size: 1.2em;
+	font-weight: bold;
+
+	padding: 0.25em 0.7em;
+
+	background: linear-gradient(to bottom, #EB9B22 45%, #8C6A35 55%);
+	color: white;
+	text-shadow: 0 0 0.05em #545454;
+
+	border: 0.14em solid white;
+	border-radius: 0.075em;
+
+	outline: 0.15em solid #545454;
+}
+#pokemon-type-game-button:hover {
+	border-color: red;
+}
+#pokemon-type-game-button:active {
+	background: linear-gradient(to bottom, #F5CD91 45%, #C6B59A 55%);
+}
+
+
+
+#tilt-button {
+	font-family: 'Fugaz One', cursive;
+	font-size: 0.8em;
+
+	padding: 0.9em 0.25em;
+
+	--color-1:  #154853;
+	--color-2: #99e040;
+	background: linear-gradient(to right, var(--color-1), var(--color-2));
+	color: white;
+
+	border: 3px inset white;
+	border-radius: 50%;
+
+	transition: background 0.3s;
+}
+#tilt-button:hover {
+	background: linear-gradient(to right, var(--color-2), var(--color-1));
+}
+#tilt-button:active {
+	border-style: outset;
+}
+
+
+
+#dice-button {
+	font-family: 'Bauhaus 93', 'Freestyle Script', 'Berlin Sans FB', 'Segoe Script', 'Arial', sans-serif;
+	font-size: 1.2em;
+
+	padding: 0.3em 0.7em;
+
+	background-color: maroon;
+	color: lightyellow;
+
+	border: 0.15em solid black;
+	border-radius: 5px;
+}
+#dice-button:hover {
+	background-color: darkred;
+}
+#dice-button:active {
+	background-color: indianred;
+}
+
+
+
+#mastermind-button {
+	font-family: 'Rubik Moonrocks', cursive;
+	font-size: 0.89em;
+
+	padding: 0.26em 0.6em;
+
+	background: radial-gradient(circle at 25% 15%, #c763db 0%, #ba56ce 10%, #963cb9 75%, #400f53 100%);
+	color:rgba(0, 0, 0, 0.5);
+
+	box-shadow: inset -0.2em -0.5em 1em 0 rgba(0, 0, 0, 0.33);
+
+	border: 0.68em rgb(110, 110, 110) ridge;
+	border-radius: 1.35em;
+}
+#mastermind-button:active {
+	background: radial-gradient(circle at 75% 85%, #c763db 0%, #ba56ce 10%, #963cb9 75%, #400f53 100%);
+	box-shadow: inset 0.2em 0.5em 1em 0 rgba(0, 0, 0, 0.33);
+}
+
+
+
+#backgammon-button {
+	font-family: 'Tilt Prism', cursive;
+	font-size: 0.9em;
+
+	padding: 0.4em 0.4em;
+
+	background-color: rgb(235, 222, 187);
+	color: rgb(141, 66, 47);
+
+	border: 0.5em double rgb(146, 58, 17);
+	border-radius: 0.1em;
+
+	transition: transform 0.15s ease-in-out;
+}
+#backgammon-button:hover {
+	transform: scale(150%);
+}
+#backgammon-button:active {
+	filter: brightness(110%);
+}
+
+
+
+#battleship-button {
+	font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+	font-size: 1.5em;
+
+	padding: 0.15em 1.33em 0.15em 0.67em;
+	
+	background-color: #c5c5c5;
+	color: #2c2c2c;
+
+	border-style: solid solid solid ridge;
+	border-width: 0.15em 0.075em 0.15em 0.45em;
+	border-radius: 1px 50% 50% 1px;
+	border-color:#ebebeb;
+
+	text-transform: uppercase;
+}
+#battleship-button:hover {
+	background-color: #b3b3b3;
+}
+#battleship-button:active {
+	background-color: #888888;
+}
+
+
+
+#connect-four-button {
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	font-size: 1.4em;
+	
+	height: 2em;
+	padding: 0 1em;
+	
+	background-color: #b80d0d;
+	color: white;
+	
+	border-style: none;
+	border-radius: 1em;
+	
+	transition: box-shadow 0.15s;
+}
+#connect-four-button:hover {
+	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+#connect-four-button:active {
+	transform: translateY(0.2em);
+}
+
+
+
+#hello-world-button {
+	font-family: 'Consolas', 'Fira Code', monospace;
+	font-size: 1em;
+
+	height: 50px;
+	width: 120px;
+
+	background-color: black;
+	--text-color: white;
+	color: var(--text-color);
+
+	border: none;
+}
+#hello-world-button::after {
+	content: "|";
+	color: transparent;
+}
+#hello-world-button:hover::after {
+	animation: typing 1.06s linear infinite;
+}
+#hello-world-button:active {
+	--text-color: green;
+}
+@keyframes typing {
+	0%	{ color: var(--text-color) }
+	49.99%	{ color: var(--text-color) }
+	50% { color: transparent }
+	100% { color: transparent }
+}
+
+
+
+#idea-generator-button {
+	font-family: 'Brush Script MT', 'Seaweed Script', cursive;
+	font-size: 1.4em;
+
+	padding: 0.25em 0.25em;
+	
+	background-color: #f3ece1;
+	color: navy;
+
+	border-style: dotted;
+	border-color: #bea67e;
+
+	transition:
+		padding 0.2s,
+		filter 0.1s;
+}
+#idea-generator-button:hover {
+	padding-left: 1.25em;
+	padding-right: 1.25em;
+}
+
+
+
+#game-compilation-button {
+	font-size: 1.3em;
+	font-family: 'Arial Rounded MT Bold', 'Arial', sans-serif;
+
+	background: linear-gradient(to right, red, yellow, lime, cyan, blue, magenta, red);
+	color: transparent;
+	background-clip: text;
+	background-size: 50%;
+
+	border-style: none;
+}
+#game-compilation-button:hover {
+	animation: rainbow 3s linear infinite;
+}
+#game-compilation-button:active {
+	transform: translateY(0.2em);
+}
+@keyframes rainbow {
+	0% { background-position: 0% }
+	100% { background-position: 100% }
+}
+
+
+
+#snake-button {
+	font-family: 'Pixelify Sans', cursive;
+	font-size: 1em;
+
+	padding: 0.5em 1em;
+
+	background-color: #4b8bbe;
+	color: #ffe873;
+
+	border: 5px solid #306998;
+}
+#snake-button:hover {
+  animation: snake-movement 3s linear infinite;
+}
+#snake-button:active {
+	color: #ffd43b;
+}
+@keyframes snake-movement {
+	0%			{ padding: 0.5em 1em; }
+	6.25%		{ padding-top: 1em;	padding-bottom: 0;		padding-left: 1em;	padding-right: 1em; }
+	18.75%	{ padding-top: 1em;	padding-bottom: 0;		padding-left: 0;		padding-right: 2em; }
+	31.25%	{ padding-top: 0;		padding-bottom: 1em;	padding-left: 0;		padding-right: 2em; }
+	43.75%	{ padding-top: 0;		padding-bottom: 1em;	padding-left: 1em;	padding-right: 1em; }
+	56.25%	{ padding-top: 1em;	padding-bottom: 0;		padding-left: 1em;	padding-right: 1em; }
+	68.75%	{ padding-top: 1em;	padding-bottom: 0;		padding-left: 2em;	padding-right: 0; }
+	81.25%	{ padding-top: 0;		padding-bottom: 1em;	padding-left: 2em;	padding-right: 0; }
+	93.75%	{	padding-top: 0;		padding-bottom: 1em;	padding-left: 1em;	padding-right: 1em; }
+	100%		{ padding: 0.5em 1em; }
+}

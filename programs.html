@@ -7,13 +7,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="stylesheet" href="stylesheets/styles.css">
+  <link rel="stylesheet" href="stylesheets/buttons.css">
 </head>
 <body>
   <header></header>
 
   <main>
     <h1>Programs</h1>
-    <p>Some programs I've made. Click to download.</p>
+    <p>Some programs I've made. Click the download button to download and use.</p>
 
     <h2>Java</h2>
     <p>For these programs, you need <a href="https://www.java.com/download/" target="_blank">Java</a> installed on your computer. You should hopefully be able to open any of these .jar files by just double clicking them. However, if you are using a Windows computer, it may not work for some reason. If that is the case, you may need to open it through the command prompt. If you do not know how to do this, perform the following steps:</p>
@@ -28,102 +29,192 @@
       <li>Open <i>Command Prompt</i></li>
       <li>Type "ftype jarfile=[path to javaw.exe] -jar "%1" %*" and press Enter</li>
     </ol>
+    Items indicated with an asterisk (*) create a user data file in the same directory as the .jar file.
+    <h3>Current Projects</h3>
+    <p>Programs I am working continuing to work on and want to make bigger</p>
     <section class="programs">
-      <a class="program" href="applications/PokemonTypeGame.jar">
-        <img class="screenshot" src="images/program_pokemon_type_game.JPG">
-        <h3 class="title">Pokémon Type Game</h3>
-        <p class="description">Guess which type is most effective against the opposing Pokémon. Try to go for a streak! Note that a userdata text file will be created in the same directory as the jar that contains your progress.</p>
-      </a>
+      <div class="program">
+        <img class="screenshot" src="images/program_music_player.JPG">
+        <h4 class="title">Music Player</h4>
+        <p class="description">A music player I hope to make into the ultimate and definitive choice for one's listening needs*</p>
+        <div class="button-section">
+          <a href="applications/MusicPlayer.jar"><button id="music-player-button">Download</button></a>
+        </div>
+      </div>
 
-      <a class="program" href="applications/Tilt.jar">
-        <img class="screenshot" src="images/program_tilt.JPG">
-        <h3 class="title">Tilt</h3>
-        <p class="description">Digital recreation of Tilt by ThinkFun. Levels included: 1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 18, 19, 21, 31, 36, 40</p>
-      </a>
+      <div class="program">
+        <img class="screenshot" src="images/program_interval_timer.JPG">
+        <h4 class="title">Interval Timer</h4>
+        <p class="description">Breaking into a surprisingly limited market! Create as many intervals as you want as long as you want and repeat them in any order.*</p>
+        <div class="button-section">
+          <a href="applications/IntervalTimer.jar"><button id="interval-timer-button">Download</button></a>
+        </div>
+      </div>
 
-      <a class="program" href="applications/RandomSentenceGenerator.jar">
+      <div class="program">
         <img class="screenshot" src="images/program_random_sentence_generator.JPG">
-        <h3 class="title">Random Sentence Generator</h3>
+        <h4 class="title">Random Sentence Generator</h4>
         <p class="description">Generates sentences with random grammar and random words</p>
-      </a>
+        <div class="button-section">
+          <a href="applications/RandomSentenceGenerator.jar"><button id="random-sentence-generator-button">Download</button></a>
+        </div>
+      </div>
 
-      <a class="program" href="applications/Checkers.jar">
+      <div class="program">
+        <img class="screenshot" src="images/program_cursor_dodge.jpg">
+        <h4 class="title">Cursor Dodge</h4>
+        <p class="description">A game in which you dodge the bouncing circles with your mouse</p>
+        <div class="button-section">
+          <a href="applications/CursorDodge.jar"><button id="cursor-dodge-button">Download</button></a>
+        </div>
+      </div>
+
+      <div class="program">
         <img class="screenshot" src="images/program_checkers.JPG">
-        <h3 class="title">Checkers</h3>
-        <p class="description">Not yet finished but should work</p>
-      </a>
+        <h4 class="title">Checkers</h4>
+        <p class="description">Checkers</p>
+        <div class="button-section">
+          <a href="applications/Checkers.jar"><button id="checkers-button">Download</button></a>
+        </div>
+      </div>
 
-      <a class="program" href="applications/Dice.jar">
+      <div class="program">
+        <img class="screenshot" src="images/program_pokemon_type_game.JPG">
+        <h4 class="title">Pokémon Type Game</h4>
+        <p class="description">Guess which type is most effective against the opposing Pokémon. Try to go for a streak!*</p>
+        <div class="button-section">
+          <a href="applications/PokemonTypeGame.jar"><button id="pokemon-type-game-button">Download</button></a>
+        </div>
+      </div>
+    </section>
+    
+    <h3>Project Archive</h3>
+    <p>Projects I am no longer working on</p>
+    <section class="programs">
+      <div class="program">
+        <img class="screenshot" src="images/program_tilt.JPG">
+        <h4 class="title">Tilt</h4>
+        <p class="description">Digital recreation of Tilt by ThinkFun. Levels included: 1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 18, 19, 21, 31, 36, 40</p>
+        <div class="button-section">
+          <a href="applications/Tilt.jar"><button id="tilt-button">Download</button></a>
+        </div>
+      </div>
+
+      <div class="program">
         <img class="screenshot" src="images/program_dice.JPG">
-        <h3 class="title">Dice</h3>
+        <h4 class="title">Dice</h4>
         <p class="description">Includes Yacht and Crag</p>
-      </a>
+        <div class="button-section">
+          <a href="applications/Dice.jar"><button id="dice-button">Download</button></a>
+        </div>
+      </div>
 
-      <a class="program" href="applications/Mastermind.jar">
+      <div class="program">
         <img class="screenshot" src="images/program_mastermind.JPG">
-        <h3 class="title">Mastermind</h3>
+        <h4 class="title">Mastermind</h4>
         <p class="description">A code-breaking game in which the player guesses a pattern of colors against a code pattern generated by the computer</p>
-      </a>
+        <div class="button-section">
+          <a href="applications/Mastermind.jar"><button id="mastermind-button">Download</button></a>
+        </div>
+      </div>
 
-      <a class="program" href="applications/Backgammon.jar">
+      <div class="program">
         <img class="screenshot" src="images/program_backgammon.JPG">
-        <h3 class="title">Backgammon</h3>
+        <h4 class="title">Backgammon</h4>
         <p class="description">First, click the dice to roll. Then, click the piece you want to move. Finally, click the space you would like to move to.</p>
-      </a>
+        <div class="button-section">
+          <a href="applications/Backgammon.jar"><button id="backgammon-button">Download</button></a>
+        </div>
+      </div>
 
-      <a class="program" href="applications/Battleship.jar">
+      <div class="program">
         <img class="screenshot" src="images/program_battleship.JPG">
-        <h3 class="title">Battleship</h3>
-        <p class="description">At the beginning, click the ship you want to place and then the space you want to place it. To rotate the currently selected ship, use the arrow keys or the scroll wheel.</p>
-      </a>
+        <h4 class="title">Battleship</h4>
+        <p class="description">Click the ship you want to place and then space you want to place it in. Rotate it by using the arrow keys or the scroll wheel. Click an opponent's tile to fire at it.</p>
+        <div class="button-section">
+          <a href="applications/Battleship.jar"><button id="battleship-button">Download</button></a>
+        </div>
+      </div>
 
-      <a class="program" href="applications/ConnectFour.jar">
+      <div class="program">
         <img class="screenshot" src="images/program_connect_four.JPG">
-        <h3 class="title">Connect 4</h3>
+        <h4 class="title">Connect 4</h4>
         <p class="description">A Connect 4 game. Click a column to drop a piece. You can try the single player version, but... the AI does not really work... at all.</p>
-      </a>
+        <div class="button-section">
+          <a href="applications/ConnectFour.jar"><button id="connect-four-button">Download</button></a>
+        </div>
+      </div>
 
-      <a class="program" href="applications/HelloWorld.jar">
+      <div class="program">
         <img class="screenshot" src="images/program_hello_world.JPG">
-        <h3 class="title">Hello World</h3>
-        <p class="description">A test</p>
-      </a>
+        <h4 class="title">Hello World</h4>
+        <p class="description"Display your own message</p>
+        <div class="button-section">
+          <a href="applications/HelloWorld.jar"><button id="hello-world-button">Download</button></a>
+        </div>
+      </div>
     </section>
 
     <h2>Android</h2>
     <p>A couple apps I've made for Android. They're quite basic. You should just be able to download these and open them up on your Android device.</p>
     <section class="programs">
-      <a class="program" href="applications/IntervalTimer.apk">
+      <div class="program">
         <img class="screenshot" src="images/program_interval_timer_android.JPG">
-        <h3 class="title">Interval Timer (Android)</h3>
+        <h4 class="title">Interval Timer (Android)</h4>
         <p class="description">Andriod version of the interval timer</p>
-      </a>
-      <a class="program" href="applications/RandomSentenceGenerator.apk">
+        <div class="button-section">
+          <a href="applications/IntervalTimer.apk"><button id="interval-timer-button">Download</button></a>
+        </div>
+      </div>
+			
+      <div class="program">
         <img class="screenshot" src="images/program_random_sentence_generator_android.jpg">
-        <h3 class="title">Random Sentence Generator (Android)</h3>
+        <h4 class="title">Random Sentence Generator (Android)</h4>
         <p class="description">Functions exactly the same as the Java version. What crazy sentences will you find?</p>
-      </a>
-      <a class="program" href="applications/PokemonTypeGame.apk">
+        <div class="button-section">
+          <a href="applications/RandomSentenceGenerator.apk"><button id="random-sentence-generator-button">Download</button></a>
+        </div>
+      </div>
+			
+      <div class="program">
         <img class="screenshot" src="images/program_pokemon_type_game_android.JPG">
-        <h3 class="title">Pokémon Type Game (Android)</h3>
+        <h4 class="title">Pokémon Type Game (Android)</h4>
         <p class="description">This functions mostly same as the Java version except with slightly less features and only Pokémon from the Kanto region</p>
-      </a>
+        <div class="button-section">
+          <a href="applications/PokemonTypeGame.apk"><button id="pokemon-type-game-button">Download</button></a>
+        </div>
+      </div>
     </section>
   
     <h2>Python</h2>
-    <p>Python applications. I have converted these into .exe files (sorry Unix users). Your computer will probably complain. I promise there is nothing sketchy, but if you do not feel comfortable opening it, I understand</p>
+    <p>Python applications. I have converted these into .exe files (sorry, non-Windows users). Your computer will probably complain. I promise there is nothing sketchy, but if you do not feel comfortable opening it, I understand</p>
     <section class="programs">
-      <a class="program" href="applications/game_compilation.exe">
-        <img class="screenshot" src="images/program_game_compilation.JPG">
-        <h3 class="title">Game Compilation</h3>
-        <p class="description">A compilation of 9 games I made for a class</p>
-      </a>
-
-      <a class="program" href="applications/idea_generator.exe">
+      <div class="program">
         <img class="screenshot" src="images/program_idea_generator.JPG">
-        <h3 class="title">Idea Generator</h3>
+        <h4 class="title">Idea Generator</h4>
         <p class="description">Are you in a creative slump? Well, you've come to the right place. Type in any words that come to mind, and the idea generator will do the rest for you.</p>
-      </a>
+        <div class="button-section">
+          <a href="applications/idea_generator.exe"><button id="idea-generator-button">Download</button></a>
+        </div>
+      </div>
+			
+      <div class="program">
+        <img class="screenshot" src="images/program_game_compilation.JPG">
+        <h4 class="title">Game Compilation</h4>
+        <p class="description">A compilation of 9 games I made for a class. I hope you have as much fun trying it out as I did making it!</p>
+        <div class="button-section">
+          <a href="applications/game_compilation.exe"><button id="game-compilation-button">Download</button></a>
+        </div>
+      </div>
+
+      <div class="program">
+        <img class="screenshot" src="images/program_snake.JPG">
+        <h4 class="title">Snake</h4>
+        <p class="description">It would be a crime not to code a <i>snake</i> game in the <i>Python</i> programming language.</p>
+        <div class="button-section">
+          <a href="applications/snake.exe"><button id="snake-button">Download</button></a>
+        </div>
+      </div>
     </section>
   </main>
 
