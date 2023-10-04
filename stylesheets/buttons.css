@@ -92,6 +92,20 @@
 
 #cursor-dodge-button {
 	font-size: 1.5em;
+	font-family: 'Segoe UI';
+
+	background-color: white;
+	color: red;
+
+	border-width: 0.1em 0 0 0;
+	border-style: solid;
+	border-color: blue;
+}
+#cursor-dodge-button:hover {
+	color: pink;
+}
+#cursor-dodge-button:active {
+	border-color: darkblue;
 }
 
 
@@ -208,7 +222,7 @@
 	padding: 0.26em 0.6em;
 
 	background: radial-gradient(circle at 25% 15%, #c763db 0%, #ba56ce 10%, #963cb9 75%, #400f53 100%);
-	color:rgba(0, 0, 0, 0.5);
+	color:rgba(255, 255, 255, 0.33);
 
 	box-shadow: inset -0.2em -0.5em 1em 0 rgba(0, 0, 0, 0.33);
 
@@ -246,10 +260,10 @@
 
 
 #battleship-button {
-	font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-	font-size: 1.5em;
+	font-family: Impact, serif;
+	font-size: 1.4em;
 
-	padding: 0.15em 1.33em 0.15em 0.67em;
+	padding: 0.15em 1.1em 0.15em 0.33em;
 	
 	background-color: #c5c5c5;
 	color: #2c2c2c;
