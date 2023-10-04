@@ -56,3 +56,15 @@ addEventListener("mousemove", (event) => {
     wait = false;
   }, BUBBLE_INTERVAL);
 });
+
+const backgrounds = [];
+for (let i = 1; i <= 10; i++) {
+  backgrounds.push(backgrounds[backgrounds.length] = "images/background-" + i + ".png");
+};
+
+function randomBackground() {
+  var background =  backgrounds[Math.floor(Math.random() * backgrounds.length)];
+  return background;
+}
+
+document.body.style.backgroundImage = "url(" + randomBackground() + ")";
