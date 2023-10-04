@@ -1,0 +1,58 @@
+html {
+  cursor: url("../images/colors_cursor.png"), auto;
+}
+
+.colors-gallery {
+  display: grid;
+  direction: rtl;
+  column-gap: 5px;
+  row-gap: 5px;
+}
+
+.color-tile {
+  box-sizing:border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+
+  font-family: 'Yuji Syuku', 'Klee One', 'UD Digi Kyokasho N-R', cursive;
+  font-size: 2.4em;
+  color:  rgba(0, 0, 0, 0.8);
+  border: 5px solid  rgba(0, 0, 0, 0.5);
+
+  /* For top-to-bottom right-to-left text */
+  writing-mode: vertical-lr;
+  ;
+}
+
+@media (max-width: 245px) {
+  .colors-gallery {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 246px) and (max-width: 440px) {
+  .colors-gallery {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 441px) and (max-width: 635px) {
+  .colors-gallery {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media (min-width: 636px) and (max-width: 840px) {
+  .colors-gallery {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+
+@media (min-width: 841px) {
+  .colors-gallery {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  }
+}

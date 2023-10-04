@@ -24,6 +24,26 @@
 
 
 
+#diamond-pattern {
+  --color-1: rgba(150, 117, 56, 0.15);
+  --color-2: transparent;
+  background:
+    linear-gradient(45deg, var(--color-1) 25%, transparent 25%),
+    linear-gradient(135deg, var(--color-1) 25%, transparent 25%),
+    linear-gradient(225deg, var(--color-1) 25%, transparent 25%),
+    linear-gradient(315deg, var(--color-1) 25%, transparent 25%);
+  background-color: var(--color-2);
+  background-size: 22.25% 22.25%;
+  background-repeat: repeat;
+
+  width: 71%;
+  aspect-ratio: 1 / 1;
+  top: 0;
+  left: 0;
+}
+
+
+
 #green-character .eye, #orange-character .eye {
   width: 35%;
   height: 15%;
@@ -270,10 +290,23 @@
 
 #table {
   width: 90%;
-  height: 10%;
-  background-color: brown;
-  bottom: 2.5%;
+  height: 12.5%;
+  bottom: 0;
   right: 0;
+}
+
+#table .top {
+  background-color: peru;
+  top: 0;
+  width: 100%;
+  height: 80%
+}
+
+#table .bottom {
+  background-color: sienna;
+  bottom: 0;
+  width: 100%;
+  height: 20%
 }
 
 
