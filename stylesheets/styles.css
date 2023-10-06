@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Handjet:wght@300;700&family=Klee+One:wght@400;600&family=Yuji+Syuku&display=swap&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 
+html {
+  cursor: url("../images/cursor.png"), auto;
+}
+
 body {
   overflow-x: hidden;
   font-family: Ubuntu, sans-serif;
@@ -61,17 +65,23 @@ bubble {
   background-image: url("../images/bubble.png");
   background-size: contain;
   background-repeat: no-repeat;
-  width: 25px;
-  height: 25px;
   animation-name: bubble-float;
   animation-timing-function: ease-in;
+  filter: drop-shadow(6px 6px 5px rgba(0, 0, 0, 0.225));
+
+  --min-size: 12px;
+  --max-size: 40px;
+  --translate-x-midrange: 0px;
+  --translate-x-range: 75px;
+  --translate-y-midrange: -200px;
+  --translate-y-range: 125px;
 }
 @keyframes bubble-float {
   0% {
     transform: translate(0, 0);
   }
   100% {
-    transform: translate(var(--translateXOffset), -300%);
+    transform: translate(var(--translate-x), var(--translate-y));
   }
 }
 

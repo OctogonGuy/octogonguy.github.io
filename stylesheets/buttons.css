@@ -31,9 +31,6 @@
 #music-player-button:active {
 	transform: translateY(0.1em);
 }
-#music-player-button:active::after {
-	transform: translateY(0.1em);
-}
 
 
 
@@ -370,6 +367,7 @@
 	background: linear-gradient(to right, red, yellow, lime, cyan, blue, magenta, red);
 	color: transparent;
 	background-clip: text;
+	-webkit-background-clip: text;
 	background-size: 50%;
 
 	border-style: none;
