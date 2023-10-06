@@ -1,4 +1,4 @@
-const BUBBLE_INTERVAL = 5;
+const BUBBLE_INTERVAL = 10;
 const BUBBLE_DURATION = 2000;
 
 document.querySelector("footer").innerHTML= `
