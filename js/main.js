@@ -1,5 +1,4 @@
 const BUBBLE_INTERVAL = 10;
-const BUBBLE_DURATION = 2000;
 
 document.querySelector("footer").innerHTML= `
 <p>No Copyright - <a href="http://octopusdragon.tech">octopusdragon.tech</a></p>
@@ -64,13 +63,20 @@ addEventListener("mousemove", (event) => {
   let bubble = document.createElement("bubble");
 
   bubble.style.pointerEvents = "none";
-  bubble.style.animationDuration = BUBBLE_DURATION + "ms";
+  
+  document.body.appendChild(bubble);
+
+  let bubbleDurationMidrange = parseInt(getComputedStyle(bubble).getPropertyValue("--bubble-duration-midrange"));
+  let bubbleDurationRange = parseInt(getComputedStyle(bubble).getPropertyValue("--bubble-duration-range"));
+  let bubbleDurationUnits = getComputedStyle(bubble).getPropertyValue("--bubble-duration-midrange").replace(bubbleDurationMidrange, "");
+  let bubbleDuration = bubbleDurationMidrange + ((Math.random() * 2 - 1) * bubbleDurationRange);
+
+  bubble.style.animationDuration = bubbleDuration + bubbleDurationUnits;
   bubble.style.animationFillMode = "forwards";
 
   setTimeout(() => {
     bubble.remove();
-  }, BUBBLE_DURATION);
-  document.body.appendChild(bubble);
+  }, bubbleDuration);
 
   bubble.style.backgroundImage = "url(" + bubble_pictures[Math.floor(Math.random() * bubble_pictures.length)];
 

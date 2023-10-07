@@ -75,6 +75,8 @@ bubble {
   --translate-x-range: 75px;
   --translate-y-midrange: -200px;
   --translate-y-range: 125px;
+  --bubble-duration-midrange: 1500ms;
+  --bubble-duration-range: 500ms;
 }
 @keyframes bubble-float {
   0% {
