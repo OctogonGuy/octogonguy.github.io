@@ -1,3 +1,5 @@
+"use strict";
+
 const BUBBLE_INTERVAL = 10;
 
 document.querySelector("footer").innerHTML= `
