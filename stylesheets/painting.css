@@ -1,0 +1,679 @@
+#canvas {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(-235deg,beige 30%, bisque 30%, bisque 45%, antiquewhite 45%);
+  width: 75%;
+  aspect-ratio: 4 / 5;
+  margin: 2em auto;
+  border: 30px double darkgoldenrod;
+  outline: 10px ridge goldenrod;
+  outline-offset: -20px;
+  border-radius: 15px 2.5px;
+}
+
+#canvas * {
+  position: absolute;
+}
+
+
+
+#diamond-pattern {
+  --color-1: rgba(150, 117, 56, 0.15);
+  --color-2: transparent;
+  background:
+    linear-gradient(45deg, var(--color-1) 25%, transparent 25%),
+    linear-gradient(135deg, var(--color-1) 25%, transparent 25%),
+    linear-gradient(225deg, var(--color-1) 25%, transparent 25%),
+    linear-gradient(315deg, var(--color-1) 25%, transparent 25%);
+  background-color: var(--color-2);
+  background-size: 22.25% 22.25%;
+  background-repeat: repeat;
+
+  width: 71%;
+  aspect-ratio: 1 / 1;
+  top: 0;
+  left: 0;
+}
+
+
+
+#wall {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70%;
+
+  background:
+    linear-gradient(to top,
+      sienna 2%, transparent 2%),
+    linear-gradient(to right,
+      transparent 0%, transparent 20%,
+      cadetblue 20%, cadetblue 30%,
+      transparent 30%, transparent 70%,
+      sienna 70%, sienna 80%,
+      transparent 80%, transparent 100%);
+  background-size: 19.5%;
+  background-repeat: repeat-x;
+
+  opacity: 70%;
+}
+
+
+
+#floor {
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 30%;
+
+  background: linear-gradient(to right, salmon, firebrick);
+
+  opacity: 30%;
+}
+
+
+
+#rug {
+  bottom: 10%;
+  left: -5%;
+  height: 17.5%;
+  width: 50%;
+}
+
+#rug .inner {
+  width: 100%;
+  height: 100%;
+
+  background:
+    linear-gradient(35deg, transparent,
+    transparent 34%, bisque 34%,
+    bisque 42%, darkkhaki 42%,
+    darkkhaki 58%, bisque 58%,
+    bisque 66%, transparent 66%,
+    transparent),
+    linear-gradient(-35deg, transparent,
+    transparent 34%, bisque 34%,
+    bisque 42%, darkkhaki 42%,
+    darkkhaki 58%, bisque 58%,
+    bisque 66%, transparent 66%,
+    transparent);
+  background-color:darkgoldenrod;
+  background-size:  15% 25%;
+  background-repeat: repeat;
+
+  border-radius: 50%;
+}
+
+#rug .outer {
+  top: -10%;
+  left: -10%;
+  width: 120%;
+  height: 120%;
+
+  background:radial-gradient(ellipse at center, darkgoldenrod 60%, bisque 70%);
+
+  border-radius: 50%;
+}
+
+
+
+#key {
+  top: 78.5%;
+  left: 18%;
+  height: 2%;
+  width: 0.67%;
+
+  transform: rotate(50deg);
+}
+
+#key .head {
+  width: 300%;
+  aspect-ratio: 1 / 1;
+  top: 0;
+  left: -100%;
+  transform: translateY(-90%);
+
+  border-radius: 50%;
+  background: radial-gradient(transparent 28%, yellow 28%);
+}
+
+#key .blade {
+  width: 100%;
+  height: 100%;
+
+  background-color: yellow;
+}
+
+#key .blade .tooth {
+  width: 100%;
+  height: 20%;
+  transform: translateX(100%);
+
+  background-color: yellow;
+}
+#key .blade .tooth:nth-of-type(1) {
+  bottom: 10%;
+}
+#key .blade .tooth:nth-of-type(2) {
+  bottom: 40%;
+}
+
+
+
+#green-character .eye, #orange-character .eye {
+  width: 35%;
+  height: 15%;
+  border-radius: 50%;
+}
+
+
+
+#green-character {
+  width: 20%;
+  height: 53.3%;
+  bottom: 8%;
+  left: 31%;
+}
+
+#green-character .head {
+  width: 125%;
+  height: 30%;
+  right: -15%;
+  background-color: green;
+}
+
+#green-character .hat {
+  width: 100%;
+  height: 50%;
+  top: -50%;
+  background-color: green;
+  clip-path: polygon(0% 100%, 30% 0%, 100% 100%);
+}
+
+#green-character .eye {
+  background-color:firebrick;
+}
+
+#green-character .eye.left {
+  top: 50%;
+  left: 10%;
+}
+
+#green-character .eye.right {
+  bottom: 50%;
+  right: 10%;
+}
+
+#green-character .body {
+  width: 100%;
+  height: 70%;
+  top: 30%;
+  background-color: green;
+}
+
+#green-character .shirt {
+  width: 100%;
+  height: 40%;
+  top: 10%;
+  background-color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#green-character .pants {
+  width: 100%;
+  height: 40%;
+  top: 50%;
+  background-color: darkkhaki;
+}
+
+
+
+#orange-character {
+  width: 33.3%;
+  height: 53.3%;
+  bottom: 15%;
+  left: 55%;
+}
+
+#orange-character .head {
+  width: 75%;
+  height: 30%;
+  left: 10%;
+  background-color: orange;
+}
+
+#orange-character .hat {
+  width: 100%;
+  height: 20%;
+  top: -20%;
+  background-color: orange;
+  border-radius: 50% 50% 0 0;
+}
+
+#orange-character .eye {
+  background-color:navy;
+}
+
+#orange-character .eye.left {
+  bottom: 50%;
+  left: 8%;
+}
+
+#orange-character .eye.right {
+  top: 50%;
+  right: 12%;
+}
+
+#orange-character .body {
+  width: 100%;
+  height: 70%;
+  top: 30%;
+  background-color: orange;
+}
+
+#orange-character .shirt {
+  width: 100%;
+  height: 40%;
+  top: 0;
+  background-color: darkred;
+}
+
+#orange-character .pants {
+  width: 100%;
+  height: 50%;
+  top: 40%;
+  background-color: navy;
+}
+
+#orange-character .shoes {
+  width: 100%;
+  height: 10%;
+  top: 90%;
+  background-color: black;
+}
+
+
+
+#shelf {
+  top: 0;
+  right: 0;
+  width: 15%;
+  height: 60%;
+}
+
+#shelf .drawer {
+  height: 20%;
+  width: 100%;
+}
+
+.handle {
+  width: 80%;
+  height: 10%;
+}
+
+.top-handle {
+  top: 30%;
+  left: 10%;
+}
+
+.bottom-handle {
+  bottom: 30%;
+  left: 10%;
+}
+
+#drawer-1 {
+  background-color: lightblue;
+}
+
+#drawer-1 .handle {
+  background-color: lightpink;
+}
+
+#drawer-2 {
+  top: 20%;
+  background-color: rebeccapurple;
+}
+
+#drawer-2 .handle {
+  background-color: slateblue;
+}
+
+#drawer-3 {
+  top: 40%;
+  background-color: #CB5A44;
+}
+
+#drawer-3 .handle {
+  background-color: #66B7DA;
+}
+
+#drawer-4 {
+  top: 60%;
+  background-color: saddlebrown;
+}
+
+#drawer-4 .handle {
+  background-color: sandybrown;
+}
+
+#drawer-5 {
+  top: 80%;
+  background-color: brown;
+}
+
+#drawer-5 .handle {
+  background-color: goldenrod;
+}
+
+
+
+#piano {
+  background-color: black;
+  display: flex;
+  flex-direction: row;
+  width: 50%;
+  height: 15%;
+  top: 5%;
+  left: 5%;
+  transform: rotate(2deg);
+  padding: 2px;
+}
+
+#piano * {
+  position: relative;
+}
+
+.key {
+  background-color: white;
+  width: 100%;
+  height: calc(100% - 2px);
+  margin-left: 2px;
+  border-radius: 0 0 2px 2px;
+}
+
+.key:last-of-type {
+  margin-right: 2px;
+}
+
+.key.black-key::after {
+  background-color: black;
+  content: "";
+  position: absolute;
+  left: calc(-37.5% - 1px);
+  width: 75%;
+  height: 60%;
+  border-radius: 0 0 2px 2px;
+}
+
+
+
+#table {
+  width: 90%;
+  height: 32.5%;
+  bottom: -20%;
+  right: 0;
+}
+
+#table .top {
+  background-color: peru;
+  top: 0;
+  width: 100%;
+  height: 32%
+}
+
+#table .bottom {
+  background-color: sienna;
+  bottom: 0;
+  width: 100%;
+  height: 68%
+}
+
+
+
+#apple {
+  width: 8.2%;
+  aspect-ratio: 1 / 1;
+  bottom: 8.675%;
+  left: 47.5%;
+}
+
+#apple .part {
+  width: 90%;
+  height: 110%;
+  background-color: red;
+  border-radius: 50%;
+}
+
+#apple .left.part {
+  left: 0;
+  transform-origin: top left;
+  transform: rotate(-20deg)
+             translate(-35%, 2.5%);
+}
+
+#apple .right.part {
+  right: 0;
+  transform-origin: top right;
+  transform: rotate(20deg)
+             translate(35%, 2.5%);
+}
+
+#apple .shine {
+  top: 10%;
+  right: 10%;
+  width: 12.5%;
+  height: 40%;
+  background-color: white;
+  border-radius: 45%;
+  transform: rotate(-20deg);
+}
+
+#apple .stem {
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 10%;
+  height: 45%;
+  top: -35%;
+  background-color: brown;
+}
+
+#apple .stem .leaf {
+  height: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 100% 0;
+  bottom: 33%;
+  left: 80%;
+  background-color: green;
+}
+
+
+#cactuar {
+  height: 7.725%;
+  aspect-ratio: 1 / 1;
+  top: 17.5%;
+  right: 15%;
+}
+
+#cactuar .body {
+  background-color: green;
+  top: -25%;
+  bottom: 0;
+  left: -25%;
+  right: 0;
+  margin: auto;
+  width: 35%;
+  height: 65%;
+  transform-origin: center;
+  transform: rotate(-35deg);
+}
+
+#cactuar .top-part, #cactuar .bottom-part,
+#cactuar .left-part, #cactuar .right-part {
+  background-color: green;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+}
+#cactuar .top-part, #cactuar .bottom-part {
+  width: 100%;
+}
+#cactuar .left-part, #cactuar .right-part {
+  height: 100%;
+}
+
+#cactuar .body .top-part {
+  top: 0;
+  transform: translateY(-50%);
+}
+
+#cactuar .body .bottom-part {
+  bottom: 0;
+  transform: translateY(50%);
+}
+
+#cactuar .body .left-part {
+  left: 0;
+  transform: translateX(-50%);
+}
+
+#cactuar .body .right-part {
+  right: 0;
+  transform: translateX(50%);
+}
+
+#cactuar .spike {
+  background-color: brown;
+  width: 7.5%;
+  height: 40%;
+  border-radius: 50% 50% 0 0;
+  top: -40%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  transform-origin: bottom;
+}
+
+#cactuar .spike.first {
+  transform: rotate(20deg);
+}
+
+#cactuar .spike.last {
+  transform: rotate(-20deg);
+}
+
+#cactuar .eye {
+  background-color: black;
+  width: 22.5%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  top: 7.5%;
+}
+#cactuar .eye.left {
+  right: 15%;
+}
+#cactuar .eye.right {
+  left: 15%;
+}
+
+#cactuar .mouth,
+#cactuar .mouth .top-part,
+#cactuar .mouth .bottom-part {
+  background-color: black;
+}
+#cactuar .mouth {
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 15%;
+  height: 20%;
+  top: 35%;
+}
+
+#cactuar .arm, #cactuar .leg {
+  aspect-ratio: 1 / 1;
+}
+
+#cactuar .arm .inner, #cactuar .leg .inner,
+#cactuar .arm .outer, #cactuar .leg .outer {
+  background-color: green;
+}
+
+#cactuar .arm {
+  height: 40%;
+}
+#cactuar .left.arm {
+  right: 0;
+  bottom: 15%;
+  transform: translateX(100%);
+}
+#cactuar .right.arm {
+  left: 0;
+  top: 25%;
+  transform: translateX(-100%);
+}
+
+#cactuar .arm .inner {
+  width: 100%;
+  height: 50%;
+}
+#cactuar .left.arm .inner {
+  top: 0;
+  right: 25%;
+}
+#cactuar .right.arm .inner {
+  bottom: 0;
+  left: 25%;
+}
+
+#cactuar .arm .outer {
+  width: 50%;
+  height: 75%;
+}
+#cactuar .left.arm .outer {
+  right: 0;
+  top: 25%;
+}
+#cactuar .right.arm .outer {
+  left: 0;
+  bottom: 25%;
+}
+
+#cactuar .leg {
+  width: 100%;
+}
+#cactuar .left.leg {
+  left: 50%;
+  bottom: 0;
+  transform: translateY(100%);
+}
+#cactuar .right.leg {
+  left: 50%;
+  bottom: 0;
+  transform: translate(-100%, 100%);
+}
+
+#cactuar .left.leg .inner {
+  width: 50%;
+  height: 100%;
+}
+#cactuar .right.leg .inner {
+  width: 100%;
+  height: 50%;
+}
+
+#cactuar .left.leg .outer {
+  width: 80%;
+  height: 50%;
+  left: 25%;
+  bottom: -25%;
+}
+#cactuar .right.leg .outer {
+  width: 50%;
+  height: 80%;
+  top: 25%;
+  left: -25%;
+}

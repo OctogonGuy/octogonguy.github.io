@@ -6,40 +6,89 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="stylesheet" href="stylesheets/styles.css">
-  <link rel="stylesheet" href="stylesheets/picasso.css">
+  <link rel="stylesheet" href="stylesheets/main.css">
+  <link rel="stylesheet" href="stylesheets/painting.css">
 </head>
 <body>
   <header></header>
 
   <main>
     <div id="canvas">
+      <div id="wall"></div>
+
+      <div id="floor"></div>
+
       <div id="diamond-pattern"></div>
 
-      <div id="circle-pattern"></div>
-
-      <div id="green-character">
-        <div class="head">
-          <div class="hat"></div>
-          <div class="left eye"></div>
-          <div class="right eye"></div>
-        </div>
-        <div class="body">
-          <div class="shirt"></div>
-          <div class="pants"></div>
+      <div id="key">
+        <div class="head"></div>
+        <div class="blade">
+          <div class="tooth"></div>
+          <div class="tooth"></div>
         </div>
       </div>
 
-      <div id="orange-character">
-        <div class="head">
-          <div class="hat"></div>
+      <div id="rug">
+        <div class="outer"></div>
+        <div class="inner"></div>
+      </div>
+
+      <div id="cactuar">
+        <div class="body">
+          <div class="spike first"></div>
+          <div class="spike"></div>
+          <div class="spike last"></div>
+
+          <div class="top-part"></div>
+          <div class="bottom-part"></div>
+    
+          <div class="left arm">
+            <div class="inner">
+              <div class="right-part"></div>
+            </div>
+            <div class="outer">
+              <div class="top-part"></div>
+              <div class="bottom-part"></div>
+            </div>
+          </div>
+    
+          <div class="right arm">
+            <div class="inner">
+              <div class="left-part"></div>
+            </div>
+            <div class="outer">
+              <div class="bottom-part"></div>
+              <div class="top-part"></div>
+            </div>
+          </div>
+    
+          <div class="left leg">
+            <div class="inner">
+              <div class="bottom-part"></div>
+            </div>
+            <div class="outer">
+              <div class="left-part"></div>
+              <div class="right-part"></div>
+            </div>
+          </div>
+    
+          <div class="right leg">
+            <div class="inner">
+              <div class="left-part"></div>
+            </div>
+            <div class="outer">
+              <div class="top-part"></div>
+              <div class="bottom-part"></div>
+            </div>
+          </div>
+    
           <div class="left eye"></div>
           <div class="right eye"></div>
-        </div>
-        <div class="body">
-          <div class="shirt"></div>
-          <div class="pants"></div>
-          <div class="shoes"></div>
+    
+          <div class="mouth">
+            <div class="top-part"></div>
+            <div class="bottom-part"></div>
+          </div>
         </div>
       </div>
 
@@ -84,12 +133,28 @@
         <div class="key black-key"></div>
       </div>
 
-      <div id="apple">
-        <div class="left part"></div>
-        <div class="right part"></div>
-        <div class="shine"></div>
-        <div class="stem">
-          <div class="leaf"></div>
+      <div id="green-character">
+        <div class="head">
+          <div class="hat"></div>
+          <div class="left eye"></div>
+          <div class="right eye"></div>
+        </div>
+        <div class="body">
+          <div class="shirt"></div>
+          <div class="pants"></div>
+        </div>
+      </div>
+
+      <div id="orange-character">
+        <div class="head">
+          <div class="hat"></div>
+          <div class="left eye"></div>
+          <div class="right eye"></div>
+        </div>
+        <div class="body">
+          <div class="shirt"></div>
+          <div class="pants"></div>
+          <div class="shoes"></div>
         </div>
       </div>
 
@@ -98,69 +163,21 @@
         <div class="bottom"></div>
       </div>
 
-      <div id="cactuar">
-        <div class="body">
-          <div class="top-part"></div>
-          <div class="bottom-part"></div>
-    
-          <div class="spike first"></div>
-          <div class="spike"></div>
-          <div class="spike last"></div>
-    
-          <div class="left eye"></div>
-          <div class="right eye"></div>
-    
-          <div class="mouth">
-            <div class="top-part"></div>
-            <div class="bottom-part"></div>
-          </div>
-    
-          <div class="left arm">
-            <div class="inner">
-              <div class="right-part"></div>
-            </div>
-            <div class="outer">
-              <div class="top-part"></div>
-              <div class="bottom-part"></div>
-            </div>
-          </div>
-    
-          <div class="right arm">
-            <div class="inner">
-              <div class="left-part"></div>
-            </div>
-            <div class="outer">
-              <div class="bottom-part"></div>
-              <div class="top-part"></div>
-            </div>
-          </div>
-    
-          <div class="left leg">
-            <div class="inner">
-              <div class="bottom-part"></div>
-            </div>
-            <div class="outer">
-              <div class="left-part"></div>
-              <div class="right-part"></div>
-            </div>
-          </div>
-    
-          <div class="right leg">
-            <div class="inner">
-              <div class="left-part"></div>
-            </div>
-            <div class="outer">
-              <div class="top-part"></div>
-              <div class="bottom-part"></div>
-            </div>
-          </div>
+      <div id="apple">
+        <div class="stem">
+          <div class="leaf"></div>
         </div>
+        <div class="left part"></div>
+        <div class="right part"></div>
+        <div class="shine"></div>
       </div>
+      
     </div>
   </main>
 
   <footer></footer>
 
-  <script src="js/main.js"></script>
+  <script src="scripts/main.js"></script>
+  <script src="scripts/painting.js"></script>
 </body>
 </html>
