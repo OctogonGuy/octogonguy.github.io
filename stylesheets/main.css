@@ -68,14 +68,14 @@ bubble {
   animation-timing-function: ease-in;
   filter: drop-shadow(6px 6px 5px rgba(0, 0, 0, 0.225));
 
-  --min-size: 12px;
-  --max-size: 40px;
+  --min-size: 5px;
+  --max-size: 45px;
   --translate-x-midrange: 0px;
   --translate-x-range: 75px;
   --translate-y-midrange: -200px;
-  --translate-y-range: 125px;
+  --translate-y-range: 100px;
   --bubble-duration-midrange: 1500ms;
-  --bubble-duration-range: 500ms;
+  --bubble-duration-range: 250ms;
 }
 @keyframes bubble-float {
   0% {

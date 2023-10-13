@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Playground</title>
+
+  <link rel="stylesheet" href="stylesheets/main.css">
+  <link rel="stylesheet" href="stylesheets/javascript-playground.css">
+</head>
+<body>
+  <header></header>
+
+  <main>
+
+    <div>
+      <button id="alert-button">Click Here to be Alerted</button>
+    </div>
+
+
+
+    <div>
+      <button id="insult-button">Click Here to be Insulted</button>
+    </div>
+    
+
+
+    <div id="number-section" style="
+      width: 90%;
+      height: 9em;
+      display: flex;
+      flex-direction: row;
+      align-items: end;
+    ">
+      <div id="count-section" style="flex: 1">
+        <p id="count"></p>
+        <button id="count-button">Count</button>
+      </div>
+      <div id="random-number-section" style="flex: 1">
+        <p id="random-number-label"></p>
+        <p id="random-number"></p>
+        <button id="random-number-button">Random</button>
+      </div>
+    </div>
+
+
+
+    <div style="align-self: end">
+      <span id="event-handler-box" style="
+        margin-right: 10.5em;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        width: 15em;
+        height: 13em;
+        padding: 0.5em;
+        background-color: white;
+        border: 1px solid black;
+      ">
+        Interact with me, and I will tell you your fortune.
+      </span>
+    </div>
+
+
+
+    <form id="form">
+      <div>
+        <label for="name-field">Name:</label>
+        <input type="text" id="name-field" name="name" placeholder="ex.: Johnny Johnson" size="25" required>
+        <span>*</span>
+      </div>
+      <div>
+        <label for="email-field">Email:</label>
+        <input type="email" id="email-field" name="email" pattern="\w+@\w+.\w+" placeholder="ex.: theoctogon@email.wow" size="25" required>
+        <span>*</span>
+      </div>
+      <div>
+        <label for="phone-field">Phone Number:</label>
+        <input type="tel" id="phone-field" name="phone-number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="format: XXX-XXX-XXXX" size="25" required>
+        <span>*</span>
+      </div>
+      <div>
+        <label for="planet-field">Home Planet:</label>
+        <select id="planet-field" name="home-planet" required>
+          <option value="" selected="selected" disabled="true">--- Select your planet ---</option>
+          <option value="Mars">Mars</option>
+          <option value="Earth">Earth</option>
+          <option value="Venus">Venus</option>
+          <option value="hell">K2-141b</option>
+          <option value="nowhere">Pluto (None)</option>
+        </select>
+        <span>*</span>
+      </div>
+      <div>
+        <label>Preferred Communication:</label>
+        <input type="radio" id="contact-choice-1" name="contact" value="email" checked>
+        <label for="contact-choice-1">Email</label>
+        <input type="radio" id="contact-choice-2" name="contact" value="phone">
+        <label for="contact-choice-2">Phone</label>
+        <input type="radio" id="contact-choice-3" name="contact" value="carrier-pigeon">
+        <label for="contact-choice-3">Carrier Pigeon</label>
+      </div>
+      <div>
+        <label>Tell us a little bit about yourself:</label>
+        <textarea id="comments-field" name="comments" rows=4 cols=35 placeholder="So there I was..."></textarea>
+      </div>
+      <div>
+        <label>&nbsp;</label>
+        <input type="checkbox" id="terms-1" name="terms-of-service" required>
+        <label for="terms-1">I agree to the terms of service</label>
+        <span>*</span>
+      </div>
+      <div>
+        <label>&nbsp;</label>
+        <input type="checkbox" id="terms-2" name="privacy-policy" required>
+        <label for="terms-2">I accept the privacy policy</label>
+        <span>*</span>
+      </div>
+      <div>
+        <label>&nbsp;</label>
+        <input type="button" id="register-button" value="Register">
+      </div>
+      <div id="form-confirmation">
+        <p id="form-confirmation-message"></p>
+      </div>
+    </form>
+
+
+
+    <div id="food-section">
+      <select id="food-select">
+        <option value="" selected="selected" disabled="true">--- Select your favorite food ---</option>
+        <option value="pizza">Pizza</option>
+        <option value="sushi">Sushi</option>
+        <option value="chicken-wings">Chicken Wings</option>
+        <option value="thai-curry">Thai Curry</option>
+        <option value="candied-sweet-potatoes">Candied Sweet Potatoes</option>
+      </select>
+      <img id="food-image" width=367 height=333 style="
+        object-fit: cover;
+        background-color: white;
+        border: 1px solid black;
+      ">
+    </div>
+
+
+
+    <div id="simple-color-picker">
+      <div>
+        <input type="checkbox" id="red-checkbox" name="red">
+        <label for="red-checkbox">Red</label>
+        <input type="checkbox" id="green-checkbox" name="green">
+        <label for="green-checkbox">Green</label>
+        <input type="checkbox" id="blue-checkbox" name="blue">
+        <label for="blue-checkbox">Blue</label>
+      </div>
+      <div id="color-box" style="
+        width: 100px;
+        height: 100px;
+        border: 5px solid black;
+        border-radius: 5px;
+      "></div>
+    </div>
+
+
+
+    <div id="dance-floor-section">
+      <div id="dance-floor">
+        <div class="dance-floor-square"></div>
+        <div class="dance-floor-square"></div>
+        <div class="dance-floor-square"></div>
+        <div class="dance-floor-square"></div>
+        <div class="dance-floor-square"></div>
+        <div class="dance-floor-square"></div>
+        <div class="dance-floor-square"></div>
+        <div class="dance-floor-square"></div>
+        <div class="dance-floor-square"></div>
+      </div>
+      <button id="dance-floor-button"></button>
+    </div>
+
+  </main>
+
+  <footer></footer>
+
+  <script src="scripts/main.js"></script>
+  <script src="scripts/javascript-playground.js"></script>
+</body>
+</html>

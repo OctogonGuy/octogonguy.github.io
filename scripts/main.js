@@ -23,6 +23,7 @@ document.querySelector("header").innerHTML= `
   <li><a href="colors.html">Color</a></li>
   <li><a href="painting.html">Picasso</a></li>
   <li><a href="animation.html">Animation</a></li>
+  <li><a href="javascript-playground.html">Playground</a></li>
   <li><a href="portfolio.html">Portfolio</a></li>
   </ul>
 </nav>

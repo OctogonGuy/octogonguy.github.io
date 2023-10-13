@@ -1,0 +1,96 @@
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  align-items: center;
+}
+
+main * > * {
+  display: block;
+  text-align: center;
+  margin: 0.67em auto;
+}
+
+
+
+/* --- Form --- */
+
+#form {
+  align-self: start;
+}
+
+#form-confirmation {
+  height: 1em;
+}
+
+#form * {
+  display: initial;
+  text-align: initial;
+  margin: initial;
+}
+
+#form div {
+  display: block;
+  margin-top: 0.33em;
+  margin-bottom: 0.67em;
+}
+
+#form label:first-of-type {
+  display: inline-block;
+  width: 13em;
+  text-align: right;
+  vertical-align: top;
+  margin-right: 0.2em;
+}
+
+#form input, #form select {
+    margin-left: 0.6em;
+    margin-right: 0.1em;
+}
+
+#form span {
+  color: red;
+}
+
+
+
+/* --- Simple color picker --- */
+
+#simple-color-picker input, #simple-color-picker label {
+  display: initial;
+  text-align: initial;
+  margin: initial;
+}
+
+#simple-color-picker input {
+  margin-left: 1em;
+  margin-right: 0.1em;
+}
+
+
+
+/* --- Dance floor --- */
+
+#dance-floor {
+  width: 300px;
+  aspect-ratio: 1 / 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: repeat(3, 1fr);
+  gap: 5px;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+#dance-floor.on {
+  filter: brightness(100%);
+}
+
+#dance-floor.off {
+  filter: brightness(50%);
+}
+
+.dance-floor-square {
+  margin: 0;
+}

@@ -20,19 +20,17 @@ console.log(movableElements);
 
 // Make each element movable on drag
 let mouseDown = false;
-let draggingElement;;
+let draggingElement;
 let lastMouseX;
 let lastMouseY;
 for (let element of movableElements) {
     element.addEventListener("mousedown", event => {
         mouseDown = true;
         draggingElement = element;
-        console.log("mousedown");
         lastMouseX = event.pageX;
         lastMouseY = event.pageY;
     });
     element.addEventListener("mouseup", () => {
-        console.log("mouseup");
         mouseDown = false;
     });
 }
@@ -42,7 +40,6 @@ addEventListener("mousemove", (event) => {
     let deltaY = event.pageY - lastMouseY;
     lastMouseX = event.pageX;
     lastMouseY = event.pageY;
-    console.log(draggingElement.offsetTop);
     draggingElement.style.top = draggingElement.offsetTop + deltaY + "px";
     draggingElement.style.left = draggingElement.offsetLeft + deltaX + "px";
 });
