@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap');
+
+
+
+body {
+  font-family: 'Times New Roman', 'Times', serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Old English Text MT', 'UnifrakturCook', fantasy;
+}
+
+
+
+#gallery {
+  display: grid;
+  column-gap: 10px;
+  row-gap: 25px;
+}
+
+#gallery img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 10px;
+}
+
+@media (max-width: 500px) {
+  #gallery {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 501px) and (max-width: 950px) {
+  #gallery {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 951px) {
+  #gallery {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}

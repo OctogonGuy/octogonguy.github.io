@@ -1,0 +1,22 @@
+body {
+  --highlight-color: #e43b3b;
+}
+
+#grid {
+  border-collapse: collapse;
+}
+
+#grid td {
+  height: 100px;
+  width: 100px;
+
+  border: 5px dashed #5f6830;
+  padding: 5px;
+}
+
+#grid .piece {
+  display: block;
+  
+  height: 100px;
+  width: 100px;
+}

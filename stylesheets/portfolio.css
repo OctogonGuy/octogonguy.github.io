@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Handjet:wght@300;700&display=swap');
+
+
+
+#hero {
+  margin: 7em 0;
+}
+
+#hero .name, #hero .subtitle {
+  text-align: center;
+  margin: 0;
+}
+
+#hero .name {
+  font-family: 'Handjet', cursive;
+  font-weight: bold;
+  font-size: 15em;
+}
+
+#hero .subtitle {
+  font-family: 'Handjet', cursive;
+  font-weight: bold;
+  font-size: 4.5em;
+  margin-top: -0.2em;
+}
+
+#skills {
+  display: grid;
+  align-items: start;
+  gap: 20px 10px;
+  margin: 3em 0;
+}
+
+@media (max-width: 333px) {
+  #skills {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 334px) and (max-width: 666px) {
+  #skills {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 667px) {
+  #skills {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.skill {
+  background-color: #9dacbee0;
+  padding: 10px 5px;
+  border: 2px solid black;
+  border-radius: 2px;
+}
+
+.skill .title, .skill .experience, .skill .certification {
+  text-align: center;
+}
+
+.skill .title {
+  font-size: 2em;
+  margin: 0 0 0.5rem 0;
+}
+
+.skill .experience {
+  font-size: 1.1em;
+  color:#292929;
+  margin: 0 0 0 0;
+}
+
+.skill .certification {
+  font-size: 1.1em;
+  margin: 1rem 0 0 0;
+}

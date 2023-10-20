@@ -52,6 +52,19 @@ main * > * {
   color: red;
 }
 
+@media (max-width: 540px) {
+  #form label:first-of-type {
+    display: block;
+    width:initial;
+    text-align: initial;
+    margin-right: initial;
+  }
+  #form input, #form select {
+      margin-left: initial;
+      margin-right: initial;
+  }
+}
+
 
 
 /* --- Simple color picker --- */

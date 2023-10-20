@@ -5,7 +5,7 @@
   --bg-color-light: cyan;
 	--bg-color-dark: blue;
 	position: relative;
-	font-size: 1em;
+	font-size: 0.95em;
 	padding: 0.75em;
 	border-style: none;
 	border-radius: 45%;
@@ -35,7 +35,7 @@
 
 
 #interval-timer-button {
-	font-size: 0.8em;
+	font-size: 0.9em;
 	font-family: 'Crete Round', cursive;
 
 	padding: 0.2em 1.2em;
@@ -64,7 +64,7 @@
 	font-family: 'Times New Roman', Times, serif;
 	font-size: 0.9em;
 	
-	padding: 0.5em 3.2em;
+	padding: 0.4em 2.6em;
 	
 	background-color: white;
 	border-color: #505050;
@@ -88,7 +88,7 @@
 
 
 #cursor-dodge-button {
-	font-size: 1em;
+	font-size: 0.8em;
 	font-family: 'Segoe UI', sans-serif;
 
 	padding: 0.7em 0.2em;
@@ -96,22 +96,22 @@
 	background-color: white;
 	color: red;
 
-	border-width: 0.2em 0 0 0;
+	border-width: 0.5em 1px 1px 1px;
 	border-style: solid;
-	border-color: blue;
+	border-color: darkblue;
 }
 #cursor-dodge-button:hover {
 	color: pink;
 }
 #cursor-dodge-button:active {
-	border-color: darkblue;
+	border-color: blue;
 }
 
 
 
 #checkers-button {
 	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-	font-size: 1.5em;
+	font-size: 1.3em;
 	
 	height: 1.8em;
 	padding: 0 1em;
@@ -145,7 +145,7 @@
 
 #pokemon-type-game-button {
 	font-family: 'Agency FB', Tahoma, Verdana, Geneva, sans-serif;
-	font-size: 1.2em;
+	font-size: 1.1em;
 	font-weight: bold;
 
 	padding: 0.25em 0.7em;
@@ -170,7 +170,7 @@
 
 #tilt-button {
 	font-family: 'Fugaz One', cursive;
-	font-size: 0.8em;
+	font-size: 0.75em;
 
 	padding: 0.9em 0.25em;
 
@@ -180,9 +180,7 @@
 	color: white;
 
 	border: 3px inset white;
-	border-radius: 50%;
-
-	transition: background 0.3s;
+	border-radius: 49%;
 }
 #tilt-button:hover {
 	background: linear-gradient(to right, var(--color-2), var(--color-1));
@@ -195,7 +193,7 @@
 
 #dice-button {
 	font-family: 'Bauhaus 93', 'Freestyle Script', 'Berlin Sans FB', 'Segoe Script', 'Arial', sans-serif;
-	font-size: 1.2em;
+	font-size: 1em;
 
 	padding: 0.3em 0.7em;
 
@@ -216,9 +214,9 @@
 
 #mastermind-button {
 	font-family: 'Rubik Moonrocks', cursive;
-	font-size: 0.89em;
+	font-size: 0.8em;
 
-	padding: 0.26em 0.6em;
+	padding: 0.32em 0.68em;
 
 	background: radial-gradient(circle at 25% 15%, #c763db 0%, #ba56ce 10%, #963cb9 75%, #400f53 100%);
 	color:rgba(255, 255, 255, 0.33);
@@ -237,7 +235,7 @@
 
 #backgammon-button {
 	font-family: 'Tilt Prism', cursive;
-	font-size: 0.9em;
+	font-size: 0.85em;
 
 	padding: 0.4em 0.4em;
 
@@ -250,7 +248,7 @@
 	transition: transform 0.15s ease-in-out;
 }
 #backgammon-button:hover {
-	transform: scale(150%);
+	transform: scale(158%);
 }
 #backgammon-button:active {
 	filter: brightness(110%);
@@ -260,11 +258,11 @@
 
 #battleship-button {
 	font-family: Impact, 'Anton', serif;
-	font-size: 1.4em;
+	font-size: 1.25em;
 
-	padding: 0.15em 1.1em 0.15em 0.33em;
+	padding: 0.18em 1.2em 0.18em 0.39em;
 	
-	background-color: #c5c5c5;
+	background-color: #c9c9c9;
 	color: #2c2c2c;
 
 	border-style: solid solid solid ridge;
@@ -285,7 +283,7 @@
 
 #connect-four-button {
 	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-	font-size: 1.4em;
+	font-size: 1.1em;
 	
 	height: 2em;
 	padding: 0 1em;
@@ -341,7 +339,7 @@
 
 #idea-generator-button {
 	font-family: 'Brush Script MT', 'Seaweed Script', cursive;
-	font-size: 1.4em;
+	font-size: 1.3em;
 
 	padding: 0.25em 0.25em;
 	
@@ -363,7 +361,7 @@
 
 
 #game-compilation-button {
-	font-size: 1.3em;
+	font-size: 1.5em;
 	font-family: 'Arial Rounded MT Bold', 'Arial', sans-serif;
 
 	background: linear-gradient(to right, red, yellow, lime, cyan, blue, magenta, red);

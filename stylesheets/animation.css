@@ -1,27 +1,82 @@
-.container {
+#container {
   aspect-ratio: 1 / 1;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.container * {
+#container * {
   position: absolute;
   box-sizing: border-box;
 }
 
 
 
-.wheel {
+#outer-wheel {
+ width: 67%;
+ aspect-ratio: 1 / 1;
+ animation: outer-wheel 11s linear infinite;
+}
+
+.arrow {
+  width: 10%;
+  height: 10%;
+  clip-path: polygon(0 50%, 50% 0, 100% 0, 50% 50%, 100% 100%, 50% 100%);
+  animation: outer-color-change 17s linear infinite;
+}
+
+.arrow:nth-of-type(1) {
+  right: 4.645%;
+  top: 4.645%;
+  rotate: 45deg;
+}
+.arrow:nth-of-type(2) {
+  right: -10%;
+  top: 40%;
+  rotate: 90deg;
+}
+.arrow:nth-of-type(3) {
+  right: 4.645%;
+  bottom: 4.645%;
+  rotate: 135deg;
+}
+.arrow:nth-of-type(4) {
+  left: 40%;
+  bottom: -10%;
+  rotate: 180deg;
+}
+.arrow:nth-of-type(5) {
+  left: 4.645%;
+  bottom: 4.645%;
+  rotate: 225deg;
+}
+.arrow:nth-of-type(6) {
+  left: -10%;
+  top: 40%;
+  rotate: 270deg;
+}
+.arrow:nth-of-type(7) {
+  left: 4.645%;
+  top: 4.645%;
+  rotate: 315deg;
+}
+.arrow:nth-of-type(8) {
+  left: 40%;
+  top: -10%;
+}
+
+
+
+#inner-wheel {
   width: 50%;
   aspect-ratio: 1 / 1;
-  animation: wheel 5s linear infinite;
+  animation: inner-wheel 5s linear infinite;
 }
 
 .shuriken {
   height: 20%;
   width: 20%;
-  animation: rotate 5s linear infinite, spin 1.5s linear infinite;
+  animation: spin 1.5s linear infinite;
   
   /* Removes unwanted outline around shape */
   clip-path: polygon(
@@ -37,12 +92,12 @@
   top: calc(100% / 3);
   left: calc(100% / 3);
   background-color: black;
-  animation: color-change 8s linear infinite;
+  animation: inner-color-change 7s linear infinite;
 }
 
 .shuriken .point {
   background-color: black;
-  animation: color-change 8s linear infinite;
+  animation: inner-color-change 7s linear infinite;
 }
 
 .shuriken .point.top, .shuriken .point.bottom {
@@ -126,13 +181,13 @@
 
 
 
-.ripple-circle {
-  width: 30%;
+#ripple-circle {
+  width: 33%;
   aspect-ratio: 1 / 1;
   border-radius: 50%;
 }
 
-.ripple-circle * {
+#ripple-circle * {
   position: absolute;
   box-sizing: border-box;
 }
@@ -159,7 +214,42 @@
 
 
 
-@keyframes wheel {
+@keyframes outer-wheel {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes outer-color-change {
+  0% {
+    background-color: green;
+  }
+  16.67% {
+    background-color: yellow;
+  }
+  33.33% {
+    background-color: orange;
+  }
+  50% {
+    background-color: red;
+  }
+  66.67% {
+    background-color: purple;
+  }
+  83.33% {
+    background-color: blue;
+  }
+  100% {
+    background-color: green;
+  }
+}
+
+
+
+@keyframes inner-wheel {
   0% {
     transform: rotate(0deg);
   }
@@ -168,7 +258,7 @@
   }
 }
 
-@keyframes color-change {
+@keyframes inner-color-change {
   0% {
     background-color: red;
   }
@@ -189,15 +279,6 @@
   }
   100% {
     background-color: red;
-  }
-}
-
-@keyframes rotate {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(-360deg);
   }
 }
 
