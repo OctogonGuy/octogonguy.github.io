@@ -101,7 +101,7 @@ $("#random-number-button").addEventListener("click", () => {
 // --- Event handler fortune teller ---
 // Display a different message depending on the mouse action
 const eventBox = $("#event-handler-box");
-eventBox.addEventListener("mouseover", () => {
+eventBox.addEventListener("mouseover", evt => {
     eventBox.textContent = "Your curiosity will lead you to new, exciting experiences.";
 });
 eventBox.addEventListener("mouseout", () => {
@@ -240,11 +240,36 @@ changeColorPickerColor();
 // --- Dance floor ---
 // Colors
 const danceFloorColors = ["red", "lime", "blue", "yellow", "magenta", "cyan"];
+// Put dance floor squares in 2D array
+const danceFloorSquares1D = $("#dance-floor").querySelectorAll(".dance-floor-square");
+const danceFloorLen = Math.sqrt(danceFloorSquares1D.length);
+const danceFloorSquares = []
+for (let i = 0; i < danceFloorLen; i++) {
+    danceFloorSquares[i] = [];
+    for (let j = 0; j < danceFloorLen; j++) {
+        danceFloorSquares[i].push(danceFloorSquares1D[i * danceFloorLen + j]);
+    }
+}
 // Function to randomly change all dance floor squares' colors
+// Make sure that no adjacent color is the same
 function changeDanceFloorColors() {
-    for (let square of $("#dance-floor").querySelectorAll(".dance-floor-square")) {
-        let color = danceFloorColors[Math.floor(Math.random() * danceFloorColors.length)];
-        square.style.backgroundColor = color;
+    for (let i = 0; i < danceFloorLen; i++) {
+        for (let j = 0; j < danceFloorLen; j++) {
+            let availableColors = [];
+            for (let color of danceFloorColors) {
+                availableColors.push(color);
+            }
+            if (i > 0) {
+                availableColors.splice(availableColors.indexOf(
+                    (danceFloorSquares[i - 1][j].style.backgroundColor)), 1);
+            }
+            if (j > 0) {
+                availableColors.splice(availableColors.indexOf(
+                    (danceFloorSquares[i][j - 1].style.backgroundColor)), 1);
+            }
+            let color = availableColors[Math.floor(Math.random() * availableColors.length)];
+            danceFloorSquares[i][j].style.backgroundColor = color;
+        }
     }
 }
 // Animation that changes the dance floor colors after an interval
