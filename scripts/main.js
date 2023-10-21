@@ -1,6 +1,6 @@
 "use strict";
 
-const BUBBLE_INTERVAL = 10;
+const BUBBLE_INTERVAL = 5;
 
 document.querySelector("footer").innerHTML= `
 <p>No Copyright - <a href="http://octopusdragon.tech">octopusdragon.tech</a></p>
@@ -60,7 +60,7 @@ addEventListener("mousemove", (event) => {
   lastPosX = event.pageX;
   lastPosY = event.pageY;
 
-  let dontGo = Math.random() * 200000 > Math.pow(speed, 1.5);
+  let dontGo = Math.random() * 10000000 > Math.pow(speed, 2);
   if (wait || dontGo) return;
 
   let bubble = document.createElement("bubble");

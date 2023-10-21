@@ -71,7 +71,7 @@ bubble {
   filter: drop-shadow(-5px 5px 5px rgba(0, 0, 0, 0.25));
 
   --min-size: 5px;
-  --max-size: 35px;
+  --max-size: 30px;
   --translate-x-midrange: 0px;
   --translate-x-range: 75px;
   --translate-y-midrange: -230px;
