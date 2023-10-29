@@ -60,7 +60,7 @@ addEventListener("mousemove", (event) => {
   lastPosX = event.pageX;
   lastPosY = event.pageY;
 
-  let dontGo = Math.random() * 10000000 > Math.pow(speed, 2);
+  let dontGo = Math.random() * 12500000 > Math.pow(speed, 2);
   if (wait || dontGo) return;
 
   let bubble = document.createElement("bubble");

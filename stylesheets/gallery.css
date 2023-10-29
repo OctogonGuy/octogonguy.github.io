@@ -2,6 +2,10 @@
 
 
 
+html {
+  cursor: url("../images/gallery_cursor.png"), auto;
+}
+
 main {
   font-family: 'Times New Roman', 'Times', serif;
 }
@@ -14,8 +18,14 @@ h1, h2, h3, h4, h5, h6 {
 
 #gallery {
   display: grid;
-  column-gap: 10px;
-  row-gap: 25px;
+  column-gap: 25px;
+  row-gap: 30px;
+}
+
+#gallery figure {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
 }
 
 #gallery img {
@@ -23,7 +33,17 @@ h1, h2, h3, h4, h5, h6 {
   aspect-ratio: 4 / 3;
   object-fit: cover;
   object-position: center;
-  border-radius: 10px;
+  outline: 8px ridge #66432a;
+}
+
+#gallery figcaption {
+  width: fit-content;
+  align-self: center;
+  justify-self: center;
+  background-color: #e0b444;
+  color: #5f4c1b;
+  outline: 2px solid #a57d17;
+  padding: 0.25em 1em;
 }
 
 @media (max-width: 500px) {
