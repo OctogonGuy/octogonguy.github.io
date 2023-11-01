@@ -116,8 +116,8 @@
 	height: 1.8em;
 	padding: 0 1em;
 	
-	--check-color-1: #222222;
-	--check-color-2: #505050;
+	--check-color-1: white;
+	--check-color-2: darkgray;
 	background-image:
       linear-gradient(45deg, var(--check-color-1) 25%, transparent 25%), 
       linear-gradient(135deg, var(--check-color-1) 25%, transparent 25%),
@@ -126,16 +126,16 @@
     background-size: 1.8em 1.8em;
     background-position:0 0, 0.9em 0, 0.9em -0.9em, 0 0.9em;
 	background-color: var(--check-color-2);
-	color: rgb(255, 56, 56);
+	color: black;
 
-	text-shadow: 0 0.1em 0.1em rgba(0, 0, 0, 0.67);
+	text-shadow: 0 0 0.1em white, 0 0.1em 0.15em rgba(0, 0, 0, 0.9);
 	
 	border-style: none;
 	border-radius: 1em;
 }
 #checkers-button:hover {
-	--check-color-1: #505050;
-	--check-color-2: #222222;
+	--check-color-1: darkgray;
+	--check-color-2: white;
 }
 #checkers-button:active {
 	transform: translateY(0.2em);
@@ -326,7 +326,7 @@
 	animation: typing 1.06s linear infinite;
 }
 #hello-world-button:active {
-	--text-color: green;
+	--text-color: #00FF00;
 }
 @keyframes typing {
 	0%	{ color: var(--text-color) }
