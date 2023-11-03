@@ -1,7 +1,7 @@
 body {
   --highlight-color: #e43b3b73;
-  --grid-piece-size: 11.5vh;
-  --hand-piece-size: 9.15vh;
+  --grid-piece-size: 9.5vh;
+  --hand-piece-size: 7.8vh;
 }
 
 
@@ -9,12 +9,21 @@ body {
 #game-space {
   display: grid;
   justify-items: center;
-  gap: 2vh;
-  margin: 3em 0;
+  gap: 1vh;
+  margin: 3.5em 0;
+  padding: 2vh 0;
+  background-color: rgba(255, 253, 242, 0.8);
+  border-radius: 3vh;
 }
 
 #game-space > * {
   margin: 0;
+}
+
+
+
+.piece {
+  touch-action: none;
 }
 
 
@@ -27,7 +36,7 @@ body {
   height: var(--grid-piece-size);
   width: var(--grid-piece-size);
 
-  border: 0.67vh dashed #5f6830;
+  border: 0.33vh dashed #ec6866;
   padding: 0.67vh;
   
   user-select: none;
@@ -52,11 +61,11 @@ body {
 .hand {
   display: grid;
   grid-template-columns: repeat(4, var(--hand-piece-size));
-  border: 0.33vh solid #5c5c5c;
+  border: 0.2vh solid #5c5c5c;
   min-height: var(--hand-piece-size);
   min-width: calc(var(--hand-piece-size) * 4);
-  gap: 0.5vh;
-  padding: 0.5vh;
+  gap: 0.33vh;
+  padding: 0.33vh;
 }
 
 .hand.top {
@@ -70,16 +79,31 @@ body {
 
 
 
-.piece {
-  touch-action: none;
-}
-
-
-
 .message {
-  font-size: 2.67vh;
+  font-size: 2vh;
 }
 
 .message.top {
   transform: rotate(0.5turn);
+}
+
+
+
+.new-game-button {
+  font-size: 0.95em;
+  border-radius: 0.1em;
+  border-style: groove;
+
+  visibility: hidden;
+}
+
+.new-game-button.top {
+  transform: rotate(0.5turn);
+  background-color: #d8effc;
+  border-color: #6a92ac;
+}
+
+.new-game-button.bottom {
+  background-color: #f1f4bb;
+  border-color: #a7aa68;
 }

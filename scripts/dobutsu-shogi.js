@@ -222,6 +222,17 @@ function showMessage(message) {
 }
 
 
+// New game buttons
+for (let button of document.getElementsByClassName("new-game-button")) {
+    button.addEventListener("click", () => {
+        for (let button of document.getElementsByClassName("new-game-button")) {
+            button.style.visibility = "hidden";
+        }
+        start();
+    });
+}
+
+
 // Grid
 const spaceGrid = new Array(ROWS);
 for (let i = 0; i < ROWS; i++) {
@@ -234,18 +245,10 @@ const animalGrid = new Array(ROWS);
 for (let i = 0; i < ROWS; i++) {
     animalGrid[i] = new Array(COLUMNS);
 }
-animalGrid[0][0] = new Giraffe(Player.TOP);
-animalGrid[0][1] = new Lion(Player.TOP);
-animalGrid[0][2] = new Elephant(Player.TOP);
-animalGrid[1][1] = new Chick(Player.TOP);
-animalGrid[2][1] = new Chick(Player.BOTTOM);
-animalGrid[3][0] = new Elephant(Player.BOTTOM);
-animalGrid[3][1] = new Lion(Player.BOTTOM);
-animalGrid[3][2] = new Giraffe(Player.BOTTOM);
 
 
 // Grid history
-const gridHistory = [];
+let gridHistory = [];
 let gridHistoryCounts = {};
 function addToHistory(grid) {
     // Make a copy of the grid
@@ -274,16 +277,10 @@ addToHistory(animalGrid);
 
 
 // Put table rows and cells into the DOM
-// Also, put animals in animal array
-const animals = []
 let gridElement = document.getElementById("grid");
 for (let i = 0; i < ROWS; i++) {
     let row = document.createElement("tr");
     for (let j = 0; j < COLUMNS; j++) {
-        if (animalGrid[i][j] != null) {
-            animals.push(animalGrid[i][j]);
-            spaceGrid[i][j].appendChild(animalGrid[i][j].pieceElement);
-        }
         row.appendChild(spaceGrid[i][j]);
     }
     gridElement.appendChild(row);
@@ -291,14 +288,8 @@ for (let i = 0; i < ROWS; i++) {
 
 
 // Hands
-const hands = {
-    [Player.TOP]: [],
-    [Player.BOTTOM]: []
-}
-const handElements = {
-    [Player.TOP]: document.getElementsByClassName("hand top")[0],
-    [Player.BOTTOM]: document.getElementsByClassName("hand bottom")[0]
-}
+let hands;
+let handElements;
 
 
 
@@ -312,16 +303,6 @@ let lastMouseX;
 let lastMouseY;
 let elemMouseX;
 let elemMouseY;
-for (let animal of animals) {
-    let element = animal.pieceElement;
-    element.addEventListener("mousedown", evt => { actionStart(animal, evt) });
-    element.addEventListener("touchstart", evt => { actionStart(animal, evt) });
-    element.addEventListener("mouseup", () => { actionRelease(animal) });
-    element.addEventListener("touchend", () => { actionRelease(animal) });
-    element.addEventListener("dragstart", evt => {
-        evt.preventDefault();
-    });
-}
 addEventListener("mousemove", evt => { actionMove(evt) });
 addEventListener("touchmove", evt => { actionMove(evt) });
 
@@ -382,11 +363,11 @@ function actionRelease(animal) {
     draggingParent.appendChild(draggingAnimal.pieceElement);
 }
 // On mouse moved, do a couple things
-const spaces = [];
-for (let space of document.getElementsByTagName("td")) {
-    spaces.push(space);
-}
 function actionMove(event) {
+    const spaces = [];
+    for (let space of document.getElementsByTagName("td")) {
+        spaces.push(space);
+    }
 
     let clientX;
     let clientY;
@@ -438,11 +419,68 @@ function actionMove(event) {
 
 // Function to start the game
 function start() {
+
+    // Reset grid
+    for (let i = 0; i < ROWS; i++) {
+        for (let j = 0; j < COLUMNS; j++) {
+            spaceGrid[i][j].innerHTML = "";
+            animalGrid[i][j] = null;
+        }
+    }
+    animalGrid[0][0] = new Giraffe(Player.TOP);
+    animalGrid[0][1] = new Lion(Player.TOP);
+    animalGrid[0][2] = new Elephant(Player.TOP);
+    animalGrid[1][1] = new Chick(Player.TOP);
+    animalGrid[2][1] = new Chick(Player.BOTTOM);
+    animalGrid[3][0] = new Elephant(Player.BOTTOM);
+    animalGrid[3][1] = new Lion(Player.BOTTOM);
+    animalGrid[3][2] = new Giraffe(Player.BOTTOM);
+    // Also, put animals in animal array
+    const animals = []
+    for (let i = 0; i < ROWS; i++) {
+        for (let j = 0; j < COLUMNS; j++) {
+            if (animalGrid[i][j] != null) {
+                animals.push(animalGrid[i][j]);
+                spaceGrid[i][j].appendChild(animalGrid[i][j].pieceElement);
+            }
+        }
+    }
+    // So that event handlers can be attached
+    for (let animal of animals) {
+        let element = animal.pieceElement;
+        element.addEventListener("mousedown", evt => { actionStart(animal, evt) });
+        element.addEventListener("touchstart", evt => { actionStart(animal, evt) });
+        element.addEventListener("mouseup", () => { actionRelease(animal) });
+        element.addEventListener("touchend", () => { actionRelease(animal) });
+        element.addEventListener("dragstart", evt => {
+            evt.preventDefault();
+        });
+    }
+
+    // Reset hands
+    hands = {
+        [Player.TOP]: [],
+        [Player.BOTTOM]: []
+    }
+    handElements = {
+        [Player.TOP]: document.getElementsByClassName("hand top")[0],
+        [Player.BOTTOM]: document.getElementsByClassName("hand bottom")[0]
+    }
+    document.getElementsByClassName("hand top")[0].innerHTML = "";
+    document.getElementsByClassName("hand bottom")[0].innerHTML = "";
+
+    // Reset grid history
+    gridHistory = [];
+    gridHistoryCounts = {};
+    addToHistory(animalGrid);
+    
     // Pick random player to go first
     let rand = Math.floor(Math.random()*Object.keys(Player).length);
     curPlayer = Player[Object.keys(Player)[rand]];
     showMessage(curPlayer + "'s turn");
 }
+
+
 
 
 // Function to move animal
@@ -477,7 +515,12 @@ function move(animal, toPosition) {
 
     // Stop if game over
     if (gameOver()) {
+        // Show game over message
         showGameOverMessage(winner());
+        // Show new game buttons
+        for (let button of document.getElementsByClassName("new-game-button")) {
+            button.style.visibility = "visible";
+        }
         return;
     }
 
