@@ -20,6 +20,7 @@ h1, h2, h3, h4, h5, h6 {
   display: grid;
   column-gap: 25px;
   row-gap: 30px;
+  margin: 2em 0;
 }
 
 #gallery figure {

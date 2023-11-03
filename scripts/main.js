@@ -17,14 +17,15 @@ document.querySelector("header").innerHTML= `
 
 <nav>
   <ul>
-  <li><a href="index.html">Home</a></li>
-  <li><a href="programs.html">Programs</a></li>
-  <li><a href="gallery.html">Cat</a></li>
-  <li><a href="colors.html">Color</a></li>
-  <li><a href="painting.html">Picasso</a></li>
-  <li><a href="animation.html">Animation</a></li>
-  <li><a href="javascript-playground.html">Playground</a></li>
-  <li><a href="portfolio.html">Portfolio</a></li>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="programs.html">Programs</a></li>
+    <li><a href="gallery.html">Cat</a></li>
+    <li><a href="colors.html">Color</a></li>
+    <li><a href="painting.html">Picasso</a></li>
+    <li><a href="animation.html">Animation</a></li>
+    <li><a href="javascript-playground.html">Playground</a></li>
+    <li><a href="portfolio.html">Portfolio</a></li>
+    <li><a href="dobutsu-shogi.html">Dobutsu Shogi</a></li>
   </ul>
 </nav>
 `;
