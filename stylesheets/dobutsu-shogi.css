@@ -70,6 +70,12 @@ body {
 
 
 
+.piece {
+  touch-action: none;
+}
+
+
+
 .message {
   font-size: 2.67vh;
 }

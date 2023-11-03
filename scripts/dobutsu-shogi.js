@@ -315,15 +315,15 @@ let elemMouseY;
 for (let animal of animals) {
     let element = animal.pieceElement;
     element.addEventListener("mousedown", evt => { actionStart(animal, evt) });
-    element.addEventListener("touchstart", evt => { actionStart(animal, evt) }, false);
+    element.addEventListener("touchstart", evt => { actionStart(animal, evt) });
     element.addEventListener("mouseup", () => { actionRelease(animal) });
-    element.addEventListener("touchend", () => { actionRelease(animal) }, false);
+    element.addEventListener("touchend", () => { actionRelease(animal) });
     element.addEventListener("dragstart", evt => {
         evt.preventDefault();
     });
 }
 addEventListener("mousemove", evt => { actionMove(evt) });
-addEventListener("touchmove", evt => { actionMove(evt) }, false);
+addEventListener("touchmove", evt => { actionMove(evt) });
 
 
 
@@ -331,7 +331,6 @@ addEventListener("touchmove", evt => { actionMove(evt) }, false);
 // Action helper functions
 // Down
 function actionStart(animal, event) {
-    console.log("event start"); 
     let element = animal.pieceElement;
 
     // Only proceed if piece is of current player and game is not over
@@ -364,7 +363,6 @@ function actionStart(animal, event) {
     draggingElement.style.left = lastMouseX - elemMouseX + "px";
 }
 function actionRelease(animal) {
-    console.log("event end"); 
     //Only proceed if valid piece is selected
     if (!mouseDown) return;
 
@@ -389,7 +387,6 @@ for (let space of document.getElementsByTagName("td")) {
     spaces.push(space);
 }
 function actionMove(event) {
-    console.log("event move"); 
 
     let clientX;
     let clientY;
@@ -589,7 +586,6 @@ function noCheck(lion) {
         if (newCol < 0 || newCol >= COLUMNS) continue;
         if (animalGrid[newRow][newCol] != null && animalGrid[newRow][newCol].player != lion.player) {
             for (let position of animalGrid[newRow][newCol].getValidMovePositions()) {
-                console.log(position);
                 if (position.row != lion.getPosition().row) continue;
                 if (position.col != lion.getPosition().col) continue;
                 return false;
