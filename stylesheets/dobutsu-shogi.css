@@ -6,14 +6,41 @@ body {
 
 
 
+#heading {
+  display: grid;
+  box-sizing: border-box;
+  justify-items: center;
+  gap: 0.33em;
+  font-size: 2em;
+  margin-top: 0.67em;
+}
+
+#heading > * {
+  margin: 0;
+}
+
+#title {
+  font-size: 1em;
+  letter-spacing: 0.1em;
+}
+
+#subtitle {
+  font-size: 0.6em;
+}
+
+
+
 #game-space {
   display: grid;
   justify-items: center;
   gap: 1vh;
-  margin: 3.5em 0;
-  padding: 2vh 0;
-  background-color: rgba(255, 253, 242, 0.8);
+  margin: 2.5em 0;
+  padding: 1em 0;
+  background: url(../images/dobutsu_shogi_background.jpg);
+  background-size: auto 100%;
+  background-position: center;
   border-radius: 3vh;
+  width: 100%;
 }
 
 #game-space > * {
@@ -41,11 +68,6 @@ body {
   
   user-select: none;
 }
-
-#grid tr:nth-of-type(1) { background-color: #d8effc }
-#grid tr:nth-of-type(2) { background-color: #fffde2 }
-#grid tr:nth-of-type(3) { background-color: #fffde2 }
-#grid tr:nth-of-type(4) { background-color: #f1f4bb }
 
 #grid .piece {
   display: block;
@@ -90,9 +112,10 @@ body {
 
 
 .new-game-button {
-  font-size: 0.95em;
-  border-radius: 0.1em;
+  font-size: 1.5vh;
+  border-radius: 0.3em;
   border-style: groove;
+  padding: 0.4vh 1.75vh;
 
   visibility: hidden;
 }
