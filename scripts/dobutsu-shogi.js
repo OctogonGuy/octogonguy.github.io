@@ -10,6 +10,8 @@ const CONSECUTIVE_MOVES_TILL_DRAW = 3;
 let curPlayer;
 
 
+// --- Enums, etc. ---
+
 // Position class
 class Position {
     constructor(row, col) {
@@ -313,15 +315,15 @@ let elemMouseY;
 for (let animal of animals) {
     let element = animal.pieceElement;
     element.addEventListener("mousedown", evt => { actionStart(animal, evt) });
-    element.addEventListener("touchstart", evt => { actionStart(animal, evt) });
+    element.addEventListener("touchstart", evt => { actionStart(animal, evt) }, false);
     element.addEventListener("mouseup", () => { actionRelease(animal) });
-    element.addEventListener("touchend", () => { actionRelease(animal) });
+    element.addEventListener("touchend", () => { actionRelease(animal) }, false);
     element.addEventListener("dragstart", evt => {
         evt.preventDefault();
     });
 }
 addEventListener("mousemove", evt => { actionMove(evt) });
-addEventListener("touchmove", evt => { actionMove(evt) });
+addEventListener("touchmove", evt => { actionMove(evt) }, false);
 
 
 

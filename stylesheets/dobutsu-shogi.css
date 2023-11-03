@@ -1,7 +1,7 @@
 body {
   --highlight-color: #e43b3b73;
-  --grid-piece-size: 12.5vh;
-  --hand-piece-size: 8.5vh;
+  --grid-piece-size: 11.5vh;
+  --hand-piece-size: 9.15vh;
 }
 
 
@@ -21,8 +21,6 @@ body {
 
 #grid {
   border-collapse: collapse;
-
-  touch-action: none;
 }
 
 #grid td {
@@ -59,8 +57,6 @@ body {
   min-width: calc(var(--hand-piece-size) * 4);
   gap: 0.5vh;
   padding: 0.5vh;
-
-  touch-action: none;
 }
 
 .hand.top {
