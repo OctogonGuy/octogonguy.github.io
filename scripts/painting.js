@@ -16,7 +16,6 @@ movableElements.push(document.getElementById("drawer-5"));
 movableElements.push(document.getElementById("table"));
 movableElements.push(document.getElementById("rug"));
 movableElements.push(document.getElementById("key"));
-console.log(movableElements);
 
 // Make each element movable on drag
 let mouseDown = false;

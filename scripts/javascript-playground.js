@@ -237,6 +237,44 @@ changeColorPickerColor();
 
 
 
+// --- Animation ---
+// Create an animation that translates and rotates graphic
+function move() {
+    $("#animation-start-button").disabled = true;
+    let duration = 2500;
+    let intervalLength = 15;
+    let frameNum = 0;
+    let numFrames = duration / intervalLength;
+    let animationSectionWidth = $("#animation-section").offsetWidth;
+    let shapeSize = ($("#animation-shape").clientWidth + $("#animation-shape").clientHeight) / 2;
+    let distance = animationSectionWidth - shapeSize;
+    let rotations = Math.round(distance / (shapeSize * Math.PI));
+    let reverse = $("#animation-shape").style.translate != "";
+    function frame() {
+        frameNum++;
+        let translate = distance * frameNum / numFrames;
+        let rotate = 360 * (rotations * frameNum / numFrames) % 360;
+        if (reverse) {
+            translate = distance - translate;
+            rotate = 360 - rotate;
+        }
+        $("#animation-shape").style.translate = translate + "px 0px";
+        $("#animation-shape").style.rotate = rotate + "deg";
+        if (frameNum >= numFrames) {
+            clearInterval(interval);
+            $("#animation-shape").style.rotate = "";
+            if (reverse) {
+                $("#animation-shape").style.translate = "";
+            }
+            $("#animation-start-button").disabled = false;
+        }
+    }
+    let interval = setInterval(frame, intervalLength);
+}
+$("#animation-start-button").addEventListener("click", move);
+
+
+
 // --- Dance floor ---
 // Colors
 const danceFloorColors = ["red", "lime", "blue", "yellow", "magenta", "cyan"];
@@ -287,18 +325,18 @@ function turnDanceFloorOn() {
     changeColorAnimation();
     $("#dance-floor").classList.remove("off");
     $("#dance-floor").classList.add("on");
-    $("#dance-floor-button").textContent = "Stop Dance Floor";
+    $("#dance-floor-start-button").textContent = "Stop Dance Floor";
     danceFloorOn = true;
 }
 function turnDanceFloorOff() {
     clearInterval(danceFloorInterval);
     $("#dance-floor").classList.remove("on");
     $("#dance-floor").classList.add("off");
-    $("#dance-floor-button").textContent = "Start Dance Floor";
+    $("#dance-floor-start-button").textContent = "Start Dance Floor";
     danceFloorOn = false;
 }
 // Start/stop the dance floor when the user clicks the button
-$("#dance-floor-button").addEventListener("click", () => {
+$("#dance-floor-start-button").addEventListener("click", () => {
     if (danceFloorOn) {
         turnDanceFloorOff();
     }

@@ -1,14 +1,41 @@
-main {
+#playground, #playground > * {
   display: flex;
   flex-direction: column;
-  gap: 1em;
   align-items: center;
 }
 
-main * > * {
-  display: block;
+#playground {
+  font-family: initial;
+  gap: 3em;
+  margin: 3em 0;
+}
+
+#playground > * {
+  gap: 1em;
+}
+
+
+
+/* --- Numbers --- */
+
+#number-section {
+  align-self: stretch;
+  flex-direction: row;
+  align-items: end;
+}
+
+#count-section, #random-number-section {
+  flex: 1;
+}
+
+#number-section p {
   text-align: center;
-  margin: 0.67em auto;
+  height: 1em;
+}
+
+#number-section button {
+  display: block;
+  margin: 0 auto;
 }
 
 
@@ -17,6 +44,7 @@ main * > * {
 
 #form {
   align-self: start;
+  display: initial;
 }
 
 #form-confirmation {
@@ -78,6 +106,22 @@ main * > * {
 #simple-color-picker input {
   margin-left: 1em;
   margin-right: 0.1em;
+}
+
+
+
+/* --- Animation --- */
+
+#animation-section {
+  align-self: stretch;
+}
+
+#animation-shape {
+  align-self: start;
+
+  fill: yellow;
+  stroke: green;
+  stroke-width: 5px;
 }
 
 
