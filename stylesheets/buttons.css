@@ -1,6 +1,35 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code&family=Crete+Round&display=swap&family=Anton&family=Fugaz+One&family=Pixelify+Sans&family=Rubik+Moonrocks&family=Seaweed+Script&family=Tilt+Prism&display=swap');
 
 
+#main-buttons {
+	display: flex;
+	flex-direction: column;
+	row-gap: 1.5em;
+	margin-top: 1.67em;
+	margin-top: 1.67em;
+}
+
+#main-buttons > * {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+	row-gap: 0.5em;
+}
+
+
+#program-buttons {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	column-gap: 2em;
+	row-gap: 1em;
+	margin-top: 1.67em;
+	margin-top: 1.67em;
+}
+
+
+
 #music-player-button {
   --bg-color-light: cyan;
 	--bg-color-dark: blue;
@@ -488,7 +517,7 @@
 
 
 .push-button {
-	--diameter: 100px;
+	--diameter: 250px;
 	--light-color: #DDD;
 	--dark-color: #AAA;
 	
@@ -552,10 +581,10 @@
 }
 
 .push-button:active .push-button-button-outer {
-	top: 14%;
-	left: 14%;
-	width: 72%;
-	height: 72%;
+	top: 13.5%;
+	left: 13.5%;
+	width: 73%;
+	height: 73%;
 }
 
 .push-button-button-middle {
@@ -575,14 +604,14 @@
 }
 
 .push-button:active .push-button-button-middle {
-	top: 15%;
-	left: 15%;
-	width: 70%;
-	height: 70%;
+	top: 14.5%;
+	left: 14.5%;
+	width: 71%;
+	height: 71%;
 	background:
 		radial-gradient(ellipse
 			calc(var(--diameter) * 0.90)
-			calc(var(--diameter) * 0.55) at 50% -25.31%,
+			calc(var(--diameter) * 0.55) at 50% -23.27%,
 			rgba(255, 255, 255, 0.1),
 			rgba(255, 255, 255, 0.7) 100%, transparent 100%),
 		linear-gradient(to bottom,
@@ -639,4 +668,32 @@
 #play-button-3 {
 	--bg-color-light: yellow;
 	--bg-color-dark: orange;
+}
+
+
+
+
+
+#outset-button-panel, .outset-button {
+	--color: hsl(96, 25%, 85%);
+	--color-light: hsl(96, 12.5%, 95%);
+	--color-dark: hsl(96, 12.5%, 28.3%);
+	background-color: var(--color);
+}
+
+#outset-button-panel {
+	padding: 1em 0;
+}
+
+.outset-button {
+	font-family: serif;
+	border-color: var(--color-light) var(--color-dark) var(--color-dark) var(--color-light);
+	border-style: solid;
+	border-width: 2px;
+	padding: 0.2em 0;
+	width: 6em;
+}
+
+.outset-button:active {
+	border-color: var(--color-dark) var(--color-light) var(--color-light) var(--color-dark);
 }

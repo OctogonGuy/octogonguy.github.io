@@ -1,68 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Buttons</title>
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <title>Buttons</title>
+	<link rel="stylesheet" href="stylesheets/main.css">
 	<link rel="stylesheet" href="stylesheets/buttons.css">
-
 	<style>
 		button { cursor: pointer }
 	</style>
 </head>
 
 <body>
-	<button id="music-player-button">Music Player</button>
+	<header></header>
 
-	<button id="random-sentence-generator-button">Random Sentence Generator</button>
-	
-	<button id="checkers-button">Checkers</button>
-	
-	<button id="connect-four-button">Connect 4</button>
-	
-	<button id="idea-generator-button">Idea Generator</button>
+	<main>
+		<h1>Buttons</h1>
+		<p>Press any of the pointless buttons and be amazed... or not.</p>
+		<div id="main-buttons">
+			<!--
+			<button class="play-button" id="play-button-1" style="grid-row:1; grid-column:1">&#x25B6;</button>
+			<button class="play-button" id="play-button-2" style="grid-row:1; grid-column:2">&#x25B6;</button>
+			<button class="play-button" id="play-button-3" style="grid-row:1; grid-column:3">&#x25B6;</button>
+			-->
+			<div>
+				<button id="blue-glossy-button" class="glossy-button">I'm a Button</button>
+				<button id="green-glossy-button" class="glossy-button">I'm also a Button</button>
+				<button id="red-glossy-button" class="glossy-button">I'm yet another Button</button>
+			</div>
+			<div>
+				<button class="push-button">
+					<div class="push-button-frame-outer"></div>
+					<div class="push-button-frame-middle"></div>
+					<div class="push-button-frame-inner"></div>
+					<div class="push-button-button-outer"></div>
+					<div class="push-button-button-middle"></div>
+				</button>
+			</div>
+			<div>
+				<div id="outset-button-panel">
+					<button class="outset-button">OK</button>
+					<button class="outset-button">Cancel</button>
+					<button class="outset-button">Apply</button>
+				</div>
+				<div id="gradient-button-panel">
+					<button class="gradient-button">OK</button>
+					<button class="gradient-button">Cancel</button>
+					<button class="gradient-button">Apply</button>
+				</div>
+				<div id="glossy-button-panel">
+					<button class="glossy-button">OK</button>
+					<button class="glossy-button">Cancel</button>
+					<button class="glossy-button">Apply</button>
+				</div>
+			</div>
+		</div>
+		<div id="program-buttons">
+			<button id="music-player-button">Music Player</button>
+			<button id="random-sentence-generator-button">Random Sentence Generator</button>
+			<button id="checkers-button">Checkers</button>
+			<button id="connect-four-button">Connect 4</button>
+			<button id="idea-generator-button">Idea Generator</button>
+			<button id="snake-button">Snake</button>
+			<button id="hello-world-button">Hello World</button>
+			<button id="tilt-button">Tilt</button>
+			<button id="battleship-button">Battleship</button>
+			<button id="pokemon-type-game-button">Pokémon Type Game</button>
+			<button id="game-compilation-button">Game Compilation</button>
+			<button id="dice-button">Dice</button>
+			<button id="backgammon-button">Backgammon</button>
+			<button id="mastermind-button">Mastermind</button>
+			<button id="interval-timer-button">Interval Timer</button>
+		</div>
+	</main>
 
-	<button id="snake-button">Snake</button>
+	<footer></footer>
 
-	<button id="hello-world-button">Hello World</button>
-
-	<button id="tilt-button">Tilt</button>
-
-	<button id="battleship-button">Battleship</button>
-
-	<button id="pokemon-type-game-button">Pokémon Type Game</button>
-
-	<button id="game-compilation-button">Game Compilation</button>
-
-	<button id="dice-button">Dice</button>
-
-	<button id="backgammon-button">Backgammon</button>
-
-	<button id="mastermind-button">Mastermind</button>
-
-	<button id="interval-timer-button">Interval Timer</button>
-
-	<button class="play-button" id="play-button-1">&#x25B6;</button>
-
-	<button class="play-button" id="play-button-2">&#x25B6;</button>
-
-	<button class="play-button" id="play-button-3">&#x25B6;</button>
-
-	<button id="blue-glossy-button" class="glossy-button">I'm a Button</button>
-
-	<button id="green-glossy-button" class="glossy-button">I'm also a Button</button>
-
-	<button id="red-glossy-button" class="glossy-button">I'm yet another Button</button>
-
-	<button class="push-button">
-		<div class="push-button-frame-outer"></div>
-		<div class="push-button-frame-middle"></div>
-		<div class="push-button-frame-inner"></div>
-		<div class="push-button-button-outer"></div>
-		<div class="push-button-button-middle"></div>
-	</button>
+  <script src="scripts/main.js"></script>
 </body>
 </html>
 

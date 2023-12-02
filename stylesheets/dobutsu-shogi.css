@@ -6,30 +6,6 @@ body {
 
 
 
-#heading {
-  display: grid;
-  box-sizing: border-box;
-  justify-items: center;
-  gap: 0.33em;
-  font-size: 2em;
-  margin-top: 0.67em;
-}
-
-#heading > * {
-  margin: 0;
-}
-
-#title {
-  font-size: 1em;
-  letter-spacing: 0.2em;
-}
-
-#subtitle {
-  font-size: 0.6em;
-}
-
-
-
 #game-space {
   display: grid;
   justify-items: center;
