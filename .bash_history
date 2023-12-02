@@ -52,3 +52,7 @@ git add .
 git commit -m "Add existing files"
 git push
 git push origin
+add .
+git add .
+git commit -m "Add existing files"
+git push origin
