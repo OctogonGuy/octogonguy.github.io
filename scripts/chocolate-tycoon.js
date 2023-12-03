@@ -13,9 +13,8 @@ let buyables = [];  // Factories and upgrades that can be bought
 class Factory {
     constructor(id) {
         this.id = id;
-        this.inventoryLabel = document.querySelector("#" + this.id).querySelector(".inventory");
+        this.inventoryLabel = document.querySelector("#" + this.id).querySelector("#inventory");
         this.sellButton = document.querySelector("#" + this.id).querySelector(".sell-button");
-        this.sellButton.classList.add("invisible");
         this.button = document.querySelector("#" + this.id).querySelector(".build-button");
 
         this.cost = parseInt(this.button.dataset.cost);
@@ -41,7 +40,7 @@ class Factory {
         buyables.splice(buyables.indexOf(this), 1);
         factories.push(this);
         this.button.classList.add("bought");
-        this.sellButton.classList.remove("invisible");
+        document.querySelector("#" + this.id).querySelector(".production").classList.remove("hidden");
         this.button.disabled = true;
         this.interval = setInterval(() => produce(this), this.delay);
         updateUI();
@@ -150,13 +149,13 @@ function updateUI() {
 
 // Update money display
 function updateCash() {
-    document.querySelector("#cash").textContent = "Cash: $" + Math.round(cash);
+    document.querySelector("#cash").value = "$" + Math.round(cash);
 }
 
 // Update inventory display
 function updateInventory() {
     for (const factory of factories) {
-        factory.inventoryLabel.textContent = "Inventory: " + factory.inventory + (factory.inventory == 1 ? " unit" : " units");
+        factory.inventoryLabel.value = factory.inventory;
     }
 }
 
