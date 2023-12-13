@@ -1,36 +1,43 @@
 #game {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  display: grid;
   gap: 1.5em;
   margin-top: 1.67em;
   margin-bottom: 2em;
 }
 
+#assets {
+  justify-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+}
+
 #factories {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  display: flex;
+  flex-direction: row;
+  justify-content:space-evenly;
   column-gap: 0.5em;
 }
 
 .factory {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   gap: 1em;
 }
 
 .buy-buttons {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   gap: 0.67em;
 }
 
 .buy-buttons .upgrades {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   gap: 0.5em;
 }
 
@@ -45,7 +52,7 @@ input {
 }
 
 #cash {
-  width: 9em;
+  width: 13em;
 }
 
 .heading {
@@ -61,14 +68,6 @@ input {
 .buy-buttons button.hidden {
   visibility: hidden;
   display: none;
-}
-
-.buy-buttons button::after {
-  content: ' ($' attr(data-cost) ')';
-}
-
-.buy-buttons button[data-cost="0"]::after {
-  content: ' (Free)';
 }
 
 .buy-buttons button.bought::after {

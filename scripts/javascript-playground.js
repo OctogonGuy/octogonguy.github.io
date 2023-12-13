@@ -193,17 +193,9 @@ $("#register-button").addEventListener("click", processEntries);
 
 
 // --- Food image ---
-// Images of food
-const foodImageDict = {
-    "pizza": "images/playground_pizza.jpg",
-    "sushi": "images/playground_sushi.jpg",
-    "chicken-wings": "images/playground_chicken_wings.jpg",
-    "thai-curry": "images/playground_thai_curry.jpg",
-    "candied-sweet-potatoes": "images/playground_candied_sweet_potatoes.jpg",
-};
 // Show corresponding image when user selects an item from the select
 $("#food-select").addEventListener("change", event => {
-    $("#food-image").src = foodImageDict[event.target.value];
+    $("#food-image").src = event.target.value;
 });
 
 
@@ -347,3 +339,91 @@ $("#dance-floor-start-button").addEventListener("click", () => {
 // Set the dance floor's initial state
 changeDanceFloorColors();
 turnDanceFloorOff();
+
+
+
+// --- Name ---
+const getUserGreeting = firstLastName => {
+    let firstName = firstLastName.split(" ")[0];
+    firstName = firstName.substring(0, 1).toUpperCase() + firstName.substring(1);
+    const greeting = `Nice to meet you, ${firstName}!`;
+    return greeting;
+}
+
+$("#confirm-name-button").addEventListener("click", () => {
+    const firstLastName = $("#name").value;
+    const nameArray = firstLastName.split(" ");
+
+    let isValid = true;
+    if (firstLastName == "" || nameArray.length != 2) {
+        isValid = false;
+        $("#name").nextElementSibling.style.visibility = "visible";
+    }
+    else {
+        $("#name").nextElementSibling.style.visibility = "hidden";
+    }
+
+    if (isValid) {
+        const greeting = getUserGreeting(firstLastName);
+        $("#greeting").textContent = greeting;
+    }
+});
+
+
+
+// --- Countdown ---
+$("#holiday-select").addEventListener("change", evt => {
+    const today = new Date();
+    today.setHours(0); today.setMinutes(0); today.setSeconds(0); today.setMilliseconds(0);
+    const holiday = new Date($("#holiday-select").value + "/" + today.getFullYear());
+    if (holiday.getTime() < today.getTime()) {
+        holiday.setFullYear(holiday.getFullYear() + 1);
+    }
+    $("#holiday-date").value = (holiday.getMonth() + 1) + "/" + holiday.getDate() + "/" + holiday.getFullYear();
+});
+$("#countdown-button").addEventListener("click", () => {
+    const holidayName = $("#holiday-select").options[$("#holiday-select").selectedIndex].textContent;
+    const today = new Date();
+    const holiday = new Date($("#holiday-date").value);
+    const timeLeft = holiday.getTime() - today.getTime();
+    const msPerDay = 24 * 60 * 60 * 1000;
+    const daysLeft = Math.ceil(timeLeft / msPerDay);
+    let message = "";
+    if (daysLeft == 0) {
+        message = `Today is ${holidayName}!`;
+    }
+    else {
+        message = `${daysLeft} days left until ${holidayName}`;
+    }
+    $("#countdown").textContent = message;
+});
+
+
+
+// --- Exchange rate ---
+const convertCurrency = (currencyType, fromAmount, fromValue, toValue) => {
+    const currencyFormat = Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: currencyType,
+    });
+    const value = fromAmount * (toValue / fromValue);
+    return currencyFormat.format(value);
+};
+$("#convert-button").addEventListener("click", () => {
+    const fromSelect = $("#from-currency-select");
+    const fromInput = $("#currency-input");
+    const toSelect = $("#to-currency-select");
+    const currency = toSelect.options[toSelect.selectedIndex].textContent;
+    $("#currency-output").value = convertCurrency(currency, parseFloat(fromInput.value), parseFloat(fromSelect.value), parseFloat(toSelect.value));
+});
+for (const listOption of $("#currencies").children) {
+    let option = document.createElement("option");
+    option.textContent = listOption.textContent;
+    option.value = listOption.value;
+    $("#from-currency-select").appendChild(option);
+
+    option = document.createElement("option");
+    option.textContent = listOption.textContent;
+    option.value = listOption.value;
+    $("#to-currency-select").appendChild(option);
+}

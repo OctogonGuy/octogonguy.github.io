@@ -448,7 +448,7 @@
 
 
 
-.glossy-button {
+#glossy-buttons .glossy-button {
 	font-size: 22px;
 	--height: 2.25em;
 	--width: 11em;
@@ -473,7 +473,7 @@
 	text-shadow: 0 0.03125em rgb(255, 255, 255, 0.67);
 }
 
-.glossy-button::after {
+#glossy-buttons .glossy-button::after {
 	content: '';
 	position: absolute;
 	
@@ -488,26 +488,26 @@
 		rgba(255, 255, 255, 0.2));
 }
 
-.glossy-button:hover {
+#glossy-buttons .glossy-button:hover {
 	filter: hue-rotate(30deg);
 }
 
-.glossy-button:active {
+#glossy-buttons .glossy-button:active {
 	transform: translateY(0.067em);
 	box-shadow: 0 0.067em 0.2em rgb(0, 0, 0, 0.5);
 }
 
-#blue-glossy-button {
+#glossy-buttons #blue-glossy-button {
 	--top-color: hsl(240deg, 100%, 50%);
 	--bottom-color: hsl(190deg, 100%, 50%);
 }
 
-#green-glossy-button {
+#glossy-buttons #green-glossy-button {
 	--top-color: hsl(120deg, 100%, 25%);
 	--bottom-color: hsl(90deg, 100%, 50%);
 }
 
-#red-glossy-button {
+#glossy-buttons #red-glossy-button {
 	--top-color: hsl(0deg, 100%, 50%);
 	--bottom-color: hsl(310deg, 100%, 67%);
 }
@@ -674,26 +674,126 @@
 
 
 
+#outset-button-panel,
+#gradient-button-panel,
+#glossy-button-panel {
+	height: 3em;
+	flex: 1;
+	display: flex;
+	flex-direction: row;
+	column-gap: 0.5em;
+	align-items: center;
+	justify-content: center;
+}
+
+
+
 #outset-button-panel, .outset-button {
-	--color: hsl(96, 25%, 85%);
+	--color: hsl(0, 0%, 84%);
 	--color-light: hsl(96, 12.5%, 95%);
 	--color-dark: hsl(96, 12.5%, 28.3%);
 	background-color: var(--color);
 }
 
-#outset-button-panel {
-	padding: 1em 0;
-}
-
-.outset-button {
+#outset-button-panel .outset-button {
 	font-family: serif;
 	border-color: var(--color-light) var(--color-dark) var(--color-dark) var(--color-light);
 	border-style: solid;
 	border-width: 2px;
 	padding: 0.2em 0;
 	width: 6em;
+	cursor: unset;
 }
 
-.outset-button:active {
+#outset-button-panel .outset-button:active {
 	border-color: var(--color-dark) var(--color-light) var(--color-light) var(--color-dark);
+}
+
+
+
+#gradient-button-panel {
+	background-color: #e9e3df;
+}
+
+#gradient-button-panel .gradient-button {
+	--inner-color: linear-gradient(to bottom,
+		hsl(24, 24%, 96%) 5%,
+		hsl(24, 38%, 95%) 10%,
+		hsl(24, 53%, 88%) 90%,
+		hsl(26, 29%, 76%) 95%);
+	--outer-color: transparent;
+	--outer-width: 3px;
+
+	position: relative;
+	font-family: sans-serif;
+	background: var(--inner-color);
+	border: 1px solid black;
+	border-radius: 3px;
+	padding: 0.25em 0;
+	width: 5.5em;
+	cursor: unset;
+}
+
+#gradient-button-panel .gradient-button::after {
+	position: absolute;
+	content: '';
+	top: 0;
+	left: 0;
+	height: calc(100% - var(--outer-width) * 2);
+	width: calc(100% - var(--outer-width) * 2);
+	border: var(--outer-width) solid var(--outer-color);
+	border-radius: 3px;
+}
+
+#gradient-button-panel .gradient-button:focus {
+	--outer-color: #a1c1f7;
+}
+
+#gradient-button-panel .gradient-button:hover,
+#gradient-button-panel .gradient-button:focus:hover {
+	--outer-color: #f5be5e;
+}
+
+#gradient-button-panel .gradient-button:active {
+	--inner-color: linear-gradient(to bottom,
+		hsl(24, 19%, 86%) 5%,
+		hsl(24, 33%, 85%) 10%,
+		hsl(24, 48%, 78%) 90%,
+		hsl(26, 24%, 66%) 95%);
+}
+
+
+
+#glossy-button-panel {
+	background-color: #f1f1f1;
+}
+
+#glossy-button-panel .glossy-button {
+	position: relative;
+	font-family: sans-serif;
+	background: linear-gradient(#f8f8f8, #e7e7e7 50%, #d4d4d4 50%, #c5c5c5);
+	border: 1px solid #fafafa;
+	outline: 1px solid #929292;
+	border-radius: 3px;
+	padding: 0.15em 0;
+	width: 5.75em;
+	cursor: unset;
+	transition: filter 0.3s, border-color 0.3s;
+}
+
+#glossy-button-panel .glossy-button:focus,
+#glossy-button-panel .glossy-button:hover {
+	background: linear-gradient(#f4f8fb, #d6e7f1 50%, #bedcf1 50%, #97c3e2);
+}
+
+#glossy-button-panel .glossy-button:focus {
+	border-color: #2dceff;
+}
+
+#glossy-button-panel .glossy-button:focus:hover {
+	border-color: #f3f3f3;
+}
+
+#glossy-button-panel .glossy-button:active {
+	filter: brightness(88%);
 }

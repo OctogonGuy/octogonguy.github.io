@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chocolate Tycoon</title>
-  <!--<link rel="stylesheet" href="stylesheets/main.css">-->
+  <link rel="stylesheet" href="stylesheets/main.css">
   <link rel="stylesheet" href="stylesheets/chocolate-tycoon.css">
 </head>
 <body>
@@ -17,112 +17,115 @@
       <!-- Remaining buttons are upgrades -->
       <!-- Nested buttons appear after parent upgrade is bought -->
       <div id="assets">
-        <label for="cash">Cash</label>
-        <input type="text" id="cash" disabled >
+        <h2 class="heading">Your Business</h2>
+        <div>
+          <label for="cash">Cash</label>
+          <input type="text" id="cash" disabled >
+        </div>
       </div>
       <div id="factories">
         <div id="milk-chocolate" class="factory">
-          <h2 class="heading">Milk Chocolate Factory</h2>
+          <h3 class="heading">Milk Chocolate Factory</h2>
           <div class="production hidden">
             <label for="inventory">Inventory</label>
             <input type="text" id="inventory" disabled >
             <button class="sell-button">Sell</button>
           </div>
           <div class="buy-buttons">
-            <button class="build-button" data-cost="0" data-initial-profit="5" data-initial-delay="2000" data-initial-storage="4">Build Milk Chocolate Factory</button>
+            <button class="build-button" data-cost="0" data-initial-profit="10" data-initial-delay="2000" data-initial-storage="4">Build Milk Chocolate Factory</button>
             <div class="upgrades">
               <div class="upgrade-line">
-                <button data-cost="50" data-quantity="1">Add second conveyor belt</button>
-                <button data-cost="250" data-quantity="1">Add third conveyor belt</button>
-                <button data-cost="1000" data-quantity="1">Add fourth conveyor belt</button>
+                <button data-cost="45" data-quantity="1">Add second conveyor belt</button>
+                <button data-cost="270" data-quantity="1">Add third conveyor belt</button>
+                <button data-cost="2110" data-quantity="1">Add fourth conveyor belt</button>
+                <button data-cost="8700" data-quantity="1">Add fifth conveyor belt</button>
               </div>
               <div class="upgrade-line">
-                <button data-cost="25" data-storage="8">Buy extra shelves</button>
-                <button data-cost="100" data-storage="26">Buy storage room</button>
-                <button data-cost="400" data-storage="94">Expand storage room</button>
-                <button data-cost="1600" data-storage="460">Buy warehouse</button>
-                <button data-cost="6400" data-storage="2400">Expand warehouse</button>
+                <button data-cost="65" data-storage="10">Buy extra shelves</button>
+                <button data-cost="125" data-storage="28">Buy storage room</button>
+                <button data-cost="580" data-storage="62">Expand storage room</button>
+                <button data-cost="1240" data-storage="146">Buy warehouse</button>
+                <button data-cost="13000" data-storage="400">Expand warehouse</button>
+                <button data-cost="628000" data-storage="1500">Use criollo beans</button>
               </div>
               <div class="upgrade-line">
-                <button data-cost="60" data-speed="1.587">Increase conveyor belt speed</button>
-                <button data-cost="300" data-speed="1.587">Optimize production systems</button>
-                <button data-cost="1200" data-speed="1.587">Buy robotic mover arm</button>
+                <button data-cost="55" data-speed="1.5">Increase conveyor belt speed</button>
+                <button data-cost="490" data-speed="1.778">Optimize production systems</button>
+                <button data-cost="6260" data-speed="1.875">Buy robotic mover arm</button>
               </div>
-              <button data-cost="150" data-multiplier="1.5">Buy candy thermometer</button>
-              <button data-cost="450" data-multiplier="1.2">Add criollo beans</button>
-              <button data-cost="1000" data-profit="5">Design wrapper</button>
-              <button data-cost="2000" data-profit="20">Start manufacturing Smickers Bars</button>
-              <button data-cost="22000" data-profit="20">Start manufacturing chocolate chips</button>
+              <button data-cost="5290" data-multiplier="1.5">Buy candy thermometer</button>
+              <button data-cost="2580" data-profit="5">Design wrapper</button>
+              <button data-cost="16900" data-profit="35">Manufacture chocolate chips</button>
             </div>
           </div>
         </div>
         <div id="dark-chocolate" class="factory">
-          <h2 class="heading">Dark Chocolate Factory</h2>
+          <h3 class="heading">Dark Chocolate Factory</h2>
           <div class="production hidden">
             <label for="inventory">Inventory</label>
             <input type="text" id="inventory" disabled >
             <button class="sell-button">Sell</button>
           </div>
           <div class="buy-buttons">
-            <button class="build-button" data-cost="550" data-initial-profit="10" data-initial-delay="1800" data-initial-storage="4">Build Dark Chocolate Factory</button>
+            <button class="build-button" data-cost="250" data-initial-profit="14.25" data-initial-delay="1900" data-initial-storage="4">Build Dark Chocolate Factory</button>
             <div class="upgrades">
               <div class="upgrade-line">
-                <button data-cost="1100" data-quantity="1">Add second conveyor belt</button>
-                <button data-cost="5200" data-quantity="1">Add third conveyor belt</button>
-                <button data-cost="23000" data-quantity="1">Add fourth conveyor belt</button>
+                <button data-cost="410" data-quantity="1">Add second conveyor belt</button>
+                <button data-cost="1700" data-quantity="1">Add third conveyor belt</button>
+                <button data-cost="10000" data-quantity="1">Add fourth conveyor belt</button>
+                <button data-cost="39300" data-quantity="1">Add fifth conveyor belt</button>
+                <button data-cost="928000" data-quantity="3">Use forastero beans</button>
               </div>
               <div class="upgrade-line">
-                <button data-cost="250" data-storage="8">Buy extra shelves</button>
-                <button data-cost="500" data-storage="26">Buy storage room</button>
-                <button data-cost="1000" data-storage="94">Expand storage room</button>
-                <button data-cost="4000" data-storage="460">Buy warehouse</button>
-                <button data-cost="16000" data-storage="2400">Expand warehouse</button>
+                <button data-cost="100" data-storage="10">Buy extra shelves</button>
+                <button data-cost="310" data-storage="28">Buy storage room</button>
+                <button data-cost="1000" data-storage="62">Expand storage room</button>
+                <button data-cost="7600" data-storage="146">Buy warehouse</button>
+                <button data-cost="57900" data-storage="400">Expand warehouse</button>
               </div>
               <div class="upgrade-line">
-                <button data-cost="1000" data-speed="1.616">Optimize production systems</button>
-                <button data-cost="5000" data-speed="1.616">Upgrade sanitization analyzer</button>
-                <button data-cost="20000" data-speed="1.616">Buy robotic mover arm</button>
+                <button data-cost="390" data-speed="1.52">Optimize production systems</button>
+                <button data-cost="2500" data-speed="1.754">Upgrade sanitization analyzer</button>
+                <button data-cost="22800" data-speed="1.9">Buy robotic mover arm</button>
               </div>
-              <button data-cost="2500" data-multiplier="1.75">Buy starch mogul</button>
-              <button data-cost="4500" data-multiplier="1.2">Add forastero beans</button>
-              <button data-cost="2000" data-profit="5">Start manufacturing cream-filled variety</button>
-              <button data-cost="40000" data-profit="27.5">Start manufacturing Venus Bars</button>
-              <button data-cost="37500" data-profit="25">Start manufacturing chocolate cubes</button>
+              <button data-cost="5000" data-multiplier="1.75">Buy starch mogul</button>
+              <button data-cost="3000" data-profit="5">Manufacture cream-filled variety</button>
+              <button data-cost="12000" data-profit="37.5">Manufacture chocolate cubes</button>
             </div>
           </div>
         </div>
         <div id="white-chocolate" class="factory">
-          <h2 class="heading">White Chocolate Factory</h2>
+          <h3 class="heading">White Chocolate Factory</h2>
           <div class="production hidden">
             <label for="inventory">Inventory</label>
             <input type="text" id="inventory" disabled >
             <button class="sell-button">Sell</button>
           </div>
           <div class="buy-buttons">
-            <button class="build-button" data-cost="15000" data-initial-profit="20" data-initial-delay="1700" data-initial-storage="4">Build White Chocolate Factory</button>
+            <button class="build-button" data-cost="800" data-initial-profit="18" data-initial-delay="1800" data-initial-storage="4">Build White Chocolate Factory</button>
             <div class="upgrades">
               <div class="upgrade-line">
-                <button data-cost="16000" data-quantity="1">Add second conveyor belt</button>
-                <button data-cost="80000" data-quantity="1">Add third conveyor belt</button>
-                <button data-cost="400000" data-quantity="1">Add fourth conveyor belt</button>
+                <button data-cost="1590" data-quantity="1">Add second conveyor belt</button>
+                <button data-cost="8500" data-quantity="1">Add third conveyor belt</button>
+                <button data-cost="44700" data-quantity="1">Add fourth conveyor belt</button>
+                <button data-cost="100000" data-quantity="1">Add fifth conveyor belt</button>
               </div>
               <div class="upgrade-line">
-                <button data-cost="2500" data-storage="8">Buy extra shelves</button>
-                <button data-cost="10000" data-storage="26">Buy storage room</button>
-                <button data-cost="20000" data-storage="94">Expand storage room</button>
-                <button data-cost="80000" data-storage="460">Buy warehouse</button>
-                <button data-cost="320000" data-storage="2400">Expand warehouse</button>
+                <button data-cost="690" data-storage="10">Buy extra shelves</button>
+                <button data-cost="1930" data-storage="28">Buy storage room</button>
+                <button data-cost="2400" data-storage="62">Expand storage room</button>
+                <button data-cost="6260" data-storage="146">Buy warehouse</button>
+                <button data-cost="13000" data-storage="400">Expand warehouse</button>
               </div>
               <div class="upgrade-line">
-                <button data-cost="16000" data-speed="1.651">Upgrade sanitization analyzer</button>
-                <button data-cost="80000" data-speed="1.651">Increase conveyor belt speed</button>
-                <button data-cost="400000" data-speed="1.651">Buy robotic mover arm</button>
+                <button data-cost="1650" data-speed="1.5">Upgrade sanitization analyzer</button>
+                <button data-cost="12900" data-speed="1.8">Increase conveyor belt speed</button>
+                <button data-cost="50910" data-speed="1.91">Buy robotic mover arm</button>
+                <button data-cost="1000000" data-speed="1.333">Use trinitario beans</button>
               </div>
-              <button data-cost="100000" data-multiplier="2">Buy chocolate enrober</button>
-              <button data-cost="45000" data-multiplier="1.2">Add trinitario beans</button>
-              <button data-cost="25000" data-profit="5">Start producing hot drink mix</button>
-              <button data-cost="1000000" data-profit="23.75">Start manufacturing Hursley's Osculations</button>
-              <button data-cost="500000" data-profit="28.75">Start manufacturing pistoles</button>
+              <button data-cost="65940" data-multiplier="2">Buy chocolate enrober</button>
+              <button data-cost="3400" data-profit="5">Produce hot drink mix</button>
+              <button data-cost="86750" data-profit="40">Manufacture pistoles</button>
             </div>
           </div>
         </div>
@@ -132,7 +135,7 @@
 
   <footer></footer>
 
-  <!--<script src="scripts/main.js"></script>-->
+  <script src="scripts/main.js"></script>
   <script src="scripts/chocolate-tycoon.js"></script>
 </body>
 </html>

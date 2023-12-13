@@ -5,6 +5,7 @@ let cash = 0;   // Current money
 let startedProduction = false;  // Whether player has started
 let factories = []; // Built factories
 let buyables = [];  // Factories and upgrades that can be bought
+let buyableButtons = [] // Buttons for buyables
 
 
 
@@ -125,16 +126,188 @@ class Upgrade {
 
 for (const factoryDiv of document.querySelector("#game").querySelectorAll(".factory")) {
     const factory = new Factory(factoryDiv.id);
+    const buildButton = factoryDiv.querySelector(".build-button");
+    buyableButtons.push(buildButton);
     for (const upgradeButton of factoryDiv.querySelectorAll(".upgrades > button")) {
         new Upgrade(factory, upgradeButton);
+        buyableButtons.push(upgradeButton);
     }
     for (const upgradeLine of factoryDiv.querySelectorAll(".upgrades > .upgrade-line")) {
         let upgradeLineArr = [];
         for (const upgradeButton of upgradeLine.querySelectorAll("button")) {
             new Upgrade(factory, upgradeButton, upgradeLineArr);
+            buyableButtons.push(upgradeButton);
         }
     }
 }
+
+// Add text indicating price and result
+for (const button of buyableButtons) {
+    const name = button.textContent;
+    const cost = parseInt(button.dataset.cost);
+    const profit =  button.dataset.profit != null ? parseInt(button.dataset.profit) : undefined;
+    const multiplier = button.dataset.multiplier != null ? parseFloat(button.dataset.multiplier): undefined;
+    const quantity = button.dataset.quantity != null ? parseInt(button.dataset.quantity) : undefined;
+    const speed = button.dataset.speed != null ? parseFloat(button.dataset.speed) : undefined;
+    const storage = button.dataset.storage != null ? parseFloat(button.dataset.storage) : undefined;
+
+    let text = "";
+    text += name;
+        
+    if (profit != undefined) text += ` (+${profit} profit)`;
+    if (multiplier != undefined) text += ` (x${multiplier.toFixed(1)} profit)`;
+    if (quantity != undefined) text += ` (+${quantity} quantity)`;
+    if (speed != undefined) text += ` (x${speed.toFixed(1)} speed)`;
+    if (storage != undefined) text += ` (${storage.toLocaleString("en-US")} capacity)`;
+
+    if (cost == 0) {
+        text += " (Free)";
+    }
+    else {
+        text += ` (${cost.toLocaleString("en-US", {style:"currency", currency:"USD", maximumFractionDigits:0})})`;
+    }
+
+    button.textContent = text;
+}
+
+
+
+// --- Logging ---
+
+function getStartingSpeed(factory) {
+    const speed = (factory.profit * factory.quantity * factory.multiplier) / (factory.delay / 1000);
+    return speed;
+}
+
+function getFullSpeed(factory) {
+    let profit = factory.profit;
+    let quantity = factory.quantity;
+    let multiplier = factory.multiplier;
+    let delay = factory.delay;
+
+    for (const buyable of buyables) if (buyable instanceof Upgrade && buyable.factory === factory) { const upgrade = buyable;
+        if (upgrade.profit != undefined) profit += upgrade.profit;
+        if (upgrade.quantity != undefined) quantity += upgrade.quantity;
+        if (upgrade.multiplier != undefined) multiplier *= upgrade.multiplier;
+        if (upgrade.speed != undefined) delay /= upgrade.speed;
+    }
+
+    const speed = (profit * quantity * multiplier) / (delay / 1000);
+    return speed;
+}
+
+function getTotalCost(factory) {
+    let totalCost = 0;
+
+    totalCost += factory.cost;
+
+    for (const buyable of buyables) if (buyable instanceof Upgrade && buyable.factory == factory) { const upgrade = buyable;
+        totalCost += upgrade.cost;
+    }
+
+    return totalCost;
+}
+
+function getEstimatedCompletionTime() {
+    let completionTime = 0;
+    const tempFactories = [];
+    const factoryDict = {};
+    let cheapestFactory;
+    let lowestCost = Number.MAX_VALUE;
+    for (const buyable of buyables) if (buyable instanceof Factory) { const factory = buyable;
+        tempFactories.push(factory);
+        const factoryFields = {
+            "profit": factory.profit,
+            "quantity": factory.quantity,
+            "multiplier": factory.multiplier,
+            "delay": factory.delay
+        };
+        factoryDict[factory.id] = factoryFields;
+        if (factory.cost < lowestCost) {
+            lowestCost = factory.cost;
+            cheapestFactory = factory;
+        }
+    }
+    const initialRate = getStartingSpeed(cheapestFactory);
+    let curRate = initialRate;
+    let tempBuyables = [];
+    for (const buyable of buyables) {
+        tempBuyables.push(buyable);
+    }
+    const numBuyables = tempBuyables.length;
+    const builtFactories = [];
+
+    while (tempBuyables.length > 0) {
+        // Get cheapest buyable
+        let cheapestBuyable;
+        let lowestCost = Number.MAX_VALUE;
+        for (const buyable of tempBuyables) {
+            if (buyable.cost < lowestCost && !(buyable instanceof Upgrade && builtFactories.indexOf(buyable.factory) == -1)) {
+                lowestCost = buyable.cost;
+                cheapestBuyable = buyable;
+            }
+        }
+
+        // Get factory of buyable
+        const factory = cheapestBuyable instanceof Upgrade ? cheapestBuyable.factory : cheapestBuyable;
+        const buyableNum = numBuyables - tempBuyables.length;
+        const timeToGetCheapestBuyable = lowestCost / curRate;
+        completionTime += timeToGetCheapestBuyable;
+
+        let color;
+        if (factory.id == "milk-chocolate") {
+            color = "chocolate"
+        } else if (factory.id == "dark-chocolate") {
+            color = "saddlebrown"
+        } else if (factory.id == "white-chocolate") {
+            color = "navajowhite";
+        }
+
+        console.log(`%c\t\tBuyable ${buyableNum + 1}:
+            \t${cheapestBuyable instanceof Upgrade ? cheapestBuyable.factory.id : cheapestBuyable.id}
+            \t${cheapestBuyable.button.textContent}
+            \t${timeToGetCheapestBuyable.toFixed(1)} seconds`,
+            `color:${color}`);
+
+        if (cheapestBuyable instanceof Upgrade) {
+            const upgrade = cheapestBuyable;
+            if (upgrade.profit != undefined) factoryDict[factory.id]["profit"] += upgrade.profit;
+            if (upgrade.quantity != undefined) factoryDict[factory.id]["quantity"] += upgrade.quantity;
+            if (upgrade.multiplier != undefined) factoryDict[factory.id]["multiplier"] *= upgrade.multiplier;
+            if (upgrade.speed != undefined) factoryDict[factory.id]["delay"] /= upgrade.speed;
+        }
+        else {
+            builtFactories.push(cheapestBuyable);
+        }
+        curRate = 0;
+        for (const factory of builtFactories) {
+            curRate += (factoryDict[factory.id]["profit"] * factoryDict[factory.id]["quantity"] * factoryDict[factory.id]["multiplier"]) / (factoryDict[factory.id]["delay"] / 1000);
+        }
+
+        tempBuyables.splice(tempBuyables.indexOf(cheapestBuyable), 1);
+    }
+
+    return completionTime;
+}
+
+function logStats() {
+    console.log("Stats");
+    for (const buyable of buyables) if (buyable instanceof Factory) { const factory = buyable;
+        console.log(`\t${factory.id}`);
+
+        console.log("\t\tStarting Speed");
+        console.log(`\t\t\t${getStartingSpeed(factory).toFixed(1)} money/second`);
+
+        console.log("\t\tFull Speed");
+        console.log(`\t\t\t${getFullSpeed(factory).toFixed(1)} money/second`);
+
+        console.log("\t\tTotal Cost");
+        console.log(`\t\t\t${Math.round(getTotalCost(factory)).toLocaleString("en-US", {style:"currency", currency:"USD", maximumFractionDigits:0})}`);
+    }
+    console.log("\tEstimated time to complete");
+    console.log(`\t\tTotal:\t\t${Math.round(getEstimatedCompletionTime() / 60)} minutes`);
+}
+
 
 
 
@@ -149,7 +322,7 @@ function updateUI() {
 
 // Update money display
 function updateCash() {
-    document.querySelector("#cash").value = "$" + Math.round(cash);
+    document.querySelector("#cash").value = Math.round(cash).toLocaleString("en-US", {style:"currency", currency:"USD", maximumFractionDigits:0});
 }
 
 // Update inventory display
@@ -184,3 +357,4 @@ function updateButtonsDisabled() {
 
 // --- Initial things to do ---
 updateUI();
+logStats();
