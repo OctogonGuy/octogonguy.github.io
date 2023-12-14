@@ -357,4 +357,4 @@ function updateButtonsDisabled() {
 
 // --- Initial things to do ---
 updateUI();
-logStats();
+//logStats();
