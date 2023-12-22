@@ -385,6 +385,13 @@ $("#countdown-button").addEventListener("click", () => {
     const holidayName = $("#holiday-select").options[$("#holiday-select").selectedIndex].textContent;
     const today = new Date();
     const holiday = new Date($("#holiday-date").value);
+
+    // Input validation
+    let isValid = !Number.isNaN(holiday.getTime());
+    if (!isValid) {
+        return;
+    }
+
     const timeLeft = holiday.getTime() - today.getTime();
     const msPerDay = 24 * 60 * 60 * 1000;
     const daysLeft = Math.ceil(timeLeft / msPerDay);
@@ -413,8 +420,30 @@ $("#convert-button").addEventListener("click", () => {
     const fromSelect = $("#from-currency-select");
     const fromInput = $("#currency-input");
     const toSelect = $("#to-currency-select");
-    const currency = toSelect.options[toSelect.selectedIndex].textContent;
-    $("#currency-output").value = convertCurrency(currency, parseFloat(fromInput.value), parseFloat(fromSelect.value), parseFloat(toSelect.value));
+    
+    const fromAmount = parseFloat(fromInput.value);
+    const fromCurrency = parseFloat(fromSelect.value);
+    const toCurrency = parseFloat(toSelect.value);
+
+    // Input validation
+    let isValid = true;
+    if (fromCurrency)
+    if (isNaN(fromAmount)) {
+        isValid = false;
+        $("#convert-button").nextElementSibling.style.visibility = "visible";
+    }
+    else if (isNaN(fromCurrency) || isNaN(toCurrency)) {
+        isValid = false;
+        $("#convert-button").nextElementSibling.style.visibility = "hidden";
+    }
+    else {
+        $("#convert-button").nextElementSibling.style.visibility = "hidden";
+    }
+
+    if (isValid) {
+        const currency = toSelect.options[toSelect.selectedIndex].textContent;
+        $("#currency-output").value = convertCurrency(currency, fromAmount, fromCurrency, toCurrency);
+    }
 });
 for (const listOption of $("#currencies").children) {
     let option = document.createElement("option");
@@ -427,3 +456,66 @@ for (const listOption of $("#currencies").children) {
     option.value = listOption.value;
     $("#to-currency-select").appendChild(option);
 }
+
+
+
+// --- Cookie jar ---
+function setCookie(name, value, hours) {
+    let cookie = name + "=" + encodeURIComponent(value);
+    if (hours) {
+        cookie += "; max-age=" + hours * 60 * 60;
+    }
+    cookie += "; path=/";
+    document.cookie = cookie;
+}
+function getCookie(name) {
+    const cookies = document.cookie;
+    let start = cookies.indexOf(name + "=");
+    if (start === -1) {
+        return "";
+    }
+    else {
+        start = start + (name.length + 1);
+        let end = cookies.indexOf(";", start);
+        if (end === -1) {
+            end = cookies.length;
+        }
+        const cookieValue = cookies.substring(start, end);
+        return decodeURIComponent(cookieValue);
+    }
+}
+function getCookieHours(name) {
+    const cookies = document.cookie;
+    let start = cookies.indexOf(name + "; max-age=");
+    if (start === -1) {
+        return "";
+    }
+    else {
+        start = start + (name.length + 1);
+        let end = cookies.indexOf(";", start);
+        if (end === -1) {
+            end = cookies.length;
+        }
+        const cookieHours = cookies.substring(start, end);
+        return decodeURIComponent(cookieHours);
+    }
+}
+
+const cookieJars = $("#cookie-jars").querySelectorAll("pre");
+const cookieJarCache = [];
+for (const cookieJar of cookieJars) {
+    cookieJarCache[cookieJarCache.length] = cookieJar.textContent;
+}
+let cookieIndex = getCookie("cookie") ? parseInt(getCookie("cookie")) : 0;
+let hoursLeft = getCookie("cookie") ? parseInt(getCookieHours("cookie")) : 24;
+$("#cookie-jar").textContent = cookieJarCache[cookieIndex];
+function removeCookie() {
+    if (cookieIndex >= cookieJarCache.length - 1) return;
+    $("#cookie-jar").textContent = cookieJarCache[++cookieIndex];
+    setCookie("cookies", cookieIndex, hoursLeft);
+    if (cookieIndex >= cookieJarCache.length - 1) {
+        $("label[for=\"remove-cookie-button\"]").textContent = "You ate all the cookies! The cookie jar will be replenished in " + hoursLeft + " hours.";
+        $("#remove-cookie-button").hidden = true;
+    }
+}
+$("#remove-cookie-button").addEventListener("click", removeCookie);

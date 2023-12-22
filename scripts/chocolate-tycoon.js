@@ -318,6 +318,7 @@ function updateUI() {
     updateCash();
     updateInventory();
     updateButtonsDisabled();
+    if (buyables.length == 0) showCompletionMessage();
 }
 
 // Update money display
@@ -351,6 +352,11 @@ function updateButtonsDisabled() {
             buyable.button.disabled = true;
         }
     }
+}
+
+// Show a message if the player bought all of the factories and upgrades
+function showCompletionMessage() {
+    document.querySelector("#completion-message").textContent = "Congratulations! You monopolized the chocolate industry!";
 }
 
 
