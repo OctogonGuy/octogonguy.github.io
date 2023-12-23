@@ -465,7 +465,7 @@ function setCookie(name, value, hours) {
     if (hours) {
         cookie += "; max-age=" + hours * 60 * 60;
     }
-    cookie += "; path=/";
+    cookie += "; SameSite=Lax; path=/";
     document.cookie = cookie;
 }
 function getCookie(name) {
@@ -506,16 +506,20 @@ const cookieJarCache = [];
 for (const cookieJar of cookieJars) {
     cookieJarCache[cookieJarCache.length] = cookieJar.textContent;
 }
-let cookieIndex = getCookie("cookie") ? parseInt(getCookie("cookie")) : 0;
-let hoursLeft = getCookie("cookie") ? parseInt(getCookieHours("cookie")) : 24;
-$("#cookie-jar").textContent = cookieJarCache[cookieIndex];
+let cookieIndex = getCookie("cookies") ? parseInt(getCookie("cookies")) : 0;
+let hoursLeft = getCookieHours("cookies") ? parseInt(getCookieHours("cookies")) : 24;
 function removeCookie() {
     if (cookieIndex >= cookieJarCache.length - 1) return;
     $("#cookie-jar").textContent = cookieJarCache[++cookieIndex];
     setCookie("cookies", cookieIndex, hoursLeft);
+    updateCookieLabel();
+}
+function updateCookieLabel() {
     if (cookieIndex >= cookieJarCache.length - 1) {
         $("label[for=\"remove-cookie-button\"]").textContent = "You ate all the cookies! The cookie jar will be replenished in " + hoursLeft + " hours.";
         $("#remove-cookie-button").hidden = true;
     }
 }
+$("#cookie-jar").textContent = cookieJarCache[cookieIndex];
+updateCookieLabel();
 $("#remove-cookie-button").addEventListener("click", removeCookie);
