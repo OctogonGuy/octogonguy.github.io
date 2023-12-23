@@ -6,6 +6,13 @@ const $ = function(selector) {
 
 
 
+// --- Visit count ---
+const pageVisits = localStorage.getItem("visits") ? parseInt(localStorage.getItem("visits")) : 0;
+$("#visit-count").textContent = pageVisits;
+localStorage.setItem("visits", pageVisits + 1);
+
+
+
 // --- Alert button ---
 // Alert the user on click
 $("#alert-button").addEventListener("click", () => {
