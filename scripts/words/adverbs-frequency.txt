@@ -1,0 +1,12 @@
+constantly
+always
+occasionally
+regularly
+periodically
+frequently
+usually
+never
+sometimes
+generally
+seldom
+rarely
