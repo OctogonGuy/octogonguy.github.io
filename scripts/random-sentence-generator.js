@@ -1,5 +1,7 @@
 "use strict"
 
+// I used tools to translate my Java code to JavaScript, so this is very messy, but it works :)
+
 // --- PROPERTIES
 const properties = {
 "interjection": .09,

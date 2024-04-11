@@ -8,6 +8,10 @@ const CONSECUTIVE_MOVES_TILL_DRAW = 3;
 
 // --- Variables ---
 let curPlayer;
+let aiMoving = false;
+let ai = false;
+let firstPlayer = "random";
+let started = false;
 
 
 // --- Enums, etc. ---
@@ -102,46 +106,48 @@ function getOrdinalDirection(direction, orientation) {
 
 // Abstract animal class
 class Animal {
-    constructor(player, validDirections, imageFilename) {
+    constructor(player, validDirections, imageFilename=null) {
         this.player = player;
         this.orientation = (player == Player.TOP ? Orientation.DOWN : Orientation.UP);
         this.validDirections = validDirections;
         this.imageFilename = imageFilename;
 
-        this.pieceElement = document.createElement("img");
-        this.pieceElement.classList.add("piece")
-        this.pieceElement.src = this.imageFilename;
-        if (this.orientation == Orientation.DOWN) {
-            this.pieceElement.style.transform = "rotate(0.5turn)";
+        if (this.imageFilename != null) {
+            this.pieceElement = document.createElement("img");
+            this.pieceElement.classList.add("piece")
+            this.pieceElement.src = this.imageFilename;
+            if (this.orientation == Orientation.DOWN) {
+                this.pieceElement.style.transform = "rotate(0.5turn)";
+            }
         }
     }
-    getPosition() {
+    getPosition(grid) {
         for (let i = 0; i < ROWS; i++) {
             for (let j = 0; j < COLUMNS; j++) {
-                if (animalGrid[i][j] == this) {
+                if (grid[i][j] == this) {
                     return new Position(i, j);
                 }
             }
         }
         return null;
     }
-    getValidMovePositions() {
+    getValidMovePositions(grid) {
         let validMovePositions = [];
-        if (this.getPosition() != null) {
+        if (this.getPosition(grid) != null) {
             for (let direction of this.validDirections) {
                 let newPosChange = getOrdinalDirection(direction, this.orientation);
-                let newRow = this.getPosition().row + newPosChange.row;
-                let newCol = this.getPosition().col + newPosChange.col;
+                let newRow = this.getPosition(grid).row + newPosChange.row;
+                let newCol = this.getPosition(grid).col + newPosChange.col;
                 if (newRow < 0 || newRow >= ROWS) continue;
                 if (newCol < 0 || newCol >= COLUMNS) continue;
-                if (animalGrid[newRow][newCol] != null && animalGrid[newRow][newCol].player == this.player) continue;
+                if (grid[newRow][newCol] != null && grid[newRow][newCol].player == this.player) continue;
                 validMovePositions.push(new Position(newRow, newCol));
             }
         }
         else {
             for (let i = 0; i < ROWS; i++) {
                 for (let j = 0; j < COLUMNS; j++) {
-                    if (animalGrid[i][j] != null) continue;
+                    if (grid[i][j] != null) continue;
                     validMovePositions.push(new Position(i, j));
                 }
             }
@@ -151,11 +157,14 @@ class Animal {
     changePlayer(player) {
         this.player = player;
         this.orientation = (player == Player.TOP ? Orientation.DOWN : Orientation.UP);
-        if (this.orientation == Orientation.DOWN) {
-            this.pieceElement.style.transform = "rotate(0.5turn)";
-        }
-        else {
-            this.pieceElement.style.transform = "";
+
+        if (this.imageFilename != null) {
+            if (this.orientation == Orientation.DOWN) {
+                this.pieceElement.style.transform = "rotate(0.5turn)";
+            }
+            else {
+                this.pieceElement.style.transform = "";
+            }
         }
     }
 }
@@ -163,52 +172,74 @@ class Animal {
 
 // Animals
 class Lion extends Animal {
-    constructor(player) {
+    constructor(player, image=true) {
         super(player,
             [Direction.UP_LEFT, Direction.UP, Direction.UP_RIGHT,
                 Direction.LEFT, Direction.RIGHT,
                 Direction.DOWN_LEFT, Direction.DOWN, Direction.DOWN_RIGHT],
-                "images/dobutsu_shogi_lion.png");
+                !image ? null : "images/dobutsu_shogi_lion.png");
+    }
+    clone() {
+        return new Lion(this.player, false);
     }
 }
 class Elephant extends Animal {
-    constructor(player) {
+    constructor(player, image=true) {
         super(player,
             [Direction.UP_LEFT, Direction.UP_RIGHT,
                 Direction.DOWN_LEFT, Direction.DOWN_RIGHT],
-                "images/dobutsu_shogi_elephant.png");
+                !image ? null : "images/dobutsu_shogi_elephant.png");
+    }
+    clone() {
+        return new Elephant(this.player, false);
     }
 }
 class Giraffe extends Animal {
-    constructor(player) {
+    constructor(player, image=true) {
         super(player,
             [Direction.UP, Direction.LEFT,
                 Direction.RIGHT, Direction.DOWN],
-                "images/dobutsu_shogi_giraffe.png");
+                !image ? null : "images/dobutsu_shogi_giraffe.png");
+    }
+    clone() {
+        return new Giraffe(this.player, false);
     }
 }
 class Chick extends Animal {
-    constructor(player) {
+    constructor(player, image=true) {
         super(player,
             [Direction.UP],
-            "images/dobutsu_shogi_chick.png");
+            !image ? null : "images/dobutsu_shogi_chick.png");
         this.type = "chick";
     }
     promote() {
         if (this.type != "chick") return;
         this.validDirections =
             [Direction.UP_LEFT, Direction.UP, Direction.UP_RIGHT,
-            Direction.LEFT, Direction.RIGHT, Direction.DOWN],
-        this.imageFilename = "images/dobutsu_shogi_chicken.png";
-        this.pieceElement.src = this.imageFilename;
+            Direction.LEFT, Direction.RIGHT, Direction.DOWN];
+            
+        if (this.imageFilename != null) {
+            this.imageFilename = "images/dobutsu_shogi_chicken.png";
+            this.pieceElement.src = this.imageFilename;
+        }
         this.type = "chicken";
     }
     demote() {
         if (this.type != "chicken") return;
-        this.validDirections = [Direction.UP],
-        this.imageFilename = "images/dobutsu_shogi_chick.png";
-        this.pieceElement.src = this.imageFilename;
+        this.validDirections = [Direction.UP];
+
+        if (this.imageFilename != null) {
+            this.imageFilename = "images/dobutsu_shogi_chick.png";
+            this.pieceElement.src = this.imageFilename;
+        }
         this.type = "chick";
+    }
+    clone() {
+        let chick = new Chick(this.player, false);
+        if (this.type === "chicken") {
+            chick.promote();
+        }
+        return chick;
     }
 }
 
@@ -312,6 +343,7 @@ addEventListener("touchmove", evt => { actionMove(evt) });
 // Action helper functions
 // Down
 function actionStart(animal, event) {
+    if (aiMoving) return;
     let element = animal.pieceElement;
 
     // Only proceed if piece is of current player and game is not over
@@ -352,6 +384,7 @@ function actionRelease(animal) {
     draggingAnimal.pieceElement.style.position = "static";
     draggingAnimal.pieceElement.classList.remove("fromGrid");
     draggingAnimal.pieceElement.classList.remove("fromHand");
+    draggingParent.appendChild(draggingAnimal.pieceElement);
     for (let i = 0; i < ROWS; i++) {
         for (let j = 0; j < COLUMNS; j++) {
             if (hoveredSpace == spaceGrid[i][j] && isValidMove(draggingAnimal, new Position(i, j))) {
@@ -360,7 +393,6 @@ function actionRelease(animal) {
             }
         }
     }
-    draggingParent.appendChild(draggingAnimal.pieceElement);
 }
 // On mouse moved, do a couple things
 function actionMove(event) {
@@ -474,10 +506,24 @@ function start() {
     gridHistoryCounts = {};
     addToHistory(animalGrid);
     
-    // Pick random player to go first
-    let rand = Math.floor(Math.random()*Object.keys(Player).length);
-    curPlayer = Player[Object.keys(Player)[rand]];
+    // Pick player to go first
+    if (firstPlayer === "forest") {
+        curPlayer = Player.BOTTOM;
+    }
+    else if (firstPlayer === "sky") {
+        curPlayer = Player.TOP;
+    }
+    else {
+        let rand = Math.floor(Math.random()*Object.keys(Player).length);
+        curPlayer = Player[Object.keys(Player)[rand]];
+    }
     showMessage(curPlayer + "'s turn");
+    started = false;
+
+    // AI move
+    if (curPlayer === Player.TOP) {
+        aiMove();
+    }
 }
 
 
@@ -485,13 +531,14 @@ function start() {
 
 // Function to move animal
 function move(animal, toPosition) {
+    if (!started) started = true;
 
     let capturedAnimal = animalGrid[toPosition.row][toPosition.col];
     if (capturedAnimal != null && capturedAnimal.player == curPlayer) {
         capturedAnimal = null;
     }
 
-    const fromPosition = animal.getPosition();
+    const fromPosition = animal.getPosition(animalGrid);
 
     // Move animal on UI
     if (capturedAnimal != null) {
@@ -506,6 +553,7 @@ function move(animal, toPosition) {
     }
     else {
         animalGrid[fromPosition.row][fromPosition.col] = null;
+
         // Promote chick if possible
         promoteChick(animal);
     }
@@ -543,7 +591,7 @@ function move(animal, toPosition) {
 // Function to check if a move is valid
 function isValidMove(animal, toPosition) {
     let validMove = false;
-    for (let validMovePosition of animal.getValidMovePositions()) {
+    for (let validMovePosition of animal.getValidMovePositions(animalGrid)) {
         if (validMovePosition.row != toPosition.row) continue;
         if (validMovePosition.col != toPosition.col) continue;
         validMove = true;
@@ -557,14 +605,19 @@ function isValidMove(animal, toPosition) {
 function nextPlayer() {
     curPlayer = curPlayer == Player.TOP ? Player.BOTTOM : Player.TOP;
     showMessage(curPlayer + "'s turn");
+
+    // AI move
+    if (curPlayer === Player.TOP) {
+        aiMove();
+    }
 }
 
 
 // Function to check if a chick can be promoted and, if possible, promote it
 function promoteChick(animal) {
     if (animal == null || !(animal instanceof Chick && animal.type == "chick")) return false;
-    if (animal.getPosition() == null) return false;
-    if (!(animal.getPosition().row == (animal.player == Player.TOP ? ROWS - 1 : 0))) return false;
+    if (animal.getPosition(animalGrid) == null) return false;
+    if (!(animal.getPosition(animalGrid).row == (animal.player == Player.TOP ? ROWS - 1 : 0))) return false;
     
     animal.promote();
     return true;
@@ -574,7 +627,7 @@ function promoteChick(animal) {
 // Function to check if a chicken should be demoted and, if so, do it
 function demoteChicken(animal) {
     if (animal == null || !(animal instanceof Chick && animal.type == "chicken")) return false;
-    if (animal.getPosition() != null) return false;
+    if (animal.getPosition(animalGrid) != null) return false;
 
     animal.demote();
     return true;
@@ -623,14 +676,14 @@ function lionInLastRank() {
 // Whether the given lion is not in check
 function noCheck(lion) {
     for (let posChange of Object.values(OrdinalDirection)) {
-        let newRow = lion.getPosition().row + posChange.row;
-        let newCol = lion.getPosition().col + posChange.col;
+        let newRow = lion.getPosition(animalGrid).row + posChange.row;
+        let newCol = lion.getPosition(animalGrid).col + posChange.col;
         if (newRow < 0 || newRow >= ROWS) continue;
         if (newCol < 0 || newCol >= COLUMNS) continue;
         if (animalGrid[newRow][newCol] != null && animalGrid[newRow][newCol].player != lion.player) {
-            for (let position of animalGrid[newRow][newCol].getValidMovePositions()) {
-                if (position.row != lion.getPosition().row) continue;
-                if (position.col != lion.getPosition().col) continue;
+            for (let position of animalGrid[newRow][newCol].getValidMovePositions(animalGrid)) {
+                if (position.row != lion.getPosition(animalGrid).row) continue;
+                if (position.col != lion.getPosition(animalGrid).col) continue;
                 return false;
             }
         }
@@ -690,6 +743,549 @@ function showGameOverMessage(winner) {
 }
 
 
+class Game {
+    constructor(grid, hands, curPlayer) {
+        this.animalGrid = new Array(ROWS);
+        for (let i = 0; i < ROWS; i++) {
+            let columns = new Array(COLUMNS)
+            for (let j = 0; j < COLUMNS; j++) {
+                if (grid[i][j] != null && grid[i][j] != undefined) {
+                    columns[j] = grid[i][j].clone();
+                }
+                else {
+                    columns[j] = null;
+                }
+            }
+            this.animalGrid[i] = columns;
+        }
+
+        this.hands = {
+            [Player.TOP]: [],
+            [Player.BOTTOM]: []
+        }
+        for (let i = 0; i < hands[Player.TOP].length; i++) {
+            this.hands[Player.TOP].push(hands[Player.TOP][i].clone());
+        }
+        for (let i = 0; i < hands[Player.BOTTOM].length; i++) {
+            this.hands[Player.BOTTOM].push(hands[Player.BOTTOM][i].clone());
+        }
+
+        this.animals = [];
+        for (let i = 0; i < ROWS; i++) {
+            for (let j = 0; j < COLUMNS; j++) {
+                if (this.animalGrid[i][j] != null) {
+                    this.animals.push(this.animalGrid[i][j]);
+                }
+            }
+        }
+        for (let i = 0; i < this.hands[Player.TOP].length; i++) {
+            this.animals.push(this.hands[Player.TOP][i]);
+        }
+        for (let i = 0; i < this.hands[Player.BOTTOM].length; i++) {
+            this.animals.push(this.hands[Player.BOTTOM][i]);
+        }
+
+        this.gridHistory = [];
+        this.handHistory = [];
+
+        this.curPlayer = curPlayer;
+    }
+
+    addToHistory(grid) {
+        // Make a copy of the grid
+        const gridCopy = new Array(ROWS);
+        for (let i = 0; i < ROWS; i++) {
+            gridCopy[i] = new Array(COLUMNS);
+        }
+        for (let i = 0; i < ROWS; i++) {
+            for (let j = 0; j < COLUMNS; j++) {
+                if (grid[i][j] != null)
+                    gridCopy[i][j] = grid[i][j].clone();
+                else {
+                    gridCopy[i][j] = null;
+                }
+            }
+        }
+        // Push to grid history
+        this.gridHistory.push(gridCopy);
+        // Make a copy of the hands
+        const handsCopy = {
+            [Player.TOP]: [],
+            [Player.BOTTOM]: []
+        }
+        for (let i = 0; i < hands[Player.TOP.length]; i++) {
+            handsCopy[Player.TOP].push(this.hands[Player.TOP][i].clone());
+        }
+        for (let i = 0; i < hands[Player.BOTTOM.length]; i++) {
+            handsCopy[Player.BOTTOM].push(this.hands[Player.BOTTOM][i].clone());
+        }
+        // Push to grid history
+        this.handHistory.push(handsCopy);
+        // Pop from grid history if max has been reached
+        //if (this.gridHistory.length > CONSECUTIVE_MOVES_TILL_DRAW * Object.keys(Player).length * 2) {
+        //    this.gridHistory.pop();
+        //}
+        // Check number of duplicates
+        //this.gridHistoryCounts = {};
+        //for (const hisGrid of gridHistory) {
+        //    gridHistoryCounts[hisGrid] = gridHistoryCounts[hisGrid] ? gridHistoryCounts[hisGrid] + 1 : 1;
+        //}
+    }
+
+
+    numPieces(player) {
+        let numPieces = 0;
+        for (const animal of this.animals) {
+            if (animal.player === player) {
+                if (animal instanceof Lion)
+                    numPieces += 100;
+                else if (animal instanceof Chick && animal.type === "chicken")
+                    numPieces += 18;
+                else if (animal instanceof Chick)
+                    numPieces += 3;
+                else if (animal instanceof Giraffe)
+                    numPieces += 12;
+                else if (animal instanceof Elephant)
+                    numPieces += 12;
+            }
+        }
+        return numPieces;
+    }
+
+
+    validMoves(player) {
+        let validMoves = [];
+        for (const animal of this.animals) {
+            if (animal.player === player) {
+                for (const move of animal.getValidMovePositions(this.animalGrid)) {
+                    validMoves.push([animal, move]);
+                }
+            }
+        }
+        return validMoves;
+    }
+
+
+    // Function to check if a move is valid
+    isValidMove(animal, toPosition) {
+        let validMove = false;
+        for (let validMovePosition of animal.getValidMovePositions(this.animalGrid)) {
+            if (validMovePosition.row != toPosition.row) continue;
+            if (validMovePosition.col != toPosition.col) continue;
+            validMove = true;
+            break;
+        }
+        return validMove;
+    }
+    
+
+    // Function to move animal
+    move(fromPosition, toPosition) {
+
+        let capturedAnimal = this.animalGrid[toPosition.row][toPosition.col];
+        if (capturedAnimal != null && capturedAnimal.player == this.curPlayer) {
+            capturedAnimal = null;
+        }
+
+        let animal;
+
+        // Move animal on animal grid
+        if (!(fromPosition instanceof Position)) {
+            animal = this.hands[this.curPlayer][fromPosition];
+        }
+        else {
+            animal = this.animalGrid[fromPosition.row][fromPosition.col];
+        }
+        if (!(fromPosition instanceof Position)) {
+            this.hands[this.curPlayer].splice(fromPosition, 1);
+        }
+        else {
+            this.animalGrid[fromPosition.row][fromPosition.col] = null;
+            // Promote chick if possible
+            this.promoteChick(animal);
+        }
+        this.animalGrid[toPosition.row][toPosition.col] = animal;
+
+        // Move captured animal to hand if applicable
+        if (capturedAnimal != null) {
+
+            // Demote chicken
+            this.demoteChicken(capturedAnimal);
+
+            capturedAnimal.changePlayer(this.curPlayer);
+            this.hands[this.curPlayer].push(capturedAnimal);
+        }
+        
+        // Move to next player
+        this.nextPlayer();
+    }
+
+
+    undoMove() {
+
+        this.animalGrid = this.gridHistory.pop();
+        this.hands = this.handHistory.pop();
+        
+        // Move to next player
+        this.nextPlayer();
+    }
+
+    
+    // Function to go to next player
+    nextPlayer() {
+        this.curPlayer = this.curPlayer == Player.TOP ? Player.BOTTOM : Player.TOP;
+    }
+    
+    
+    // Function to check if a chick can be promoted and, if possible, promote it
+    promoteChick(animal) {
+        if (animal == null || !(animal instanceof Chick && animal.type == "chick")) return false;
+        if (animal.getPosition(this.animalGrid) == null) return false;
+        if (!(animal.getPosition(this.animalGrid).row == (animal.player == Player.TOP ? ROWS - 1 : 0))) return false;
+        
+        animal.promote();
+        return true;
+    }
+    
+    
+    // Function to check if a chicken should be demoted and, if so, do it
+    demoteChicken(animal) {
+        if (animal == null || !(animal instanceof Chick && animal.type == "chicken")) return false;
+        if (animal.getPosition(this.animalGrid) != null) return false;
+    
+        animal.demote();
+        return true;
+    }
+
+    /*
+    lionInCheck(player) {
+        let lion;
+        for (const animal of this.animals) {
+            if (animal instanceof Lion && animal.player === player) {
+                lion = animal;
+                break;
+            }
+        }
+        if (lion == null) return false;
+        for (const animal of this.animals) {
+            if (animal.player !== player) {
+                for (const move of animal.getValidMovePositions(this.animalGrid)) {
+                    if (move === lion.getPosition(this.animalGrid)) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+    */
+    
+    
+    // Function to check if a lion has been captured. If found, returns the player who captured it. If
+    // not found, returns null
+    capturedLion() {
+        let foundLion = null;
+        for (let i = 0; i < ROWS; i++) {
+            for (let j = 0; j < COLUMNS; j++) {
+                if (this.animalGrid[i][j] instanceof Lion) {
+                    if (foundLion != null) {
+                        return null;
+                    }
+                    else {
+                        foundLion = this.animalGrid[i][j];
+                    }
+                }
+            }
+        }
+        return foundLion;
+    }
+    
+    
+    // Function to check if a lion has made it to the furthest rank. Returns the lion who made it or
+    // null if not the case
+    lionInLastRank() {
+        let row = 0;
+        for (let col = 0; col < COLUMNS; col++) {
+            if (this.animalGrid[row][col] instanceof Lion && this.animalGrid[row][col].player === Player.BOTTOM) {
+                return this.animalGrid[row][col];
+            }
+        }
+        row = ROWS - 1;
+        for (let col = 0; col < COLUMNS; col++) {
+            if (this.animalGrid[row][col] instanceof Lion && this.animalGrid[row][col].player === Player.TOP) {
+                return this.animalGrid[row][col];
+            }
+        }
+        return null;
+    }
+    
+    
+    // Whether the given lion is not in check
+    noCheck(lion) {
+        for (let posChange of Object.values(OrdinalDirection)) {
+            let newRow = lion.getPosition(this.animalGrid).row + posChange.row;
+            let newCol = lion.getPosition(this.animalGrid).col + posChange.col;
+            if (newRow < 0 || newRow >= ROWS) continue;
+            if (newCol < 0 || newCol >= COLUMNS) continue;
+            if (this.animalGrid[newRow][newCol] != null && this.animalGrid[newRow][newCol].player != lion.player) {
+                for (let position of this.animalGrid[newRow][newCol].getValidMovePositions(this.animalGrid)) {
+                    if (position.row != lion.getPosition(this.animalGrid).row) continue;
+                    if (position.col != lion.getPosition(this.animalGrid).col) continue;
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+    
+    
+    // Function to check if a draw has been reached by consecutive moves
+    //maxConsecutiveMoves() {
+    //    return Math.max.apply(null, Object.values(this.gridHistoryCounts));
+    //}
+    
+    
+    // Returns whether the game is over
+    gameOver() {
+
+        const lion = this.lionInLastRank();
+
+    
+        if (this.capturedLion() != null || (lion != null && this.noCheck(lion))) {
+            return true;
+        }
+        return false;
+    }
+    
+    
+    // Returns the winner of a game
+    winner() {
+        const lionCaptured = this.capturedLion();
+        const lastRankLion = this.lionInLastRank();
+    
+        if (lionCaptured != null) {
+            return lionCaptured.player;
+        }
+        else if (lastRankLion != null) {
+            return lastRankLion.player;
+        }
+        return null;
+    }
+}
+
+
+// --- AI ---
+
+const MAX_DEPTH = 5;	// Maximum search depth for minimax
+
+
+function aiMove() {
+    if (!ai || curPlayer !== Player.TOP) return;
+    aiMoving = true;
+    setTimeout(() => {
+        let themove = getMove();
+        let animal = themove[0];
+        let toPosition = themove[1];
+        //let fromPosition = animal.getPosition(animalGrid);
+        move(animal, toPosition);
+    });
+    aiMoving = false;
+}
+
+
+function randomInteger(max) {
+    const maxFloored = Math.floor(max);
+    return Math.floor(Math.random() * maxFloored);
+}
+
+
+function getMove(difficulty) {
+    let gameCopy = new Game(animalGrid, hands, curPlayer);
+
+    let move;
+    if (!started) {
+        move = randomMove(gameCopy);
+        return [animalGrid[move[0].row][move[0].col], move[1]];
+    }
+    else {
+        move = minimaxMove(gameCopy, Math.ceil(difficulty * MAX_DEPTH));
+        if (!(move[0] instanceof Position)) {
+            return [hands[curPlayer][move[0]], move[1]];
+        }
+        return [animalGrid[move[0].row][move[0].col], move[1]];
+    }
+}
+
+
+function randomMove(game) {
+    const move = game.validMoves(game.curPlayer)[randomInteger(game.validMoves(game.curPlayer).length)];
+    return [move[0].getPosition(game.animalGrid), move[1]];
+}
+
+
+function minimaxMove(game) {
+    let bestValue = Number.MIN_SAFE_INTEGER;
+    let value = Number.MIN_SAFE_INTEGER;
+    
+    let movedPlayer = game.curPlayer;
+    let bestMoves = [];
+    for (let move of game.validMoves(movedPlayer)) {
+        let frompos = move[0].getPosition(game.animalGrid);
+        if (frompos == null) {
+            frompos = game.hands[movedPlayer].indexOf(move[0]);
+        }
+        let gameCopy = new Game(animalGrid, hands, curPlayer);
+        gameCopy.move(frompos, move[1]);
+        value = minimax(gameCopy, MAX_DEPTH - 1, false);
+        move = [frompos, move[1]];
+        if (bestMoves.length == 0) {
+            bestValue = value;
+            bestMoves.push(move);
+        }
+        else if (value > bestValue) {
+            bestValue = value;
+            bestMoves = [];
+            bestMoves.push(move);
+        }
+        else if (value == bestValue) {
+            bestMoves.push(move);
+        }
+        // TODO - Alpha-beta pruning method may be faulty
+    }
+    
+    // Make a random choice from the list of best moves
+    let bestMove = bestMoves[randomInteger(bestMoves.length)];
+    
+    return bestMove;
+}
+
+function minimax(game, depth, maximizingPlayer) {
+    // FOR SOME REASON GAME OVER IS NOT DETECTED PROPERLY
+    // Base case
+    if (game.gameOver() || depth == 0)			// Reached maximum search depth
+    {
+        const val = staticEvaluation(game, maximizingPlayer);
+        return val;
+    }
+    
+    // Maximizing player
+    else if (maximizingPlayer) {
+        let value = Number.MIN_SAFE_INTEGER;
+        for (const move of game.validMoves(game.curPlayer)) {
+            let frompos = move[0].getPosition(game.animalGrid);
+            if (frompos == null) {
+                frompos = game.hands[game.curPlayer].indexOf(move[0]);
+            }
+            let gameCopy = new Game(game.animalGrid, game.hands, game.curPlayer);
+            gameCopy.move(frompos, move[1]);
+            value = Math.max(value, minimax(gameCopy, depth - 1, false));
+        }
+        return value;
+    }
+    
+    // Minimizing player
+    else {
+        let value = Number.MAX_SAFE_INTEGER;
+        for (const move of game.validMoves(game.curPlayer)) {
+            let frompos = move[0].getPosition(game.animalGrid);
+            if (frompos == null) {
+                frompos = game.hands[game.curPlayer].indexOf(move[0]);
+            }
+            let gameCopy = new Game(game.animalGrid, game.hands, game.curPlayer);
+            gameCopy.move(frompos, move[1]);
+            value = Math.min(value, minimax(gameCopy, depth - 1, true));
+        }
+        return value;
+    }
+}
+
+
+function staticEvaluation(game, maximizingPlayer) {
+    let maximizer, minimizer;
+    maximizer = Player.TOP;
+    minimizer = Player.BOTTOM;
+
+    const lion = game.lionInLastRank();
+
+    if (game.capturedLion() != null) {
+        if (maximizingPlayer)
+            return Number.MIN_SAFE_INTEGER;
+        else
+            return Number.MAX_SAFE_INTEGER;
+    }
+
+    else if (lion != null && game.noCheck(lion)) {
+        if (maximizingPlayer)
+            return Number.MIN_SAFE_INTEGER;
+        else
+            return Number.MAX_SAFE_INTEGER;
+    }
+    /*
+    else if (game.lionInCheck(maximizer)) {
+        return Number.MIN_SAFE_INTEGER / 2;
+    }
+    else if (game.lionInCheck(minimizer)) {
+        return Number.MAX_SAFE_INTEGER / 2;
+    }*/
+    
+    return game.numPieces(maximizer) - game.numPieces(minimizer);
+}
+
+
+let radios = document.configForm.topPlayer;
+for (let i = 0; i < radios.length; i++) {
+    radios[i].addEventListener('change', () => {
+        if (radios[i].value === "human") {
+            ai = false;
+        }
+        else {
+            ai = true;
+        }
+    });
+}
+if (document.querySelector("#human").checked) {
+    ai = false;
+}
+else if (document.querySelector("#computer").checked) {
+    ai = true;
+}
+
+radios = document.configForm.firstPlayer;
+for (let i = 0; i < radios.length; i++) {
+    radios[i].addEventListener('change', () => {
+        if (radios[i].value === "sky") {
+            firstPlayer = "sky";
+        }
+        else if (radios[i].value === "forest") {
+            firstPlayer = "forest";
+        }
+        else {
+            firstPlayer = "random";
+        }
+    });
+    if (radios[i].value === "sky") {
+        firstPlayer = "sky";
+    }
+    else if (radios[i].value === "forest") {
+        firstPlayer = "forest";
+    }
+    else {
+        firstPlayer = "random";
+    }
+}
+if (document.querySelector("#sky").checked) {
+    firstPlayer = "sky";
+}
+else if (document.querySelector("#forest").checked) {
+    firstPlayer = "forest";
+}
+else if (document.querySelector("#random").checked) {
+    firstPlayer = "random";
+}
+
+document.querySelector("#reset-button").addEventListener('click', () => {
+    start();
+});
 
 
 // Start the game
