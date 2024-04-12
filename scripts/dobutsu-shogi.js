@@ -10,8 +10,8 @@ const CONSECUTIVE_MOVES_TILL_DRAW = 3;
 let curPlayer;
 let aiMoving = false;
 let ai = false;
+let difficulty = 0.5;
 let firstPlayer = "random";
-let started = false;
 
 
 // --- Enums, etc. ---
@@ -518,7 +518,6 @@ function start() {
         curPlayer = Player[Object.keys(Player)[rand]];
     }
     showMessage(curPlayer + "'s turn");
-    started = false;
 
     // AI move
     if (curPlayer === Player.TOP) {
@@ -531,7 +530,6 @@ function start() {
 
 // Function to move animal
 function move(animal, toPosition) {
-    if (!started) started = true;
 
     let capturedAnimal = animalGrid[toPosition.row][toPosition.col];
     if (capturedAnimal != null && capturedAnimal.player == curPlayer) {
@@ -743,6 +741,7 @@ function showGameOverMessage(winner) {
 }
 
 
+// Game class representing game state to copy in minimax algorithm
 class Game {
     constructor(grid, hands, curPlayer) {
         this.animalGrid = new Array(ROWS);
@@ -956,30 +955,6 @@ class Game {
         animal.demote();
         return true;
     }
-
-    /*
-    lionInCheck(player) {
-        let lion;
-        for (const animal of this.animals) {
-            if (animal instanceof Lion && animal.player === player) {
-                lion = animal;
-                break;
-            }
-        }
-        if (lion == null) return false;
-        for (const animal of this.animals) {
-            if (animal.player !== player) {
-                for (const move of animal.getValidMovePositions(this.animalGrid)) {
-                    if (move === lion.getPosition(this.animalGrid)) {
-                        return true;
-                    }
-                }
-            }
-        }
-        return false;
-    }
-    */
-    
     
     // Function to check if a lion has been captured. If found, returns the player who captured it. If
     // not found, returns null
@@ -1000,7 +975,6 @@ class Game {
         return foundLion;
     }
     
-    
     // Function to check if a lion has made it to the furthest rank. Returns the lion who made it or
     // null if not the case
     lionInLastRank() {
@@ -1018,7 +992,6 @@ class Game {
         }
         return null;
     }
-    
     
     // Whether the given lion is not in check
     noCheck(lion) {
@@ -1038,31 +1011,19 @@ class Game {
         return true;
     }
     
-    
-    // Function to check if a draw has been reached by consecutive moves
-    //maxConsecutiveMoves() {
-    //    return Math.max.apply(null, Object.values(this.gridHistoryCounts));
-    //}
-    
-    
     // Returns whether the game is over
     gameOver() {
-
         const lion = this.lionInLastRank();
-
-    
         if (this.capturedLion() != null || (lion != null && this.noCheck(lion))) {
             return true;
         }
         return false;
     }
     
-    
     // Returns the winner of a game
     winner() {
         const lionCaptured = this.capturedLion();
         const lastRankLion = this.lionInLastRank();
-    
         if (lionCaptured != null) {
             return lionCaptured.player;
         }
@@ -1079,6 +1040,12 @@ class Game {
 const MAX_DEPTH = 5;	// Maximum search depth for minimax
 
 
+function randomInteger(max) {
+    const maxFloored = Math.floor(max);
+    return Math.floor(Math.random() * maxFloored);
+}
+
+// Makes AI move
 function aiMove() {
     if (!ai || curPlayer !== Player.TOP) return;
     aiMoving = true;
@@ -1089,31 +1056,29 @@ function aiMove() {
         const time = end - start;
         let animal = themove[0];
         let toPosition = themove[1];
-        //let fromPosition = animal.getPosition(animalGrid);
         setTimeout(() => {
             move(animal, toPosition);
             aiMoving = false;
-        }, Math.max(1000 - time, 1));
-    }, 1);
+        }, Math.max(950 - time, 1));
+    }, 50);
 }
 
-
-function randomInteger(max) {
-    const maxFloored = Math.floor(max);
-    return Math.floor(Math.random() * maxFloored);
-}
-
-
-function getMove(difficulty) {
+// Returns a move for AI to make
+function getMove() {
     let gameCopy = new Game(animalGrid, hands, curPlayer);
 
     let move;
-    if (!started) {
+	let randomVal = Math.random() < -0.5*Math.log10(0.99*difficulty + 0.01);
+    // Chance for random move depending on difficulty.
+    if (randomVal) {
         move = randomMove(gameCopy);
+        if (!(move[0] instanceof Position)) {
+            return [hands[curPlayer][move[0]], move[1]];
+        }
         return [animalGrid[move[0].row][move[0].col], move[1]];
     }
     else {
-        move = minimaxMove(gameCopy, Math.ceil(difficulty * MAX_DEPTH));
+        move = minimaxMove(gameCopy);
         if (!(move[0] instanceof Position)) {
             return [hands[curPlayer][move[0]], move[1]];
         }
@@ -1225,13 +1190,6 @@ function staticEvaluation(game, maximizingPlayer) {
         else
             return Number.MAX_SAFE_INTEGER;
     }
-    /*
-    else if (game.lionInCheck(maximizer)) {
-        return Number.MIN_SAFE_INTEGER / 2;
-    }
-    else if (game.lionInCheck(minimizer)) {
-        return Number.MAX_SAFE_INTEGER / 2;
-    }*/
     
     return game.numPieces(maximizer) - game.numPieces(minimizer);
 }
@@ -1254,7 +1212,10 @@ if (document.querySelector("#human").checked) {
 else if (document.querySelector("#computer").checked) {
     ai = true;
 }
-
+document.configForm.difficulty.addEventListener('change', () => {
+    difficulty = document.configForm.difficulty.value;
+});
+document.configForm.difficulty.value = difficulty;
 radios = document.configForm.firstPlayer;
 for (let i = 0; i < radios.length; i++) {
     radios[i].addEventListener('change', () => {
@@ -1287,10 +1248,13 @@ else if (document.querySelector("#forest").checked) {
 else if (document.querySelector("#random").checked) {
     firstPlayer = "random";
 }
-
 document.querySelector("#reset-button").addEventListener('click', () => {
+    for (let button of document.getElementsByClassName("new-game-button")) {
+        button.style.visibility = "hidden";
+    }
     start();
 });
+
 
 
 // Start the game
