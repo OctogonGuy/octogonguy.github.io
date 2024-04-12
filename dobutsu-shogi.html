@@ -30,8 +30,9 @@
     </section>
 
     <h2>Configuration</h2>
-    <form name="configForm">
-      <fieldset>
+    <form name="configForm" style="display: flex; flex-direction: row; align-items: center; gap: 10px;">
+      <button id="reset-button">Reset Game</button>
+      <fieldset style="display: flex; flex-direction: row">
         <legend>Top player:</legend>
         <div>
           <input type="radio" id="human" name="topPlayer" value="human" checked />
@@ -43,8 +44,13 @@
           <label for="computer">Computer</label>
         </div>
       </fieldset>
-      <fieldset>
+      <fieldset style="display: flex; flex-direction: row">
         <legend>First player:</legend>
+        <div>
+          <input type="radio" id="random" name="firstPlayer" value="random" />
+          <label for="random">Random</label>
+        </div>
+
         <div>
           <input type="radio" id="sky" name="firstPlayer" value="sky" checked />
           <label for="sky">Sky</label>
@@ -54,15 +60,8 @@
           <input type="radio" id="forest" name="firstPlayer" value="forest" />
           <label for="forest">Forest</label>
         </div>
-      
-        <div>
-          <input type="radio" id="random" name="firstPlayer" value="random" />
-          <label for="random">Random</label>
-        </div>
       </fieldset>
-
     </form>
-    <button id="reset-button">Reset Game</button>
 
     <h2>Background</h2>
     <p>Dobutsu Shogi is a game based on shogi, a Japanase board game similar to chess. Dobutsu Shogi ("Animal Shogi") is a version of shogi made primarily for children with simplified rules in 2008 by women's professional shogi player Madoka Kitao. It is played on a 3x4 board and with pieces showing animal designs instead of Chinese characters.</p>
