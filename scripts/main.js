@@ -6,14 +6,14 @@ document.querySelector("footer").innerHTML= `
 <p>No Copyright - <a href="http://octopusdragon.tech">octopusdragon.tech</a></p>
 `;
 document.querySelector("header").innerHTML= `
-<div class="banner">
-  <a href="http://octopusdragon.tech">
-    <div class="logo">
-      <span class="title">OctopusDragonTech</span>
-      <span class="subtitle">~~~~All hail the Octogon~~~~</span>
-    </div>
-  </a>
-</div>
+<a href="http://octopusdragon.tech">
+  <div class="banner">
+      <div class="logo">
+        <span class="title">OctopusDragonTech</span>
+        <span class="subtitle">~~~~All hail the Octogon~~~~</span>
+      </div>
+  </div>
+</a>
 
 <nav>
   <ul>
