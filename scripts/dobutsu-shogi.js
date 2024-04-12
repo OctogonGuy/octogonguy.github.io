@@ -1083,13 +1083,18 @@ function aiMove() {
     if (!ai || curPlayer !== Player.TOP) return;
     aiMoving = true;
     setTimeout(() => {
+        const start = Date.now();
         let themove = getMove();
+        const end = Date.now();
+        const time = end - start;
         let animal = themove[0];
         let toPosition = themove[1];
         //let fromPosition = animal.getPosition(animalGrid);
-        move(animal, toPosition);
-    }, 200);
-    aiMoving = false;
+        setTimeout(() => {
+            move(animal, toPosition);
+            aiMoving = false;
+        }, Math.max(1000 - time, 1));
+    }, 1);
 }
 
 
