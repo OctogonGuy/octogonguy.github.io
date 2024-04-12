@@ -1088,7 +1088,7 @@ function aiMove() {
         let toPosition = themove[1];
         //let fromPosition = animal.getPosition(animalGrid);
         move(animal, toPosition);
-    });
+    }, 200);
     aiMoving = false;
 }
 
