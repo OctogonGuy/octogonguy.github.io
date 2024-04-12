@@ -28,8 +28,8 @@ document.querySelector("header").innerHTML= `
     <li><a href="javascript-playground.html">Playground</a></li>
     <li><a href="chocolate-tycoon.html">Chocolate Tycoon</a></li>
     <li><a href="dobutsu-shogi.html">Dobutsu Shogi</a></li>
-    <li><a href="calculus.html">Calculus</a></li>
     <li><a href="random-sentence-generator.html">Random Sentence Generator</a></li>
+    <li><a href="calculus.html">Calculus</a></li>
   </ul>
 </nav>
 `;
