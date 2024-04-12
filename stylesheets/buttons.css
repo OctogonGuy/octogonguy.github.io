@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code&family=Crete+Round&display=swap&family=Anton&family=Fugaz+One&family=Pixelify+Sans&family=Rubik+Moonrocks&family=Seaweed+Script&family=Tilt+Prism&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code&family=Crete+Round&display=swap&family=Anton&family=Fugaz+One&family=Pixelify+Sans&family=Rubik+Moonrocks&family=Seaweed+Script&family=Tilt+Prism&display=swap&family=Pixelify+Sans:wght@400..700&display=swap');
 
 
 #main-buttons {
@@ -796,4 +796,19 @@
 
 #glossy-button-panel .glossy-button:active {
 	filter: brightness(88%);
+}
+
+
+
+#aliens-and-asteroids-button {
+	font-family: 'Pixelify Sans';
+	background-color: #6c3d7a;
+	color: white;
+	border: 3px outset #804b91;
+	font-size: 1.1em;
+	padding: 0.2em 0.8em;
+}
+
+#aliens-and-asteroids-button:active {
+	border-style: inset;
 }
