@@ -1,5 +1,6 @@
-const ROWS = 22
-const COLUMNS = 22
+const ROWS = 15;
+const COLUMNS = 15;
+const OUTER_COLOR = "#cacbc8";
 const BACKGROUND_COLOR = "#323330"
 const SNAKE_COLOR = "#f0db4f"
 const FOOD_COLOR = "white";
@@ -7,7 +8,7 @@ const GAME_OVER_TITLE_FONT_SIZE = "42px";
 const GAME_OVER_SUBTITLE_FONT_SIZE = "26px";
 const GAME_OVER_COLOR = "black";
 const START_ROW = ROWS - 2;
-const START_COLUMN = COLUMNS / 2 - 1;
+const START_COLUMN = Math.ceil(COLUMNS / 2) - 1;
 const INITIAL_DIRECTION = "up";
 const EASY_SPEED = 300;
 const MEDIUM_SPEED = 150;
@@ -56,6 +57,7 @@ function startGame() {
 
 let gameArea = {
     canvas : document.getElementById("canvas"),
+    img : new Image(),
     start : function() {
         this.context = this.canvas.getContext("2d");
         // Determine the maximum size of squares that will fit in the canvas
@@ -80,13 +82,20 @@ let gameArea = {
                 }
             }
         }
+        // Open texture image
         this.clear();
     },
     clear : function() {
+        this.context.fillStyle = OUTER_COLOR;
+        this.context.fillRect(0, 0, this.canvas.width, this.canvas.height);
         this.context.fillStyle = BACKGROUND_COLOR;
+        this.context.fillRect(this.xGap, this.yGap, this.canvas.width - this.xGap * 2, this.canvas.height - this.yGap * 2);
+        const pattern = this.context.createPattern(this.img, "repeat");
+        this.context.fillStyle = pattern;
         this.context.fillRect(this.xGap, this.yGap, this.canvas.width - this.xGap * 2, this.canvas.height - this.yGap * 2);
     }
 }
+gameArea.img.src = "images/snake-bg-texture.png";
 
 class Segment {
     constructor(row, column, direction) {
@@ -97,8 +106,30 @@ class Segment {
     draw() {
         let ctx = gameArea.context;
         let square = gameArea.grid[this.row][this.column];
+        let x = square.x;
+        let y = square.y;
+        let width = square.size;
+        let height = square.size;
+        x += 2;
+        width -= 4;
+        y += 2;
+        height -= 4;
+        if (this != snake.tail) {
+            switch (this.direction) {
+                case Direction.RIGHT:
+                    x -= 5;
+                case Direction.LEFT:
+                    width += 5;
+                    break;
+                case Direction.DOWN:
+                    y -= 5;
+                case Direction.UP:
+                    height += 5;
+                    break;
+            }
+        }
         ctx.fillStyle = SNAKE_COLOR;
-        ctx.fillRect(square.x, square.y, square.size, square.size);
+        ctx.fillRect(x, y, width, height);
     }
     update() {
         switch (this.direction) {
@@ -130,12 +161,13 @@ class Snake {
         this.segments = [new Segment(START_ROW, START_COLUMN)];
         this.head = this.segments[0];
         this.head.direction = this.direction = INITIAL_DIRECTION;
+        this.tail = this.head;
         this.alive = true;
     }
     update() {
-        let tail = this.segments[this.segments.length - 1];
-        let tailRow = tail.row;
-        let tailColumn = tail.column;
+        this.tail = this.segments[this.segments.length - 1];
+        let tailRow = this.tail.row;
+        let tailColumn = this.tail.column;
         // Move body
         for (let i = this.segments.length - 1; i >= 1; i--) {
             const currentSegment = this.segments[i];
@@ -157,14 +189,25 @@ class Snake {
         if (this.head.row < 0 || this.head.row >= ROWS || this.head.column < 0 || this.head.column >= COLUMNS) {
             snake.kill();
         }
+        // If collided into itself, kill snake
+        else {
+            for (let i = 1; i < this.segments.length; i++) {
+                const segment = this.segments[i];
+                if (this.head.row == segment.row && this.head.column == segment.column) {
+                    snake.kill();
+                    break;
+                }
+            }
+        }
     }
     draw() {
-        for (const segment of this.segments) {
-            segment.draw();
+        for (let i = 0; i < this.segments.length; i++) {
+            this.segments[i].draw();
         }
     }
     grow(row, column) {
-        snake.segments.push(new Segment(row, column, null));
+        snake.segments.push(new Segment(row, column, this.segments[this.segments.length - 1].direction));
+        this.tail = this.segments[this.segments.length - 1];
     }
     eat(food) {
         food.kill();
@@ -187,7 +230,7 @@ class Food {
         let square = gameArea.grid[this.row][this.column];
         ctx.fillStyle = FOOD_COLOR;
         ctx.beginPath();
-        ctx.ellipse(square.x + square.size / 2, square.y + square.size / 2, square.size / 2, square.size / 2, 0, 0, Math.PI * 2);
+        ctx.ellipse(square.x + square.size / 2, square.y + square.size / 2, square.size * 3/8, square.size * 3/8, 0, 0, Math.PI * 2);
         ctx.fill();
     }
     kill() {
@@ -244,7 +287,7 @@ function updateGameArea() {
         // Show game over message
         ctx = gameArea.context;
         ctx.fillStyle = "#FFFFFFE0";
-        ctx.fillRect(gameArea.canvas.width / 8, gameArea.canvas.height / 8, gameArea.canvas.width * 3/4, gameArea.canvas.height * 3/4);
+        ctx.fillRect(gameArea.canvas.width / 16, gameArea.canvas.height / 8, gameArea.canvas.width * 7/8, gameArea.canvas.height * 3/4);
         ctx.fillStyle = GAME_OVER_COLOR;
         ctx.textAlign = "center";
         ctx.font = "bold " + GAME_OVER_TITLE_FONT_SIZE + " Ubuntu";

@@ -25,20 +25,23 @@
     }
     #arrow-buttons {
       display: grid;
+      gap: 8px;
     }
     #arrow-buttons > button:not(#snake-button) {
-      background-color: #f0f0f0;
+      background-color: #e2e2e2;
       color: #535353;
-      border: 2px outset #535353;
+      border: 8px outset #f0f0f0;
+      outline: 8px outset #535353;
       line-height: 0;
       align-items: center;
       justify-content: center;
     }
     #arrow-buttons > button:not(#snake-button):hover {
-      background-color: #fafafa;
+      background-color: #eeeeee;
     }
     #arrow-buttons > button:not(#snake-button):active {
-      background-color: #d0d0d0;
+      background-color: #bbbbbb;
+      border-style: inset;
     }
     #snake-button {
       cursor: pointer;
@@ -138,11 +141,11 @@
           <fieldset id="difficulty-fields">
             <legend>Difficulty</legend>
             <div>
-              <input type="radio" id="easy" name="difficulty" value="easy" checked />
+              <input type="radio" id="easy" name="difficulty" value="easy" />
               <label for="easy">Easy</label>
             </div>
             <div>
-              <input type="radio" id="medium" name="difficulty" value="medium" />
+              <input type="radio" id="medium" name="difficulty" value="medium" checked />
               <label for="medium">Medium</label>
             </div>
             <div>
