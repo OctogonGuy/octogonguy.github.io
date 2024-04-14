@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="stylesheets/main.css">
+	<link rel="stylesheet" href="stylesheets/buttons.css">
+  <style>
+    #game-section > div {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    #canvas-container {
+      max-width: fit-content;
+    }
+    #canvas {
+      border: 1px solid #545454;
+      background-color: #f0f0f0;
+      margin-bottom: 28px;
+    }
+    #controls {
+      display: grid;
+      grid-template-columns: 1fr 2fr 1fr;
+      align-items: center;
+      width: 500px;
+    }
+    #arrow-buttons {
+      display: grid;
+      grid-template-rows: repeat(3, 75px);
+      grid-template-columns: repeat(3, 75px);
+    }
+    #arrow-buttons > button:not(#snake-button) {
+      background-color: #f0f0f0;
+      color: #535353;
+      border: 2px outset #535353;
+      font-size: 60px;
+      line-height: 0;
+      align-items: center;
+      justify-content: center;
+    }
+    #arrow-buttons > button:not(#snake-button):hover {
+      background-color: #fafafa;
+    }
+    #arrow-buttons > button:not(#snake-button):active {
+      background-color: #d0d0d0;
+    }
+    #snake-button {
+      cursor: pointer;
+      font-size: 2em;
+      grid-row-start: 1;
+      grid-row-end: span 3;
+      grid-column-start: 1;
+      grid-column-end: span 3;
+      align-self: center;
+      justify-self: center;
+    }
+    #difficulty-fields {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      align-items: start;
+    }
+    #difficulty-fields > div {
+      margin-left: initial;
+      margin-right: initial;
+    }
+  </style>
+</head>
+<body>
+  <header></header>
+
+  <main>
+    <h1>Snake</h1>
+
+    <section id="game-section">
+      <div id="canvas-container">
+        <canvas id="canvas" width="500" height="500" tabindex="1"></canvas>
+      </div>
+      
+      <div id="controls">
+        <div id="arrow-buttons" style="grid-column:2">
+          <button onclick="turnUp()" style="grid-row:1; grid-column:2;" hidden>&uArr;</button>
+          <button onclick="turnDown()" style="grid-row:3; grid-column:2;" hidden>&dArr;</button>
+          <button onclick="turnLeft()" style="grid-row:2; grid-column:1;" hidden>&lArr;</button>
+          <button onclick="turnRight()" style="grid-row:2; grid-column:3;" hidden>&rArr;</button>
+  
+          <button id="snake-button" onclick="startFirstGame()">Play</button>
+        </div>
+
+        <form id="config" name="config" style="grid-column:3">
+          <fieldset id="difficulty-fields">
+            <legend>Difficulty</legend>
+            <div>
+              <input type="radio" id="easy" name="difficulty" value="easy" checked />
+              <label for="easy">Easy</label>
+            </div>
+            <div>
+              <input type="radio" id="medium" name="difficulty" value="medium" />
+              <label for="medium">Medium</label>
+            </div>
+            <div>
+              <input type="radio" id="hard" name="difficulty" value="hard" />
+              <label for="hard">Hard</label>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer></footer>
+
+  <script src="scripts/snake.js"></script>
+  <script src="scripts/main.js"></script>
+</body>
+</html>
