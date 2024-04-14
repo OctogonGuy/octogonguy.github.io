@@ -186,7 +186,9 @@ class Food {
         let ctx = gameArea.context;
         let square = gameArea.grid[this.row][this.column];
         ctx.fillStyle = FOOD_COLOR;
-        ctx.fillRect(square.x, square.y, square.size, square.size);
+        ctx.beginPath();
+        ctx.ellipse(square.x + square.size / 2, square.y + square.size / 2, square.size / 2, square.size / 2, 0, 0, Math.PI * 2);
+        ctx.fill();
     }
     kill() {
         foods.splice(foods.indexOf(this), 1);
@@ -254,8 +256,9 @@ function updateGameArea() {
 }
 
 function turnUp() {
+    document.getElementById("canvas").focus();
     if (snake.alive) {
-        if (snake.direction == Direction.UP || snake.direction == Direction.DOWN) return;
+        if (snake.head.direction == Direction.UP || snake.head.direction == Direction.DOWN) return;
         snake.direction = Direction.UP;
     }
     else {
@@ -264,8 +267,9 @@ function turnUp() {
 }
 
 function turnDown() {
+    document.getElementById("canvas").focus();
     if (snake.alive) {
-        if (snake.direction == Direction.UP || snake.direction == Direction.DOWN) return;
+        if (snake.head.direction == Direction.UP || snake.head.direction == Direction.DOWN) return;
         snake.direction = Direction.DOWN;
     }
     else {
@@ -274,8 +278,9 @@ function turnDown() {
 }
 
 function turnLeft() {
+    document.getElementById("canvas").focus();
     if (snake.alive) {
-        if (snake.direction == Direction.LEFT || snake.direction == Direction.RIGHT) return;
+        if (snake.head.direction == Direction.LEFT || snake.head.direction == Direction.RIGHT) return;
         snake.direction = Direction.LEFT;
     }
     else {
@@ -284,8 +289,9 @@ function turnLeft() {
 }
 
 function turnRight() {
+    document.getElementById("canvas").focus();
     if (snake.alive) {
-        if (snake.direction == Direction.LEFT || snake.direction == Direction.RIGHT) return;
+        if (snake.head.direction == Direction.LEFT || snake.head.direction == Direction.RIGHT) return;
         snake.direction = Direction.RIGHT;
     }
     else {
@@ -293,10 +299,9 @@ function turnRight() {
     }
 }
 
-document.onkeydown = function(event) {
+document.getElementById("canvas").onkeydown = function(event) {
+    event.preventDefault();
     if (snake == undefined) return;
-    if (document.getElementById("canvas").focus)
-        event.preventDefault();
     if (snake.alive) {
         switch (event.key) {
             case "ArrowLeft":
@@ -327,6 +332,6 @@ function startFirstGame() {
             button.hidden = false;
         }
     }
-    document.getElementById("canvas").focus = true;
+    document.getElementById("canvas").focus();
     startGame();
 }
