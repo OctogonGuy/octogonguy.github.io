@@ -812,3 +812,52 @@
 #aliens-and-asteroids-button:active {
 	border-style: inset;
 }
+
+
+
+#limit-button {
+	--color1: #fc6652;
+	--color2: #fff495;
+	
+	font-family: 'Fira Code';
+	color: #3f2a02;
+	padding: 0.33em 0.67em;
+	background: radial-gradient(var(--color2), var(--color1));
+	border: 3px ridge #b60606;
+	transition: padding 0.1s;
+}
+
+#limit-button:hover {
+	background: radial-gradient(var(--color2) 33%, var(--color1));
+}
+
+#limit-button:active {
+	padding-top: 0.55em;
+	padding-bottom: 0.11em;
+}
+
+
+
+#derivative-button {
+	--color1: #c0ceec;
+	--color2: #9e9ce4;
+
+	font-family: 'Fugaz One';
+	color: #072d52;
+	background: linear-gradient(135deg, var(--color1), var(--color2));
+	border: 9px double #746daf;
+	outline: 3px solid var(--color1);
+	outline-offset: -6px;
+	text-shadow: -2px 2px #959697;
+	padding: 0.33em 0.67em;
+	transition: border 0.65s, outline 0.65s;
+}
+
+#derivative-button:hover {
+	border-color: #e3daeb;
+	outline-color: var(--color2);
+}
+
+#derivative-button:active {
+	background: linear-gradient(-45deg, var(--color1), var(--color2));
+}
