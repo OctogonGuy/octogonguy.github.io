@@ -30,11 +30,9 @@
     #arrow-buttons > button:not(#snake-button) {
       background-color: #e2e2e2;
       color: #535353;
-      border: 8px outset #f0f0f0;
-      outline: 8px outset #535353;
+      border: 6px outset #f0f0f0;
+      outline: 4px outset #535353;
       line-height: 0;
-      align-items: center;
-      justify-content: center;
     }
     #arrow-buttons > button:not(#snake-button):hover {
       background-color: #eeeeee;
@@ -129,10 +127,26 @@
       
       <div id="controls">
         <div id="arrow-buttons">
-          <button onclick="turnUp()" style="grid-row:1; grid-column:2;" hidden>&uArr;</button>
-          <button onclick="turnDown()" style="grid-row:3; grid-column:2;" hidden>&dArr;</button>
-          <button onclick="turnLeft()" style="grid-row:2; grid-column:1;" hidden>&lArr;</button>
-          <button onclick="turnRight()" style="grid-row:2; grid-column:3;" hidden>&rArr;</button>
+          <button onclick="turnUp()" style="grid-row:1; grid-column:2;" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" width="80%" height="80%" fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5"/>
+          </svg>
+          </button>
+          <button onclick="turnDown()" style="grid-row:3; grid-column:2;" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" width="80%" height="80%" fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1"/>
+          </svg>
+          </button>
+          <button onclick="turnLeft()" style="grid-row:2; grid-column:1;" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" width="80%" height="80%" fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
+          </svg>
+          </button>
+          <button onclick="turnRight()" style="grid-row:2; grid-column:3;" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" width="80%" height="80%" fill="currentColor" class="bi bi-arrow-right-short" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
+          </svg>
+          </button>
   
           <button id="snake-button" onclick="startFirstGame()">Play</button>
         </div>
