@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div id="options-panel">
+    <div>
+      <button id="back-button">Back</button>
+    </div>
+    <div id="streaks">
+      <span id="streak"></span>
+      <span id="highest-streak"></span>
+    </div>
+    <div id="option-buttons">
+      <div id="change-bg-button"></div>
+      <img id="fast-forward-button" src="resources/img/misc/fast_forward.png">
+      <img id="mute-button" src="resources/img/misc/unmute.png">
+    </div>
+  </div>
+
+  <div id="menu">
+    <span id="menu-prompt">Select a game mode.</span>
+    <div id="play-buttons">
+      <button id="easy-button">Easy</button>
+      <button id="medium-button">Medium</button>
+      <button id="hard-button">Hard</button>
+    </div>
+  </div>
+
+  <div id="game-screen">
+    <div id="medium-options">
+      <button id="kanto-button" class="region-button">Kanto</button>
+      <button id="johto-button" class="region-button">Johto</button>
+      <button id="hoenn-button" class="region-button">Hoenn</button>
+      <button id="sinnoh-button" class="region-button">Sinnoh</button>
+      <button id="unova-button" class="region-button">Unova</button>
+      <button id="kalos-button" class="region-button">Kalos</button>
+      <button id="alola-button" class="region-button">Alola</button>
+      
+      <label for="mega-checkbox"><input type="checkbox" id="mega-checkbox" class="checkbox">Mega evolutions</label>
+      
+      <label for="regional-checkbox"><input type="checkbox" id="regional-checkbox" class="checkbox">Regional forms</label>
+    </div>
+    <div id="defending-side" class="side">
+      <div class="title">
+        <span id="defending-title-text"></span>
+      </div>
+      <div class="content">
+        <div id="opponent-info">
+          <span id="opponent-name"></span>
+          <img id="opponent-type-1">
+          <img id="opponent-type-2">
+        </div>
+        <img id="opponent-image">
+      </div>
+    </div>
+    <span id="message"></span>
+    <div id="attacking-side" class="side">
+      <div class="title">
+        <span id="attacking-title-text">Your Pokémon's Attacks' Types</span>
+      </div>
+      <div class="content">
+        <div id="attacking-types">
+          <img id="attacking-type-1"></button>
+          <img id="attacking-type-2"></button>
+          <img id="attacking-type-3"></button>
+          <img id="attacking-type-4"></button>
+        </div>
+      </div>
+    </div>
+    <button id="next-button">Next</button>
+  </div>
+
+  <script type="module" src="app.js"></script>
+  
+</body>
+</html>

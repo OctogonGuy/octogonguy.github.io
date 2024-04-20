@@ -1,0 +1,279 @@
+/* --- All --- */
+
+.root {
+	-fx-font-family: "Agency FB";
+	-fx-font-size: 28px;
+	-fx-font-weight: bold;
+	
+	-fx-padding: 7.5px;
+}
+
+.label.title, .label.prompt, .label.defending, .label.message, .label.attacking-type, .button .text, .check-box .text, .titled-pane .title .text {
+	-fx-text-fill: #545454;
+	-fx-effect: dropshadow(gaussian, #BABABA, 0.0, 1.0, 1.5, 1.5);
+}
+
+.button {
+	-fx-font-size: 25px;
+	-fx-text-fill: #545454;
+	
+	-fx-background-color: linear-gradient(to bottom, #FAFAFA 45%, #C7B9A8 55%);
+	-fx-background-radius: 5px;
+
+	-fx-border-color: #FBFBFB, #545454;
+	-fx-border-width: 4px, 2px;
+	-fx-border-radius: 5px;
+	
+	-fx-padding: .2em .6em;
+}
+
+.button: hover {
+	-fx-border-color: red, #545454;
+}
+
+.button: pressed {
+	-fx-background-color: linear-gradient(to bottom, #FDFDFD 45%, #E3DCD4 55%);
+}
+
+.check-box > .box, .check-box: selected > .box, .check-box: focused > .box {
+	-fx-background-color: #E3DCD4;
+	-fx-border-color: #545454;
+	-fx-border-width: 2px;
+	-fx-border-radius: 5px;
+}
+
+.check-box: hover > .box, .check-box: selected: hover > .box, .check-box: focused: hover > .box {
+	-fx-border-color: red;
+}
+
+.check-box: pressed > .box, .check-box: selected: pressed > .box, .check-box: focused: pressed > .box {
+	-fx-background-color: #FAFAFA;
+}
+
+.check-box: focused > .box {
+    -fx-background-insets: 0 0 -1 0, 0, 1, 2;
+    -fx-background-radius: 3px, 3px, 2px, 1px;
+}
+
+
+
+/* --- Options bar --- */
+
+.options-bar {
+	-fx-spacing: 15px;
+}
+
+.help-button, .change-background-gradient-button, .fast-forward-button, .mute-button {
+	-fx-cursor: hand;
+}
+
+.change-background-gradient-button {
+	-fx-stroke-width: 3.5px;
+	-fx-arc-width: 2px;
+}
+
+
+
+/* --- Menu --- */
+
+.button.easy .text, .button.medium .text, .button.hard .text {
+	-fx-fill: #FFFFFF;
+	-fx-effect: dropshadow(gaussian, #545454, 2.0px, 1.0px, 0.0px, 0.0px);
+}
+
+.button.easy {
+	-fx-background-color: linear-gradient(to bottom, #54A225 45%, #4E6B42 55%);
+}
+
+.button.easy: pressed {
+	-fx-background-color: linear-gradient(to bottom, #AAD192 45%, #A7B5A1 55%);
+}
+
+.button.medium {
+	-fx-background-color: linear-gradient(to bottom, #EB9B22 45%, #8C6A35 55%);
+}
+
+.button.medium: pressed {
+	-fx-background-color: linear-gradient(to bottom, #F5CD91 45%, #C6B59A 55%);
+}
+
+.button.hard {
+	-fx-background-color: linear-gradient(to bottom, #FB4934 45%, #914940 55%);
+}
+
+.button.hard: pressed {
+	-fx-background-color: linear-gradient(to bottom, #FDA49A 45%, #C8A4A0 55%);
+}
+
+
+
+/* --- Instructions --- */
+
+.how-to-play {
+	-fx-alignment: center;
+	-fx-padding: 0.5em;
+}
+
+.scroll-pane.body {
+	-fx-padding: 0.25em;
+	-fx-background-color: rgba(255, 255, 255, 0.5);
+
+	-fx-border-color: #FBFBFB, #545454;
+	-fx-border-width: 5px;
+}
+
+.scroll-pane.body: focused {
+    -fx-background-insets: 0, 1;
+}
+
+.scroll-pane.body > .viewport {
+	-fx-background-color: transparent;
+}
+
+.label.title {
+	-fx-font-size: 38pt;
+	-fx-padding: 0 0 .33em 0;
+}
+
+.label.body {
+	-fx-font-size: 16pt;
+	-fx-font-weight: normal;
+}
+
+
+
+/* --- Game Screen --- */
+
+.top-bar {
+	-fx-padding: 7.5px;
+}
+
+.bottom-bar {
+	-fx-padding: 0 0 7.5px 0;
+}
+
+.region-button {
+	-fx-font-size: 18px;
+}
+
+.region-button .text {
+	-fx-fill: #FFFFFF;
+	-fx-effect: dropshadow(gaussian, #545454, 2.0px, 1.0px, 0.0px, 0.0px);
+}
+
+.region-button:gen-disabled .text {
+	-fx-fill: #FFFFFF7F;
+	-fx-effect: dropshadow(gaussian, #5454547F, 2.0px, 1.0px, 0.0px, 0.0px);
+}
+
+.region-button: gen-disabled {
+	-fx-background-color: linear-gradient(to bottom, #FAFAFA7F 45%, #C7B9A87F 55%);
+}
+
+.region-button: gen-disabled: pressed {
+	-fx-background-color: linear-gradient(to bottom, #FDFDFD7F 45%, #E3DCD47f 55%);
+}
+
+.form-check-box {
+	-fx-font-size: 16px;
+}
+
+AnchorPane {
+	-fx-padding: 0;
+}
+
+.titled-pane .title {
+	-fx-font-size: 18px;
+	-fx-font-weight: normal;
+	
+	-fx-background-color: linear-gradient(
+		to bottom,
+		#E2E2E2 59%,
+		#BABABA 61%,
+		#BABABA 65%,
+		#E2E2E2 67%,
+		#E2E2E2 71%,
+		#BABABA 73%);
+
+	-fx-border-color: #545454;
+	-fx-border-width: 3px;
+}
+
+.titled-pane .content {
+	-fx-background-color: rgba(255, 255, 255, 0.5);
+
+	-fx-border-color: #545454;
+	-fx-border-width: 0 3px 3px 3px;
+	-fx-padding: 5px;
+}
+
+.defending-box {
+	-fx-spacing: 5px;
+}
+
+.defending-info-box {
+	-fx-spacing: 10px;
+}
+
+.label.message {
+	-fx-text-alignment: center;
+}
+
+.label.message: correct {
+	-fx-text-fill: green;
+}
+
+.label.message: incorrect {
+	-fx-text-fill: red;
+}
+
+
+
+.kanto-button {
+	-fx-background-color: linear-gradient(to bottom, #ed514e 45%, #914746 55%);
+}
+.kanto-button:pressed {
+	-fx-background-color: linear-gradient(to bottom, #f6a8a7 45%, #cf9c9b 55%);
+}
+
+.johto-button {
+	-fx-background-color: linear-gradient(to bottom, #2894d1 45%, #3f5772 55%);
+}
+.johto-button:pressed {
+	-fx-background-color: linear-gradient(to bottom, #94cbeb 45%, #b3c3d5 55%);
+}
+
+.hoenn-button {
+	-fx-background-color: linear-gradient(to bottom, #7fc256 45%, #577047 55%);
+}
+.hoenn-button:pressed {
+	-fx-background-color: linear-gradient(to bottom, #c1e1ad 45%, #afc3a2 55%);
+}
+
+.sinnoh-button {
+	-fx-background-color: linear-gradient(to bottom, #c37cd0 45%, #785f7c 55%);
+}
+.sinnoh-button:pressed {
+	-fx-background-color: linear-gradient(to bottom, #ead2ef 45%, #b5a3b8 55%);
+}
+
+.unova-button {
+	-fx-background-color: linear-gradient(to bottom, #636d92 45%, #3e4150 55%);
+}
+.unova-button:pressed {
+	-fx-background-color: linear-gradient(to bottom, #b0b6c9 45%, #979baf 55%);
+}
+
+.kalos-button {
+	-fx-background-color: linear-gradient(to bottom, #ffb624 45%, #927334 55%);
+}
+.kalos-button:pressed {
+	-fx-background-color: linear-gradient(to bottom, #ffda8f 45%, #d0b47c 55%);
+}
+
+.alola-button {
+	-fx-background-color: linear-gradient(to bottom, #32009a 45%, #1b0c3b 55%);
+}
+.alola-button:pressed {
+	-fx-background-color: linear-gradient(to bottom, #854dff 45%, #7749da 55%);
+}

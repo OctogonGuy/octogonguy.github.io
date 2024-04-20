@@ -1,0 +1,326 @@
+@import url('https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@200..800&display=swap');
+
+:root {
+  --button-color-1: #FAFAFA;
+  --button-color-2: #C7B9A8;
+  --button-color-1-active: #FDFDFD;
+  --button-color-2-active: #E3DCD4;
+  --button-color-1-deselected: #FAFAFA7F;
+  --button-color-2-deselected: #C7B9A87F;
+  --button-color-1-deselected-active: #FDFDFD7F;
+  --button-color-2-deselected-active: #E3DCD47F;
+}
+
+.hidden {
+  display: none !important;
+}
+
+html, body {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  font-family: "Gemunu Libre", sans-serif;
+  font-weight: bold;
+	color: #545454;
+  font-size: 3.33vh;
+	text-shadow: 0.05em 0.05em 0em #BABABA;
+  background: linear-gradient(to bottom, var(--color2) 2%, var(--color3) 3%, var(--color3) 97%, var(--color2) 98%);
+}
+
+button {
+  font-family: "Gemunu Libre", sans-serif;
+	color: #545454;
+	text-shadow: 0.05em 0.05em 0em #BABABA;
+	background: linear-gradient(to bottom, var(--button-color-1) 45%, var(--button-color-2) 55%);
+  border: 0.1em solid #FBFBFB;
+  outline: 0.1em solid #545454;
+  outline-color: #545454;
+	border-radius: 0.2em;
+	padding: .15em .6em;
+}
+
+button:hover {
+	border-color: red;
+}
+
+button:active {
+	background: linear-gradient(to bottom, var(--button-color-1-active) 45%, var(--button-color-2-active) 55%);
+}
+
+input[type="checkbox"] {
+  vertical-align: middle;
+	background-color: #E3DCD4;
+  border: 0.2em solid #545454;
+	border-color: #545454;
+	border-radius: 0.5em;
+}
+
+input[type="checkbox"]:hover {
+	border-color: red;
+}
+
+input[type="checkbox"]:active {
+	background-color: #FAFAFA;
+}
+
+#options-panel {
+  display: flex;
+  flex-direction: row;
+  flex-direction: row;
+  padding: 1vh 1vw 0 1vw;
+}
+
+#options-panel > * {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+#streaks {
+  gap: 3vw;
+}
+
+#option-buttons {
+  gap: 1vw;
+}
+
+#option-buttons > * {
+  cursor: pointer;
+}
+
+#options-panel > *:first-child {
+  justify-content: start;
+}
+
+#options-panel > *:last-child {
+  justify-content: end;
+}
+
+#option-buttons > * {
+  width: 2em;
+  aspect-ratio: 1 / 1;
+}
+
+#change-bg-button {
+  width: 1.33em;
+  background-color: var(--color1);
+  border: 0.2em solid black;
+  border-radius: 0.1em;
+}
+
+#medium-options {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  padding-top: 1vh;
+}
+
+.region-button {
+  font-size: 0.67em;
+}
+
+#menu, #game-screen {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 1vw 2vh 1vw;
+}
+
+#menu {
+  justify-content: space-evenly;
+}
+
+#game-screen {
+  justify-content: space-between;
+}
+
+#play-buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 8vw;
+}
+
+#play-buttons > *, .region-button {
+	color: #FFFFFF;
+	text-shadow:
+    -0.056569em -0.056569em 0 #545454,
+    0 -0.08em 0 #545454,
+    0.056569em -0.056569em 0 #545454,
+    0.08em 0 0 #545454,
+    0.056569em 0.056569em 0 #545454,
+    0 0.08em 0 #545454,
+    -0.056569em 0.056569em 0 #545454,
+    -0.08em 0 0 #545454;
+}
+
+#play-buttons > *, #back-button {
+  font-size: 1.2em;
+}
+
+#next-button, #streaks > * {
+  font-size: 1.3em;
+}
+
+.region-button.deselected {
+	background: linear-gradient(to bottom, var(--button-color-1-deselected) 45%, var(--button-color-2-deselected) 55%);
+}
+
+.region-button.deselected:active {
+	background: linear-gradient(to bottom, var(--button-color-1-deselected-active) 45%, var(--button-color-2-deselected-active) 55%);
+}
+
+.side {
+  display: flex;
+  flex-direction: column;
+  border: 0.1em solid #545454;
+}
+
+.title {
+	font-weight: 300;
+	background: linear-gradient(
+		to bottom,
+		#E2E2E2 59%,
+		#BABABA 61%,
+		#BABABA 65%,
+		#E2E2E2 67%,
+		#E2E2E2 71%,
+		#BABABA 73%
+  );
+  padding: 0.15em 0.5em;
+  border: 0 solid #545454;
+  border-bottom-width: 0.1em;
+}
+
+.content {
+	background-color: rgba(255, 255, 255, 0.5);
+}
+
+#opponent-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5vw;
+  padding: min(1vw, 0.5vh);
+}
+
+#opponent-type-1, #opponent-type-2 {
+  width: 1.5em;
+  aspect-ratio: auto;
+}
+
+#opponent-image {
+  width: min(50vw, 25vh);
+  aspect-ratio: auto;
+  padding: min(3vw, 1vh);
+}
+
+#message {
+  text-align: center;
+}
+
+.correct {
+  color: green;
+}
+
+.incorrect {
+  color: red;
+}
+
+#attacking-types {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1vw;
+}
+
+#attacking-types > * {
+  width: min(12vw, 8vh);
+  aspect-ratio: auto;
+  padding: min(1vw, 0.33vh);
+  cursor: pointer;
+}
+
+#easy-button {
+  --button-color-1: #54A225;
+  --button-color-2: #4E6B42;
+  --button-color-1-active: #AAD192;
+  --button-color-2-active: #A7B5A1;
+}
+
+#medium-button {
+  --button-color-1: #EB9B22;
+  --button-color-2: #8C6A35;
+  --button-color-1-active: #F5CD91;
+  --button-color-2-active: #C6B59A;
+}
+
+#hard-button {
+  --button-color-1: #FB4934;
+  --button-color-2: #914940;
+  --button-color-1-active: #FDA49A;
+  --button-color-2-active: #C8A4A0;
+}
+
+#kanto-button {
+  --button-color-1: #ed514e;
+  --button-color-2: #914746;
+  --button-color-1-active: #f6a8a7;
+  --button-color-2-active: #cf9c9b;
+}
+
+#johto-button {
+  --button-color-1: #2894d1;
+  --button-color-2: #3f5772;
+  --button-color-1-active: #94cbeb;
+  --button-color-2-active: #b3c3d5;
+}
+
+#hoenn-button {
+  --button-color-1: #7fc256;
+  --button-color-2: #577047;
+  --button-color-1-active: #c1e1ad;
+  --button-color-2-active: #afc3a2;
+}
+
+#sinnoh-button {
+  --button-color-1: #c37cd0;
+  --button-color-2: #785f7c;
+  --button-color-1-active: #ead2ef;
+  --button-color-2-active: #b5a3b8;
+}
+
+#unova-button {
+  --button-color-1: #636d92;
+  --button-color-2: #3e4150;
+  --button-color-1-active: #b0b6c9;
+  --button-color-2-active: #979baf;
+}
+
+#kalos-button {
+  --button-color-1: #ffb624;
+  --button-color-2: #927334;
+  --button-color-1-active: #ffda8f;
+  --button-color-2-active: #d0b47c;
+}
+
+#alola-button {
+  --button-color-1: #32009a;
+  --button-color-2: #1b0c3b;
+  --button-color-1-active: #854dff;
+  --button-color-2-active: #7749da;
+}
