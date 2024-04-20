@@ -320,7 +320,7 @@ function nextSong() {
     const filename = shuffleList.splice(0, 1)[0];
     song = new Audio("resources/audio/music/" + filename);
     song.addEventListener("ended", () =>  nextSong());
-    song.muted = localStorage.getItem("muted");
+    song.muted = localStorage.getItem("muted") === 'true';
     song.play();
 }
 
