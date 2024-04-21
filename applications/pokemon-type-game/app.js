@@ -31,7 +31,7 @@ const GameMode = {
 
 let game;
 let easyGame = new TypeGame();
-let mediumGame = new PokemonGame($("#mega-checkbox").checked, $("#regional-checkbox").checked, regions);
+let mediumGame = new PokemonGame();
 let hardGame = new PokemonGame(false, true, [1]);
 let gameMode;
 
