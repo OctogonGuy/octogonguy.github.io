@@ -45,10 +45,10 @@ class Pokemon {
 		this.generation = parseInt(tokens[7]);
 		
 		// Get whether the Pokémon is a mega evolution
-		this.isMega = !tokens[2] == undefined;
+		this.isMega = tokens[2] != "";
 		
 		// Get whether the Pokémon is a regional form
-		this.isRegional = !tokens[3] == undefined;
+		this.isRegional = tokens[3] != "";
 		
 		// Construct filename
 		let filename =  String(this.number);

@@ -17,6 +17,22 @@ for (const checkbox of $("#medium-options").children) {
 }
 if (!localStorage.getItem("muted")) localStorage.setItem("muted", 'false');
 
+
+for (const button of $("#medium-options").children) {
+    if (!button.classList.contains("region-button")) continue;
+    if (localStorage.getItem(button.id + "-deselected") === 'true')
+        button.classList.add("deselected")
+    else
+        button.classList.remove("deselected")
+}
+for (const checkboxContainer of $("#medium-options").children) {
+    if (!checkboxContainer.classList.contains("checkbox-container")) continue;
+    for (const checkbox of checkboxContainer.children) {
+        if (!checkbox.classList.contains("checkbox")) continue;
+        checkbox.checked = localStorage.getItem(checkbox.id + "-selected") === 'true';
+    }
+}
+
 function $(arg) {
     return document.querySelector(arg);
 }
@@ -31,7 +47,7 @@ const GameMode = {
 
 let game;
 let easyGame = new TypeGame();
-let mediumGame = new PokemonGame();
+let mediumGame = new PokemonGame($("#mega-checkbox").checked, $("#regional-checkbox").checked, selectedGenerations());
 let hardGame = new PokemonGame(false, true, [1]);
 let gameMode;
 
@@ -65,17 +81,6 @@ function newGame(mode) {
             $("#opponent-type-2").classList.remove("hidden");
             $("#defending-title-text").textContent = "Opponent Pokémon";
             $("#medium-options").classList.remove("hidden");
-            for (const button of $("#medium-options").children) {
-                if (!button.classList.contains("region-button")) continue;
-                if (localStorage.getItem(button.id + "-deselected") === 'true')
-                    button.classList.add("deselected")
-                else
-                    button.classList.remove("deselected")
-            }
-            for (const checkbox of $("#medium-options").children) {
-                if (!checkbox.classList.contains("checkbox")) continue;
-                checkbox.checked = localStorage.getItem(checkbox.id + "-selected") === 'true';
-            }
             break;
         case GameMode.HARD:
             game = hardGame;
@@ -146,15 +151,7 @@ function nextRound() {
             game.nextRound();
             break;
         case GameMode.MEDIUM:
-            const regions = [];
-            if (!$("#kanto-button").classList.contains("deselected")) regions.push(1);
-            if (!$("#johto-button").classList.contains("deselected")) regions.push(2);
-            if (!$("#hoenn-button").classList.contains("deselected")) regions.push(3);
-            if (!$("#sinnoh-button").classList.contains("deselected")) regions.push(4);
-            if (!$("#unova-button").classList.contains("deselected")) regions.push(5);
-            if (!$("#kalos-button").classList.contains("deselected")) regions.push(6);
-            if (!$("#alola-button").classList.contains("deselected")) regions.push(7);
-            game.nextRound($("#mega-checkbox").checked, $("#regional-checkbox").checked, regions);
+            game.nextRound($("#mega-checkbox").checked, $("#regional-checkbox").checked, selectedGenerations());
             break;
         case GameMode.HARD:
 			if (game.streak / HARD_MODE_INTERVAL + 1 > highestGeneration) {
@@ -205,11 +202,14 @@ for (const button of $("#medium-options").children) {
     });
 }
 
-for (const checkbox of $("#medium-options").children) {
-    if (!checkbox.classList.contains("checkbox")) continue;
-    checkbox.addEventListener("change", () => {
-        localStorage.setItem(checkbox.id + "-selected", checkbox.checked);
-    });
+for (const checkboxContainer of $("#medium-options").children) {
+    if (!checkboxContainer.classList.contains("checkbox-container")) continue;
+        for (const checkbox of checkboxContainer.children) {
+        if (!checkbox.classList.contains("checkbox")) continue;
+        checkbox.addEventListener("change", () => {
+            localStorage.setItem(checkbox.id + "-selected", checkbox.checked);
+        });
+    }
 }
 
 function allGenerationButtonsDeselected() {
@@ -222,6 +222,18 @@ function allGenerationButtonsDeselected() {
         }
     }
     return !selectedButtonFound;
+}
+
+function selectedGenerations() {
+    const regions = [];
+    if (!$("#kanto-button").classList.contains("deselected")) regions.push(1);
+    if (!$("#johto-button").classList.contains("deselected")) regions.push(2);
+    if (!$("#hoenn-button").classList.contains("deselected")) regions.push(3);
+    if (!$("#sinnoh-button").classList.contains("deselected")) regions.push(4);
+    if (!$("#unova-button").classList.contains("deselected")) regions.push(5);
+    if (!$("#kalos-button").classList.contains("deselected")) regions.push(6);
+    if (!$("#alola-button").classList.contains("deselected")) regions.push(7);
+    return regions;
 }
 
 
