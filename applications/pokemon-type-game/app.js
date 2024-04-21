@@ -2,6 +2,21 @@ import { Type, types } from "./type.js";
 import { DamageTier, Pokemon, get, getAll, highestGeneration, pokemon } from "./pokemon.js";
 import { GameState, TypeGame, PokemonGame } from "./game.js";
 
+
+if (!localStorage.getItem("background-gradient-index")) localStorage.setItem("background-gradient-index", 0);
+if (!localStorage.getItem("easy-highest-streak")) localStorage.setItem("easy-highest-streak", 0);
+if (!localStorage.getItem("medium-highest-streak")) localStorage.setItem("medium-highest-streak", 0);
+if (!localStorage.getItem("hard-highest-streak")) localStorage.setItem("hard-highest-streak", 0);
+for (const button of $("#medium-options").children) {
+    if (!button.classList.contains("region-button")) continue;
+    if (!localStorage.getItem(button.id + "-deselected")) localStorage.setItem(button.id + "-deselected", false);
+}
+for (const checkbox of $("#medium-options").children) {
+    if (!checkbox.classList.contains("checkbox")) continue;
+    if (!localStorage.getItem(checkbox.id + "-selected")) localStorage.setItem(checkbox.id + "-selected", true);
+}
+if (!localStorage.getItem("muted")) localStorage.setItem("muted", false);
+
 function $(arg) {
     return document.querySelector(arg);
 }
@@ -40,7 +55,7 @@ function newGame(mode) {
             $("#attacking-type-4").classList.add("hidden");
             $("#opponent-type-1").classList.add("hidden");
             $("#opponent-type-2").classList.add("hidden");
-            $("#defending-title-text").textContent = "Opponent Pokémon's Type";
+            $("#defending-title-text").textContent = "Opponent's Type";
             $("#medium-options").classList.add("hidden");
             break;
         case GameMode.MEDIUM:
@@ -214,11 +229,12 @@ const BackgroundGradient = {
     CYAN: ["#01f7f7", "#4af0f0", "#e7f9f9"],
     GOLD: ["#f8c800", "#f2ce3d", "#f9f4e2"],
 }
-let backgroundGradientIndex = 0;
+let backgroundGradientIndex = parseInt(localStorage.getItem("background-gradient-index"));
 function cycleBackgroundGradient() {
     backgroundGradientIndex++;
     if (backgroundGradientIndex >= Object.values(BackgroundGradient).length)
         backgroundGradientIndex = 0;
+    localStorage.setItem("background-gradient-index", backgroundGradientIndex)
     applyBackgroundGradient(Object.values(BackgroundGradient)[backgroundGradientIndex]);
 }
 function applyBackgroundGradient(backgroundGradient) {
@@ -363,20 +379,6 @@ else {
     $("#mute-button").src = "resources/img/misc/unmute.png";
 }
 
-
-
-if (!localStorage.getItem("easy-highest-streak")) localStorage.setItem("easy-highest-streak", 0);
-if (!localStorage.getItem("medium-highest-streak")) localStorage.setItem("medium-highest-streak", 0);
-if (!localStorage.getItem("hard-highest-streak")) localStorage.setItem("hard-highest-streak", 0);
-for (const button of $("#medium-options").children) {
-    if (!button.classList.contains("region-button")) continue;
-    if (!localStorage.getItem(button.id + "-deselected")) localStorage.setItem(button.id + "-deselected", false);
-}
-for (const checkbox of $("#medium-options").children) {
-    if (!checkbox.classList.contains("checkbox")) continue;
-    if (!localStorage.getItem(checkbox.id + "-selected")) localStorage.setItem(checkbox.id + "-selected", true);
-}
-if (!localStorage.getItem("muted")) localStorage.setItem("muted", false);
 
 
 toMenu();

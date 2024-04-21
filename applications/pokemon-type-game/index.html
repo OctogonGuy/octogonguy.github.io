@@ -18,8 +18,8 @@
     </div>
     <div id="option-buttons">
       <div id="change-bg-button"></div>
-      <img id="fast-forward-button" src="resources/img/misc/fast_forward.png">
-      <img id="mute-button" src="resources/img/misc/unmute.png">
+      <img id="fast-forward-button" src="resources/img/misc/fast_forward.png" draggable="false">
+      <img id="mute-button" src="resources/img/misc/unmute.png" draggable="false">
     </div>
   </div>
 
@@ -42,9 +42,17 @@
       <button id="kalos-button" class="region-button">Kalos</button>
       <button id="alola-button" class="region-button">Alola</button>
       
-      <label for="mega-checkbox"><input type="checkbox" id="mega-checkbox" class="checkbox">Mega evolutions</label>
+      <label for="mega-checkbox" class="checkbox-container">
+        Mega evolutions
+        <input type="checkbox" id="mega-checkbox" class="checkbox">
+        <span class="checkmark"></span>
+      </label>
       
-      <label for="regional-checkbox"><input type="checkbox" id="regional-checkbox" class="checkbox">Regional forms</label>
+      <label for="regional-checkbox" class="checkbox-container">
+        Regional forms
+        <input type="checkbox" id="regional-checkbox" class="checkbox">
+        <span class="checkmark"></span>
+      </label>
     </div>
     <div id="defending-side" class="side">
       <div class="title">
@@ -53,23 +61,25 @@
       <div class="content">
         <div id="opponent-info">
           <span id="opponent-name"></span>
-          <img id="opponent-type-1">
-          <img id="opponent-type-2">
+          <img id="opponent-type-1" draggable="false">
+          <img id="opponent-type-2" draggable="false">
         </div>
-        <img id="opponent-image">
+        <img id="opponent-image" draggable="false">
       </div>
     </div>
-    <span id="message"></span>
+    <div id="message-container">
+      <span id="message"></span>
+    </div>
     <div id="attacking-side" class="side">
       <div class="title">
-        <span id="attacking-title-text">Your Pokémon's Attacks' Types</span>
+        <span id="attacking-title-text">Your Attacks' Types</span>
       </div>
       <div class="content">
         <div id="attacking-types">
-          <img id="attacking-type-1"></button>
-          <img id="attacking-type-2"></button>
-          <img id="attacking-type-3"></button>
-          <img id="attacking-type-4"></button>
+          <img id="attacking-type-1" draggable="false"></button>
+          <img id="attacking-type-2" draggable="false"></button>
+          <img id="attacking-type-3" draggable="false"></button>
+          <img id="attacking-type-4" draggable="false"></button>
         </div>
       </div>
     </div>
