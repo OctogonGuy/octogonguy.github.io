@@ -175,8 +175,18 @@ $("#change-bg-button").addEventListener("click", () => cycleBackgroundGradient()
 $("#easy-button").addEventListener("click", () => newGame(GameMode.EASY));
 $("#medium-button").addEventListener("click", () => newGame(GameMode.MEDIUM));
 $("#hard-button").addEventListener("click", () => newGame(GameMode.HARD));
+for (const button of $("#play-buttons").children) {
+    button.addEventListener("click", () => {
+        const sound = new Audio("resources/audio/sfx/press_button.mp3");
+        sound.play();
+    });
+}
 
-$("#back-button").addEventListener("click", () => toMenu());
+$("#back-button").addEventListener("click", () => {
+    toMenu();
+    const sound = new Audio("resources/audio/sfx/press_button.mp3");
+    sound.play();
+});
 
 for (let i = 0; i < $("#attacking-types").children.length; i++) {
     $("#attacking-types").children[i].addEventListener("click", () => makeGuess(i));

@@ -57,7 +57,7 @@ button:active {
   display: flex;
   flex-direction: row;
   flex-direction: row;
-  padding: 3vh 3vw 0 5vw;
+  padding: 3vh 5vw 0 5vw;
 }
 
 #options-panel > * {

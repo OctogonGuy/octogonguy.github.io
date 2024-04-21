@@ -205,7 +205,7 @@ class PokemonGame {
 		this.state = GameState.HAS_NOT_MADE_GUESS;
 		
 		// Generate initial types for the first round
-		this.nextRound(includeMega=undefined, includeRegional=undefined, generations=undefined);
+		this.nextRound(includeMega, includeRegional, generations);
 	}
 
 
