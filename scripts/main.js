@@ -31,7 +31,7 @@ document.querySelector("header").innerHTML= `
     <li><a href="snake.html">Snake</a></li>
     <li><a href="random-sentence-generator.html">Random Sentence Generator</a></li>
     <li><a href="calculus.html">Calculus</a></li>
-    <li><a href="applications/pokemon-type-game/index.html">Pokémon Type Game</a></li>
+    <li><a href="pokemon-type-game.html">Pokémon Type Game</a></li>
   </ul>
 </nav>
 `;

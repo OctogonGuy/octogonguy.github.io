@@ -9,13 +9,13 @@ if (!localStorage.getItem("medium-highest-streak")) localStorage.setItem("medium
 if (!localStorage.getItem("hard-highest-streak")) localStorage.setItem("hard-highest-streak", 0);
 for (const button of $("#medium-options").children) {
     if (!button.classList.contains("region-button")) continue;
-    if (!localStorage.getItem(button.id + "-deselected")) localStorage.setItem(button.id + "-deselected", false);
+    if (!localStorage.getItem(button.id + "-deselected")) localStorage.setItem(button.id + "-deselected", 'false');
 }
 for (const checkbox of $("#medium-options").children) {
     if (!checkbox.classList.contains("checkbox")) continue;
-    if (!localStorage.getItem(checkbox.id + "-selected")) localStorage.setItem(checkbox.id + "-selected", true);
+    if (!localStorage.getItem(checkbox.id + "-selected")) localStorage.setItem(checkbox.id + "-selected", 'true');
 }
-if (!localStorage.getItem("muted")) localStorage.setItem("muted", false);
+if (!localStorage.getItem("muted")) localStorage.setItem("muted", 'false');
 
 function $(arg) {
     return document.querySelector(arg);

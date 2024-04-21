@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pokémon Type Game</title>
+  <link rel="stylesheet" href="stylesheets/main.css">
+  <link rel="stylesheet" href="stylesheets/buttons.css">
+  <style>
+    .buttons {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-evenly;
+    }
+  </style>
+</head>
+<body>
+  <header></header>
+
+  <main>
+    <h1>Pokémon Type Game</h1>
+    <iframe id="embedded-app" src="applications/pokemon-type-game/app.html" style="display: block; width: 80%; aspect-ratio: 19/16; margin-left: auto; margin-right: auto;" hidden></iframe>
+    <div class="buttons" style="margin-top: 2em">
+      <a href="applications/pokemon-type-game/app.html"><button id="play-fullscreen-button">Play fullscreen</button></a>
+    </div>
+    <h2>How to Play</h2>
+    <p>Welcome to the Pokémon type game! In this game, you will be presented with a defending Pokémon type or Pokémon, and you will have to guess which type of a given selection of attacking types is most effective against it.</p>
+    <p>There are three game modes:</p>
+    <ul>
+      <li>Easy: In this mode, you are given a defending Pokémon type. You are given 3 attacking types, and you are to select the type that is supereffective.</li>
+      <li>Medium: In this mode, you are given a defending Pokémon as well as its typing. You are given 4 attacking types, and you are to select the type that is the most effective among them. Unlike Easy mode, this type may not necessarily be supereffective. It may deal a normal amount of damage, but the rest of the types only deal half or less damage. Alternatively, all the types may deal supereffective damage, but the correct answer deals quadruple damage while the rest only deal double. You can also select which region(s) from which you would like to be shown defending Pokémon. Note that your selection will only take place once you finish the current round.</li>
+      <li>Hard: This mode is the same as Medium but with two key differences. First, the defending Pokémon's typing is not shown. Second, you can no longer select any region(s). Instead, every 5 rounds, you will be shown Pokémon from each region in ascending order. For example, from rounds 1 through 5 you will be shown Pokémon from the Kanto region, from rounds 6 through 10 you will be shown Pokémon from the Johto region, from rounds 11 through 15 you will be shown Pokémon from the Hoenn region, and so forth.</li>
+    </ul>
+    <p>The numbers on the top of the game screen are your streaks. The left number is your current streak, and the right number is your high score.</p>
+    <h2>Download Standalone Version</h2>
+    <p>Use the button below to download a standalone version of the Pokémon type game. It is a are Java .jar executable, so it can run on any desktop operating system. To open it, you need <a href="https://www.java.com/download/" target="_blank">Java</a> installed. It will create a userdata folder in the same directory as the .jar file.</p>
+    <div class="buttons">
+      <a href="applications/PokemonTypeGame.jar"><button id="download-button">Download standalone</button></a>
+    </div>
+  </main>
+
+  <footer></footer>
+
+  <script src="scripts/main.js"></script>
+</body>
+</html>
