@@ -117,12 +117,12 @@ class TypeGame {
 		attackingTypesList.push(correctAnswer);
 		
 		// Randomly select the rest of the attacking types as non-weaknesses
-		const incorrectAnswers = Object.values(types);
-		incorrectAnswers.splice(incorrectAnswers.indexOf(types[correctAnswer]), 1);
+		const incorrectAnswers = Object.keys(types);
+		incorrectAnswers.splice(incorrectAnswers.indexOf(correctAnswer), 1);
 		for (const weakness of this.defendingType.weaknesses)
 			incorrectAnswers.splice(incorrectAnswers.indexOf(weakness), 1);
 		for (let i = 1; i < this.numChoices; i++)
-			attackingTypesList.push(incorrectAnswers.splice(Math.floor(Math.random() * incorrectAnswers.length), 1)[0].name);
+			attackingTypesList.push(incorrectAnswers.splice(Math.floor(Math.random() * incorrectAnswers.length), 1)[0]);
 		
 		// Shuffle the list so the weakness is not always first
 		attackingTypesList = shuffle(attackingTypesList);
@@ -146,10 +146,13 @@ class TypeGame {
 			str += `Correct! ${this.defendingType.name} is weak to ${this.guess.name}.`;
 			
 			// Include other weaknesses.
-			const otherWeaknesses = this.defendingType.weaknesses;
+			const otherWeaknesses = [];
+			for (const weakness of this.defendingType.weaknesses) {
+				otherWeaknesses.push(weakness);
+			}
 			otherWeaknesses.splice(otherWeaknesses.indexOf(this.guess), 1);
 			if (otherWeaknesses.length > 0) {
-				str += `${this.defendingType.name} is also weak to `;
+				str += ` ${this.defendingType.name} is also weak to `;
 				for (let i = 0; i < otherWeaknesses.length - 1; i++) {
 					str += otherWeaknesses[i];
 					if (otherWeaknesses.length > 2)

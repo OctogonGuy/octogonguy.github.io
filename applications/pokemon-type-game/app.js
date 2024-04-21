@@ -154,7 +154,6 @@ function nextRound() {
             if (!$("#unova-button").classList.contains("deselected")) regions.push(5);
             if (!$("#kalos-button").classList.contains("deselected")) regions.push(6);
             if (!$("#alola-button").classList.contains("deselected")) regions.push(7);
-            console.log(regions);
             game.nextRound($("#mega-checkbox").checked, $("#regional-checkbox").checked, regions);
             break;
         case GameMode.HARD:
