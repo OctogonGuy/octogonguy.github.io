@@ -74,7 +74,7 @@ function newGame(mode) {
             }
             for (const checkbox of $("#medium-options").children) {
                 if (!checkbox.classList.contains("checkbox")) continue;
-                checkbox.selected = localStorage.getItem(checkbox.id + "-selected") === 'true';
+                checkbox.checked = localStorage.getItem(checkbox.id + "-selected") === 'true';
             }
             break;
         case GameMode.HARD:
