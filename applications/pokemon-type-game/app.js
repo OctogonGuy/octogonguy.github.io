@@ -154,7 +154,7 @@ function nextRound() {
             game.nextRound($("#mega-checkbox").checked, $("#regional-checkbox").checked, selectedGenerations());
             break;
         case GameMode.HARD:
-			if (game.streak / HARD_MODE_INTERVAL + 1 > highestGeneration) {
+			if (Math.floor(game.streak / HARD_MODE_INTERVAL) + 1 > highestGeneration) {
 				game.nextRound();
 			}
 			else {
