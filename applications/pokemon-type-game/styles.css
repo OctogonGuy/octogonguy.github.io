@@ -175,7 +175,7 @@ button:active {
 }
 
 #navigation-buttons > * {
-  font-size: 0.6em;
+  font-size: min(3.75vw, 3vh);
 }
 
 #next-button:disabled {
