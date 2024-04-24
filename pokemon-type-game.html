@@ -13,6 +13,35 @@
       align-items: center;
       justify-content: space-evenly;
     }
+    #embedded-app {
+      display: block;
+      width: 80%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    @media screen and (orientation:landscape) {
+      #embedded-app {
+        aspect-ratio: 19/16;
+      }
+    }
+    @media screen and (orientation:portrait) {
+      #embedded-app {
+        aspect-ratio: 3/5;
+      }
+    }
+    #embedded-app.fullscreen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      margin: 0;
+      border: none;
+    }
+    body:has(#embedded-app.fullscreen) {
+      /* Hides scroll bar */
+      overflow: hidden;
+    }
   </style>
 </head>
 <body>
@@ -20,10 +49,7 @@
 
   <main>
     <h1>Pokémon Type Game</h1>
-    <iframe id="embedded-app" src="applications/pokemon-type-game/app.html" style="display: block; width: 80%; aspect-ratio: 19/16; margin-left: auto; margin-right: auto;" hidden></iframe>
-    <div class="buttons" style="margin-top: 2em">
-      <a href="applications/pokemon-type-game/app.html"><button id="play-fullscreen-button">Play fullscreen</button></a>
-    </div>
+    <iframe id="embedded-app" src="applications/pokemon-type-game/app.html"></iframe>
     <h2>How to Play</h2>
     <p>Welcome to the Pokémon type game! In this game, you will be presented with a defending Pokémon type or Pokémon, and you will have to guess which type of a given selection of attacking types is most effective against it.</p>
     <p>There are three game modes:</p>
@@ -43,5 +69,23 @@
   <footer></footer>
 
   <script src="scripts/main.js"></script>
+  <script>
+    const iframe = document.querySelector("#embedded-app");
+    const content = document.querySelector("#embedded-app").contentWindow;
+    const fullscreenButton = document.createElement("img");
+    fullscreenButton.src = "resources/img/misc/maximize.png";
+    fullscreenButton.addEventListener("click", () => {
+      toggleFullscreen()}
+    );
+    content.addEventListener("DOMContentLoaded", () => {
+      content.document.querySelector("#option-buttons").append(fullscreenButton);
+    });
+    function toggleFullscreen() {
+      if (iframe.classList.toggle("fullscreen"))
+        fullscreenButton.src = "resources/img/misc/minimize.png";
+      else
+        fullscreenButton.src = "resources/img/misc/maximize.png";
+    }
+  </script>
 </body>
 </html>
