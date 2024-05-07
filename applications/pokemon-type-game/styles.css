@@ -15,6 +15,11 @@
   display: none !important;
 }
 
+@font-face {
+	font-family: diamond-pearl;
+	src: url("resources/font/pokemon-dp-pro.ttf");
+}
+
 html, body {
   height: 100%;
   padding: 0;
@@ -24,25 +29,26 @@ html, body {
 body {
   display: flex;
   flex-direction: column;
-  font-family: "Gemunu Libre", sans-serif;
+  font-family: diamond-pearl, "Gemunu Libre", sans-serif;
   font-weight: bold;
 	color: #545454;
-  font-size: 3.33vh;
+  font-size: 4.0vh;
+	line-height: 0.9;
 	text-shadow: 0.05em 0.05em 0em #BABABA;
   background: linear-gradient(to bottom, var(--color2) 2%, var(--color3) 3%, var(--color3) 97%, var(--color2) 98%);
   user-select: none;
 }
 
 button {
-  font-family: "Gemunu Libre", sans-serif;
+  font-family: diamond-pearl, "Gemunu Libre", sans-serif;
 	color: #545454;
 	text-shadow: 0.05em 0.05em 0em #BABABA;
 	background: linear-gradient(to bottom, var(--button-color-1) 45%, var(--button-color-2) 55%);
   border: 0.1em solid #FBFBFB;
   outline: 0.1em solid #545454;
   outline-color: #545454;
-	border-radius: 0.18em;
-	padding: .15em .6em;
+	border-radius: 0.16em;
+	padding: .12em .5em;
 }
 
 button:hover {
@@ -57,7 +63,7 @@ button:active {
   display: flex;
   flex-direction: row;
   flex-direction: row;
-  height: 2em;
+  height: 1.8em;
   padding: 3vh 2vw 0 2vw;
   gap: 2vw;
 }
@@ -118,7 +124,7 @@ button:active {
 }
 
 .region-button {
-  font-size: clamp(0.15em, 3.33vw, 0.67em);
+  font-size: clamp(0.12em, 3.33vw, 0.56em);
 }
 
 #menu, #game-screen {
@@ -171,7 +177,7 @@ button:active {
 }
 
 #play-buttons > *, #next-button, #streaks > * {
-  font-size: 1.2em;
+  font-size: 1.1em;
 }
 
 #navigation-buttons > * {
@@ -201,12 +207,12 @@ button:active {
 .side {
   display: flex;
   flex-direction: column;
-  border: 0.133em solid #545454;
+  border: 0.122em solid #545454;
 }
 
 .title {
 	font-weight: 300;
-  font-size: 0.7em;
+  font-size: 0.62em;
 	background: linear-gradient(
 		to bottom,
 		#E2E2E2 59%,
@@ -216,9 +222,9 @@ button:active {
 		#E2E2E2 71%,
 		#BABABA 73%
   );
-  padding: 0.15em 0.5em;
+  padding: 0.12em 0.42em;
   border: 0 solid #545454;
-  border-bottom-width: 0.1em;
+  border-bottom-width: 0.09em;
 }
 
 .content {
@@ -234,7 +240,7 @@ button:active {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 0.3em;
+  gap: 0.26em;
   padding: min(1vw, 0.5vh);
 }
 
@@ -243,11 +249,11 @@ button:active {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 0.1em;
+  gap: 0.09em;
 }
 
 #opponent-type-1, #opponent-type-2 {
-  width: 1.2em;
+  width: 1.1em;
   aspect-ratio: auto;
 }
 
@@ -260,7 +266,7 @@ button:active {
 #message-container {
   display: flex;
   align-items: center;
-  height: 5em;
+  height: 4.6em;
 }
 
 #message {
@@ -375,8 +381,8 @@ button:active {
 .checkbox-container {
   display: block;
   position: relative;
-  padding-left: 1.5em;
-  font-size: clamp(0.2em, 4vw, 0.8em);
+  padding-left: 1.4em;
+  font-size: clamp(0.18em, 4vw, 0.66em);
 }
 
 /* Hide the browser's default checkbox */
@@ -392,13 +398,13 @@ button:active {
   position: absolute;
   top: 0;
   left: 0;
-  width: 1em;
-  height: 1em;
+  width: 0.9em;
+  height: 0.9em;
 
 	background-color: #E3DCD4;
-  border: 0.1em solid #545454;
+  border: 0.09em solid #545454;
 	border-color: #545454;
-	border-radius: 0.2em;
+	border-radius: 0.18em;
 }
 
 /* On mouse-over, add a grey background color */
@@ -425,12 +431,12 @@ button:active {
 
 /* Style the checkmark/indicator */
 .checkbox-container .checkmark:after {
-  top: 0.21em;
-  left: 0.38em;
-  width: 0.2em;
-  height: 0.4em;
+  top: 0.19em;
+  left: 0.34em;
+  width: 0.18em;
+  height: 0.36em;
   border: solid #545454;
-  border-width: 0 0.15em 0.15em 0;
+  border-width: 0 0.13em 0.13em 0;
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
