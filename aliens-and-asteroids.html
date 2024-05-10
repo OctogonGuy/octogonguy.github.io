@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="stylesheets/main.css">
+	<link rel="stylesheet" href="stylesheets/buttons.css">
+  <style>
+    #embedded-app {
+      display: block;
+      width: 80%;
+      aspect-ratio: 4 / 3;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    #aliens-and-asteroids-button {
+      cursor: pointer;
+      font-size: 2em;
+      display: block;
+      margin: 0 auto;
+    }
+    .buttons {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-evenly;
+    }
+  </style>
+</head>
+<body>
+  <header></header>
+
+  <main>
+    <h1>Aliens and Asteroids</h1>
+
+    <section id="game-section">
+      <div id="iframe-container" hidden>
+        <iframe id="embedded-app" scrolling="no" src="applications/aliens-and-asteroids/index.html"></iframe>
+      </div>
+      <div id="play-button-container">
+        <button id="aliens-and-asteroids-button" onclick="start()">Play</button>
+      </div>
+    </section>
+
+    <h2>Controls</h2>
+    <ul>
+      <li>Use the up arrow key to fly forward</li>
+      <li>Use the down arrow key to fly backward</li>
+      <li>Use the left and right arrow keys to rotate</li>
+      <li>Use the space bar to shoot</li>
+    </ul>
+    <p>Credit to <a href="https://opengameart.org/users/maxstack">maxstack</a> for the background music</p>
+    <h2>Download Standalone Version</h2>
+    <p>Download and unzip the .zip file and start the game using the .exe (Only compatible with Windows).</p>
+    <div class="buttons">
+      <a href="applications/Aliens_and_Asteroids.zip"><button id="download-button">Download standalone</button></a>
+    </div>
+  </main>
+
+  <footer></footer>
+
+  <script>
+    const start = () => {
+      document.querySelector("#iframe-container").hidden = false;
+      document.querySelector("#play-button-container").hidden = true;
+    }
+  </script>
+  <script src="scripts/main.js"></script>
+</body>
+</html>
