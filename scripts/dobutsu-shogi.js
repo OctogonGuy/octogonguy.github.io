@@ -1101,7 +1101,6 @@ function getMove() {
 
   let move;
   maxDepth = Math.max(1, Math.round(difficulty * DEFAULT_MAX_DEPTH));
-  console.log(maxDepth);
   let randomVal = Math.random() < -0.2 * Math.log10(0.99 * difficulty + 0.01);
   // Chance for random move depending on difficulty.
   if (randomVal) {
