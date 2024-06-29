@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code&family=Crete+Round&display=swap&family=Anton&family=Fugaz+One&family=Pixelify+Sans&family=Rubik+Moonrocks&family=Seaweed+Script&family=Tilt+Prism&display=swap&family=Pixelify+Sans:wght@400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code&family=Crete+Round&display=swap&family=Anton&family=Fugaz+One&family=Pixelify+Sans&family=Rubik+Moonrocks&family=Seaweed+Script&family=Tilt+Prism&display=swap&family=Pixelify+Sans:wght@400..700&display=swap&family=Playwrite+MX:wght@100..400&display=swap');
 
 
 #main-buttons {
@@ -860,4 +860,29 @@
 
 #derivative-button:active {
 	background: linear-gradient(-45deg, var(--color1), var(--color2));
+}
+
+
+
+#integral-button {
+	--color1: #ddfd67;
+	--color2: #f5ffb9;
+	
+  font-family: "Playwrite MX", cursive;
+  font-optical-sizing: auto;
+	color: #343611;
+	padding: 0.33em 0.67em;
+	box-shadow: inset 0.2em 0.2em 0.33em #80808080;
+	background: radial-gradient(var(--color2), var(--color1));
+	border-radius: 100%;
+	border: 3px solid #819637;
+	transition: color 0.5s;
+}
+
+#integral-button:hover {
+	color: #a7ac46;
+}
+
+#integral-button:active {
+	color: #f0f1db;
 }

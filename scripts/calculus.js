@@ -188,6 +188,20 @@ function derivative() {
     return `\\text{Find }${funcLetter + prime}(${variable})\\text{.}\\quad ${funcLetter}(${variable})=${func(variable)}`;
 }
 
+function integral() {
+    let variable = randomLetter();
+    let lowerLimit = randomNumber(-10, 10);
+    let upperLimit = randomNumber(-10, 10);
+    let int;
+    if (Math.random() < 0.5) {
+        int = `\\int_{${lowerLimit}}^{${upperLimit}}`;  // Definite integral
+    }
+    else {
+        int = `\\int`;                                  // Inefinite integral
+    }
+    return `${int}\\left[${func(variable)}\\right]d${variable}`;
+}
+
 
 document.querySelector("#limit-button").addEventListener("click", () => {
     document.querySelector("#problem").innerHTML = "\$\$" + limit() + "\$\$";
@@ -196,5 +210,10 @@ document.querySelector("#limit-button").addEventListener("click", () => {
 
 document.querySelector("#derivative-button").addEventListener("click", () => {
     document.querySelector("#problem").innerHTML = "\$\$" + derivative() + "\$\$";
+    MathJax.typeset();
+});
+
+document.querySelector("#integral-button").addEventListener("click", () => {
+    document.querySelector("#problem").innerHTML = "\$\$" + integral() + "\$\$";
     MathJax.typeset();
 });
