@@ -3,7 +3,7 @@
 const BUBBLE_INTERVAL = 5;
 
 document.querySelector("footer").innerHTML = `
-<p>No Copyright - <a href="http://octopusdragon.tech">octopusdragon.tech</a> | <a href="http://octopusdragon.tech/privacy-policy.html">Privacy Policy</a></p>
+<p>No Copyright - <a href="http://octopusdragon.tech">octopusdragon.tech</a></p>
 `;
 document.querySelector("header").innerHTML = `
 <a href="http://octopusdragon.tech">
